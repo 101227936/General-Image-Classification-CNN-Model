@@ -11,18 +11,18 @@
         <link rel="shortcut icon" href="Landing/Logo/faviconLogo.ico">
 
         <!-- Plugins css -->
-        <link href="Admin/dist/assets/libs/dropzone/min/dropzone.min.css" rel="stylesheet" type="text/css" />
-        <link href="Admin/dist/assets/libs/dropify/css/dropify.min.css" rel="stylesheet" type="text/css" />
+        <link href="template/Template/Admin/dist/assets/libs/dropzone/min/dropzone.min.css" rel="stylesheet" type="text/css" />
+        <link href="template/Template/Admin/dist/assets/libs/dropify/css/dropify.min.css" rel="stylesheet" type="text/css" />
 
 		<!-- App css -->
-		<link href="Admin/dist/assets/css/bootstrap.min.css" rel="stylesheet" type="text/css" id="bs-default-stylesheet" />
-		<link href="Admin/dist/assets/css/app.min.css" rel="stylesheet" type="text/css" id="app-default-stylesheet" />
+		<link href="template/Template/Admin/dist/assets/css/bootstrap.min.css" rel="stylesheet" type="text/css" id="bs-default-stylesheet" />
+		<link href="template/Template/Admin/dist/assets/css/app.min.css" rel="stylesheet" type="text/css" id="app-default-stylesheet" />
 
-		<link href="Admin/dist/assets/css/bootstrap-dark.min.css" rel="stylesheet" type="text/css" id="bs-dark-stylesheet" disabled />
-		<link href="Admin/dist/assets/css/app-dark.min.css" rel="stylesheet" type="text/css" id="app-dark-stylesheet"  disabled />
+		<link href="template/Template/Admin/dist/assets/css/bootstrap-dark.min.css" rel="stylesheet" type="text/css" id="bs-dark-stylesheet" disabled />
+		<link href="template/Template/Admin/dist/assets/css/app-dark.min.css" rel="stylesheet" type="text/css" id="app-dark-stylesheet"  disabled />
 
 		<!-- icons -->
-		<link href="Admin/dist/assets/css/icons.min.css" rel="stylesheet" type="text/css" />
+		<link href="template/Template/Admin/dist/assets/css/icons.min.css" rel="stylesheet" type="text/css" />
 
     </head>
 
@@ -122,16 +122,16 @@
         <div class="rightbar-overlay"></div>
 
         <!-- Vendor js -->
-        <script src="Admin/dist/assets/js/vendor.min.js"></script>
+        <script src="template/Template/Admin/dist/assets/js/vendor.min.js"></script>
 		
 		<!-- Tippy js-->
-        <script src="Admin/dist/assets/libs/tippy.js/tippy.all.min.js"></script>
+        <script src="template/Template/Admin/dist/assets/libs/tippy.js/tippy.all.min.js"></script>
 
         <!-- Plugins js -->
-        <script src="Admin/dist/assets/libs/dropzone/min/dropzone.min.js"></script>
-        <script src="Admin/dist/assets/libs/dropify/js/dropify.min.js"></script>
+        <script src="template/Template/Admin/dist/assets/libs/dropzone/min/dropzone.min.js"></script>
+        <script src="template/Template/Admin/dist/assets/libs/dropify/js/dropify.min.js"></script>
 
         <!-- App js -->
-        <script src="Admin/dist/assets/js/app.min.js"></script>
+        <script src="template/Template/Admin/dist/assets/js/app.min.js"></script>
     </body>
 </html>
