@@ -5,7 +5,7 @@
         <div class="logo-box">
             <a href="home.html" class="logo logo-light text-center">
                 <span class="logo-lg">
-                    <img src="Landing/light-logo.png" alt="" height="40">
+                    <img src="Landing/Logo/light-logo.png" alt="" height="40">
                 </span>
             </a>
         </div>

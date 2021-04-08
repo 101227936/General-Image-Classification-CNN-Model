@@ -8,7 +8,7 @@
         <meta content="Coderthemes" name="author" />
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <!-- App favicon -->
-        <link rel="shortcut icon" href="Landing/faviconLogo.ico">
+        <link rel="shortcut icon" href="Landing/Logo/faviconLogo.ico">
 
         <!-- Plugins css -->
         <link href="Admin/dist/assets/libs/dropzone/min/dropzone.min.css" rel="stylesheet" type="text/css" />
