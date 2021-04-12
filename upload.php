@@ -51,11 +51,22 @@
                             <div class="col-12">
                                 <div class="card">
                                     <div class="card-body" style="padding-bottom:5px;!important">
+										<?php
+											$dirs = array_filter(glob('uploads/*'), 'is_dir');
+											$name = "Class ".count($dirs);
+											$new_name=$name;
+											$count=0;
+											while(in_array('uploads/'.$new_name, $dirs))
+											{
+												$count++;
+												$new_name=$name.'('.$count.')';
+											}
+										?>
 										<div class="row">
 											<div class="col-md-6 col-sm-12">
-												<i class="fas fa-question-circle" style="padding-right:5px;margin-bottom:7px;" title="Click 'Class 0' to edit the name of class" data-plugin="tippy" data-tippy-placement="right-start" data-tippy-maxWidth="200px" data-tippy-offset="0, 0"></i>
-												<h4 class="header-title" style="display: inline-block;" id="class_name" contenteditable="true">Class 0</h4>
-                                                <form action="/" method="post" class="dropzone" style="min-height: 0px !important;" id="myAwesomeDropzone" name="myAwesomeDropzone" data-plugin="dropzone" data-previews-container="#file-previews"
+												<i class="fas fa-question-circle" style="padding-right:5px;margin-bottom:7px;" title="Click Class Name to edit the name of class" data-plugin="tippy" data-tippy-placement="right-start" data-tippy-maxWidth="200px" data-tippy-offset="0, 0"></i>
+												<h4 class="header-title" style="display: inline-block;" id="class_name" contenteditable="true"><?=$new_name?></h4>
+                                                <form action="upload_files.php" method="post" class="dropzone" style="min-height: 0px !important;" id="myAwesomeDropzone" name="myAwesomeDropzone" data-plugin="dropzone" data-previews-container="#file-previews"
 													data-upload-preview-template="#uploadPreviewTemplate">
 													<div class="fallback">
 														<input name="file[]" type="file" multiple />
@@ -133,5 +144,93 @@
 
         <!-- App js -->
         <script src="template/Template/Admin/dist/assets/js/app.min.js"></script>
+		
+		<!-- Init js-->
+		<script>
+            var myDropzone;
+			!function(t){
+				"use strict";
+				function e(){
+					this.$body=t("body")
+				}
+				e.prototype.init=function(){
+					Dropzone.autoDiscover=false,
+					t('[data-plugin="dropzone"]').each(function(){
+						var e=t(this).attr("action"),
+						o=t(this).data("previewsContainer"),
+						i={
+							acceptedFiles: "image/jpeg,image/png,image/jpg",
+							url:e,
+							maxFilesize: 1,
+							autoProcessQueue: false,
+							maxFiles: 100,
+							parallelUploads: 100,
+							init: function() {
+								myDropzone = this;
+								$("#upload").click(function (e) {
+									e.preventDefault();
+									if(myDropzone.getAcceptedFiles().length>0)myDropzone.processQueue();
+									else alert('Please select images');
+								});
+							},
+							processing: function(file) {
+							  this.options.params = {name: $('#class_name').text()};
+							},
+							queuecomplete : function(file, response){
+								if (myDropzone.getAcceptedFiles().length>0 && 
+                                    myDropzone.getUploadingFiles().length === 0 && 
+                                    myDropzone.getQueuedFiles().length === 0) 
+                                {
+									alert("Image Upload Successful");
+									window.location='training.php';
+								}			
+							},
+							error: function(file, response){
+								alert(file.name+" is not added because "+response);
+								this.removeFile(file);
+							},
+							totaluploadprogress: function(progress) {
+								console.log(progress);
+							}
+						};
+						o&&(i.previewsContainer=o);
+						var r=t(this).data("uploadPreviewTemplate");
+						r&&(i.previewTemplate=t(r).html());
+						t(this).dropzone(i)
+					})
+				},
+				t.FileUpload=new e,
+				t.FileUpload.Constructor=e
+			}(window.jQuery),function(){
+				"use strict";
+				window.jQuery.FileUpload.init()
+			}()
+
+			Array.from(document.querySelectorAll('#class_name')).forEach(function(element, index, array){
+				element.addEventListener('focusout', function(event){
+					event.preventDefault();
+					$.ajax({
+						type: "POST",
+						dataType : 'json',
+						url: "check_duplicate_class.php",
+						data: { 
+							name: event.target.textContent,
+						},
+						success: function(result) {
+							if(result.Status==true)
+							{
+								alert(result.Result);
+								event.target.innerText="<?=$new_name?>";
+							}
+						},
+						error: function(result) {
+							console.log(result);
+							console.clear();
+						}
+					});
+					
+				})
+			})
+		</script>
     </body>
 </html>
