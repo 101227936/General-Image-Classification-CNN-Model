@@ -97,7 +97,7 @@
                                                     <button class="btn btn-primary dropdown-toggle btn-lg btn-block" name="recordinput" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> --- Please Select --- <i class="mdi mdi-chevron-down"></i>
                                                     <span class="caret"></span>
                                                     </button>
-                                                    <ul class="dropdown-menu">
+                                                    <ul id="myInput" class="dropdown-menu">
                                                         <li><a href="#">MobileNet V2</a></li>
                                                         <li><a href="#">MobileNet V3</a></li>
                                                         <li><a href="#">MobileNet V4</a></li>
@@ -106,10 +106,10 @@
                                             
                                                 </div>
                                             </div>
-                                        </form>
+                                        
 
 
-                                        <form action="#" name="InputCacheCheck" method="post">
+                                       
                                             <div class="input-prepend input-append" style="padding:5px;!important">
                                                 <h3 class="page-title">Epoch <i class="fas fa-question-circle" style="padding-right:5px;margin-bottom:7px;" title="Maximum epoch is 10" data-plugin="tippy" data-tippy-placement="right-start" data-tippy-maxWidth="200px" data-tippy-offset="0, 0"></i></h3>
                                                 <div class="input-group">
@@ -127,14 +127,14 @@
                                                 </div>
                                                 
                                             </div>
-                                        </form>
+                                       
 
-                                        <form action="#" name="InputCacheCheck" method="post">
+                                        
                                             <div class="input-prepend input-append" style="padding:5px;!important">
                                                 <h3 class="page-title">Batch Size <i class="fas fa-question-circle" style="padding-right:5px;margin-bottom:7px;" title="Select the batch size of your model" data-plugin="tippy" data-tippy-placement="right-start" data-tippy-maxWidth="200px" data-tippy-offset="0, 0"></i></h3>
                                                 <div class="btn-group mb-2">
                                                     <button class="btn btn-primary dropdown-toggle btn-lg btn-block" name="recordinput" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> --- Please Select --- <i class="mdi mdi-chevron-down"></i>
-                                                    <span class="caret"></span>
+                                                    <span id="myBatchSize" class="caret"></span>
                                                     </button>
                                                     <ul class="dropdown-menu">
                                                         <li><a href="#">16</a></li>
@@ -150,7 +150,7 @@
                                         <br>
                                         <br>
                                         <br>
-                                        <button type="button" class="btn btn-info btn-lg btn-block waves-effect waves-light float-end">Add Class</button>
+                                        <button type="button"  onclick="myFunction()"class="btn btn-info btn-lg btn-block waves-effect waves-light float-end">Add Class</button>
                                         <button type="button" class="btn btn-info btn-lg btn-block waves-effect waves-light float-end">Train Model</button>
 
 									</div> <!-- end card-body-->
@@ -252,7 +252,22 @@
                     $(this).val($(this).data('oldValue'));
                 }
             });
-        
+            
+            
+
+            function myFunction()
+            {
+                var card = document.getElementById("myInput");
+                var batchSize = document.getElementById("myBatchSize");
+
+                if(card.selectedIndex == 0 && batchSize.selectedIndex == 0) {
+                    alert("ok");
+                }
+                else {
+                    alert('select one answer');
+                }
+            }
+
         </script>
     </body>
 </html>
