@@ -106,10 +106,10 @@
                                             
                                                 </div>
                                             </div>
-                                        </form>
+                                      
 
 
-                                        <form action="#" name="InputCacheCheck" method="post">
+                                        
                                             <div class="input-prepend input-append" style="padding:5px;!important">
                                                 <h3 class="page-title">Epoch <i class="fas fa-question-circle" style="padding-right:5px;margin-bottom:7px;" title="Maximum epoch is 10" data-plugin="tippy" data-tippy-placement="right-start" data-tippy-maxWidth="200px" data-tippy-offset="0, 0"></i></h3>
                                                 <div class="input-group">
@@ -127,9 +127,8 @@
                                                 </div>
                                                 
                                             </div>
-                                        </form>
+                                       
 
-                                        <form action="#" name="InputCacheCheck" method="post">
                                             <div class="input-prepend input-append" style="padding:5px;!important">
                                                 <h3 class="page-title">Batch Size <i class="fas fa-question-circle" style="padding-right:5px;margin-bottom:7px;" title="Select the batch size of your model" data-plugin="tippy" data-tippy-placement="right-start" data-tippy-maxWidth="200px" data-tippy-offset="0, 0"></i></h3>
                                                 <div class="btn-group mb-2">
