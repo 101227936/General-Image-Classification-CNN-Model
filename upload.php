@@ -74,7 +74,7 @@
 													<div class="dz-message needsclick" style="margin:5.5rem;!important">
 														<i class="h1 text-muted dripicons-cloud-upload"></i>
 														<h3>Drop files here or click to upload</h3>
-														<span class="text-muted font-13">(Please upload the images with less than 1MB and maximum of 100 images allowed only)</span>
+														<span class="text-muted font-13">(Please upload the images with less than 1MB and minimum 50 and maximum of 150 images allowed only)</span>
 													</div>
 												</form>
 											</div>
@@ -163,13 +163,13 @@
 							url:e,
 							maxFilesize: 1,
 							autoProcessQueue: false,
-							maxFiles: 100,
-							parallelUploads: 100,
+							maxFiles: 150,
+							parallelUploads: 150,
 							init: function() {
 								myDropzone = this;
 								$("#upload").click(function (e) {
 									e.preventDefault();
-									if(myDropzone.getAcceptedFiles().length>0)myDropzone.processQueue();
+									if(myDropzone.getAcceptedFiles().length>=50)myDropzone.processQueue();
 									else alert('Please select images');
 								});
 							},
