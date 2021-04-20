@@ -66,7 +66,7 @@
 														<h3>Model Training</h3>
 														<span class="text-muted font-13">(Train your own general classification model with your own pre-trained model net, epoch and batch size by simply uploading your image datasets to the system)</span>
 													</div>
-                                                <button type="button" class="btn btn-primary btn-lg btn-block">Model Training</button>
+                                                <button type="button" href="load_model.php" class="btn btn-primary btn-lg btn-block" >Model Training</button>
 
 										</div>
                                     </div> <!-- end card-body-->
@@ -87,7 +87,7 @@
 														<h3>Load Model</h3>
 														<span class="text-muted font-13">(Load and upload your own previous trained model by using this system's model training functionality, you can easily load your pre-trained model without selecting thepre-trained model net, epoch and batch size )</span>
 													</div>
-                                                <button type="button" class="btn btn-primary btn-lg btn-block">Load Model</button>
+                                                <button type="button" href=".php" class="btn btn-primary btn-lg btn-block">Load Model</button>
 
 										</div>
                                     </div> <!-- end card-body-->
@@ -114,6 +114,9 @@
         
          <!-- Vendor js -->
          <script src="template/Template/Admin/dist/assets/js/vendor.min.js"></script>
+
+         <!-- Tippy js-->
+        <script src="template/Template/Admin/dist/assets/libs/tippy.js/tippy.all.min.js"></script>
 		
         <!-- Plugins js -->
         <script src="template/Template/Admin/dist/assets/libs/dropzone/min/dropzone.min.js"></script>
