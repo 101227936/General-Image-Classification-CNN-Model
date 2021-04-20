@@ -66,7 +66,7 @@
 														<h3>Model Training</h3>
 														<span class="text-muted font-13">(Train your own general classification model with your own pre-trained model net, epoch and batch size by simply uploading your image datasets to the system)</span>
 													</div>
-                                                <button type="button" href="load_model.php" class="btn btn-primary btn-lg btn-block" >Model Training</button>
+                                                <button type="button" onclick="window.location.href='training.php'" class="btn btn-primary btn-lg btn-block" >Model Training</button>
 
 										</div>
                                     </div> <!-- end card-body-->
