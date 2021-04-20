@@ -12,7 +12,7 @@
 
         <ul class="list-unstyled topnav-menu topnav-menu-left m-0">  
             <li class="dropdown d-none d-xl-block">
-                <a class="nav-link dropdown-toggle waves-effect waves-light" href="hom.html" role="button">
+                <a class="nav-link dropdown-toggle waves-effect waves-light" href="hom.php" role="button">
                     <i class="mdi mdi-home"></i> 
                     Home
                 </a>
