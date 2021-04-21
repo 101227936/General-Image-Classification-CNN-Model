@@ -269,7 +269,7 @@
                 <div class="row">
                     <div class="col-lg-12">
                         <div class="float-left pull-none">
-                            <p class="text-white-50"> <script>document.write(new Date().getFullYear())</script> &copy; Image Classification  Image Classification</p>
+                            <p class="text-white-50"> <script>document.write(new Date().getFullYear())</script> &copy; Image Classification</p>
                         </div>
                     </div>
                     <!-- end col -->
