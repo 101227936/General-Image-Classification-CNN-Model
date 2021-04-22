@@ -171,7 +171,7 @@
         <script src="template/Template/Admin/dist/assets/js/app.min.js"></script>
         <script>
             $('#btn_submit').click(function(e){
-                if($('#model_selection').val()!="" || $('#batch_size').val()!="")
+                if($('#model_selection').val()!="" && $('#batch_size').val()!="")
                 {
                     $("#status").delay(500).fadeIn();
                     $("#preloader").delay(500).fadeIn("fast");
