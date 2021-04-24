@@ -39,7 +39,7 @@
             <!-- ============================================================== -->
             <!-- Start Page Content here -->
             <!-- ============================================================== -->
-            <div class="content-page" style="margin:3px; !important">
+            <div class="content-page" style="margin:15px; !important">
                 <div class="content">
                     <!-- Start Content-->
                     <div class="container-fluid">
@@ -54,15 +54,15 @@
                         </div>     
                         <!-- end page title --> 
 
-						
                         <div class="row">
 
                             <!-- Start Upload Image -->
                             <div class="col-md-6 col-sm-12">
                                 <div class="card">
-                                    <div class="card-body" style="padding-bottom:5px;!important">
+                                    <div class="card-body">
                                         <div class="col-md-12 col-sm-12">
-                                            <h3 class="page-title">Class List <i class="fas fa-question-circle float-right" style="padding-right:5px;margin-bottom:7px;" title="Click Class Name to edit the name of class" data-plugin="tippy" data-tippy-placement="right-start" data-tippy-maxWidth="200px" data-tippy-offset="0, 0"></i></h3>
+                                            <i class="fas fa-question-circle" style="padding-right:5px;margin-bottom:7px;" title="Click Class Name to edit the name of class" data-plugin="tippy" data-tippy-placement="right-start" data-tippy-maxWidth="200px" data-tippy-offset="0, 0"></i>
+                                            <h3 class="header-title" style="display: inline-block;">Class List</h3>
                                             <div id="class_list" style="max-height: 335px; overflow-y: auto;"></div>
                                         </div>
 									</div> <!-- end card-body-->
@@ -74,11 +74,12 @@
                             <!-- Start Training Model -->
                             <div class="col-md-6 col-sm-12">
                                 <div class="card">
-                                    <div class="card-body" style="padding-bottom:5px;!important">
+                                    <div class="card-body">
                                     
                                         <form action="train_process.php" name="InputCacheCheck" id="InputCacheCheck" method="post" data-parsley-validate="">
                                             <div class="input-prepend input-append form-group" style="padding:5px;!important">
-                                                <h3 class="page-title">Pre-trained Model <i class="fas fa-question-circle" style="padding-right:5px;margin-bottom:7px;" title="Select a net to train your model" data-plugin="tippy" data-tippy-placement="right-start" data-tippy-maxWidth="200px" data-tippy-offset="0, 0"></i></h3>
+                                                <i class="fas fa-question-circle" style="padding-right:5px;margin-bottom:7px;" title="Select a net to train your model" data-plugin="tippy" data-tippy-placement="right-start" data-tippy-maxWidth="200px" data-tippy-offset="0, 0"></i>
+                                                <h3 class="header-title" style="display: inline-block;">Pre-trained Model</h3>
                                                 <select class="form-control" name="model_selection" id="model_selection" required="">
                                                     <option value="">Choose..</option>
                                                     <option value="MobileNetV2">MobileNetV2</option>
@@ -92,24 +93,21 @@
                                             </div>
 
                                             <div class="input-prepend input-append form-group" style="padding:5px;!important">
-                                                <h3 class="page-title">Epoch <i class="fas fa-question-circle" style="padding-right:5px;margin-bottom:7px;" title="Maximum epoch is 10" data-plugin="tippy" data-tippy-placement="right-start" data-tippy-maxWidth="200px" data-tippy-offset="0, 0"></i></h3>
-                                                <div class="input-group">
-                                                    <span class="input-group-btn">
-                                                        <button type="button" class="btn btn-primary btn-number" disabled="disabled" data-type="minus" data-field="epoch_size">
-                                                            <i class="ti-arrow-circle-down"></i>
-                                                        </button>
+                                            <i class="fas fa-question-circle" style="padding-right:5px;margin-bottom:7px;" title="Set your Epoch number. (Maximum 10)" data-plugin="tippy" data-tippy-placement="right-start" data-tippy-maxWidth="200px" data-tippy-offset="0, 0"></i>
+                                                <h3 class="header-title" style="display: inline-block;">Epoch </h3>
+                                                <div class="input-group bootstrap-touchspin bootstrap-touchspin-injected">
+                                                    <span class="input-group-btn input-group-prepend">
+                                                        <button type="button" class="btn btn-primary btn-number" disabled="disabled" data-type="minus" data-field="epoch_size"><i class=" fas fa-angle-down"></i></button>
                                                     </span>
-                                                    <input type="text" name="epoch_size" id="epoch_size" class="form-control input-number" required="" value="1" min="1" max="10">
-                                                    <span class="input-group-btn">
-                                                        <button type="button" class="btn btn-primary btn-number" data-type="plus" data-field="epoch_size">
-                                                            <i class="ti-arrow-circle-up"></i>
-                                                        </button>
+                                                    <input data-toggle="touchspin" class="form-control input-number" name="epoch_size" id="epoch_size" type="text" value="1" min="1" max="10" require="">
+                                                    <span class="input-group-btn input-group-append"><button type="button" class="btn btn-primary btn-number" data-type="plus" data-field="epoch_size"><i class="fas fa-angle-up"></i></button>
                                                     </span>
                                                 </div>
                                             </div>
 
                                             <div class="input-prepend input-append form-group" style="padding:5px;!important">
-                                                <h3 class="page-title">Batch Size<i class="fas fa-question-circle" style="padding-right:5px;margin-bottom:7px;" title="Select a net to train your model" data-plugin="tippy" data-tippy-placement="right-start" data-tippy-maxWidth="200px" data-tippy-offset="0, 0"></i></h3>
+                                            <i class="fas fa-question-circle" style="padding-right:5px;margin-bottom:7px;" title="Select a net to train your model" data-plugin="tippy" data-tippy-placement="right-start" data-tippy-maxWidth="200px" data-tippy-offset="0, 0"></i>
+                                                <h3 class="header-title" style="display: inline-block;">Batch Size</h3>
                                                 <select class="form-control" name="batch_size" id="batch_size" required="">
                                                     <option value="">Choose..</option>
                                                     <option value="16">16</option>
@@ -118,14 +116,14 @@
                                                     <option value="128">128</option>
                                                 </select>
                                             </div>
-                                            <a href="upload.php" class="btn btn-info btn-lg btn-block waves-effect waves-light float-end">Add Class</a>
+                                            <a href="upload.php" class="btn btn-primary btn-block waves-effect waves-light float-end">Add Class</a>
                                      
                                             <?php
                                                 $dirs = array_filter(glob('uploads/*'), 'is_dir');
                                                 if(count($dirs)>1)
                                                 {
                                                     ?>
-                                                    <button type="submit" id='btn_submit' class="btn btn-info btn-lg btn-block waves-effect waves-light float-end">Train Model</button>
+                                                    <button type="submit" id='btn_submit' style="margin-top:1rem !important;" class="btn btn-primary btn-block waves-effect waves-light float-end">Train Model</button>
                                                     <?php
                                                 }
                                             ?>                                                    
@@ -171,7 +169,7 @@
         <script src="template/Template/Admin/dist/assets/js/app.min.js"></script>
         <script>
             $('#btn_submit').click(function(e){
-                if($('#model_selection').val()!="" || $('#batch_size').val()!="")
+                if($('#model_selection').val()!="" && $('#batch_size').val()!="")
                 {
                     $("#status").delay(500).fadeIn();
                     $("#preloader").delay(500).fadeIn("fast");
