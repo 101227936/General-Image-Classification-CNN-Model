@@ -60,7 +60,7 @@
 										<div class="row">
                                     
 												<i class="fas fa-question-circle" style="padding-right:5px;margin-bottom:7px;" title="Train your own model" data-plugin="tippy" data-tippy-placement="right-start" data-tippy-maxWidth="200px" data-tippy-offset="0, 0"></i>
-												<h4 class="header-title" style="display: inline-block;" id="class_name" contenteditable="true">Model Training </h4>
+												<h4 class="header-title" style="display: inline-block;" id="class_name" >Model Training </h4>
 													<div  style="margin:5.5rem;!important">
 														<i class="h1 dripicons-lightbulb"></i>
 														<h3>Model Training</h3>
@@ -81,7 +81,7 @@
 										<div class="row">
 										
                                                 <i class="fas fa-question-circle" style="padding-right:5px;margin-bottom:7px;" title="Upload your previous model training" data-plugin="tippy" data-tippy-placement="right-start" data-tippy-maxWidth="200px" data-tippy-offset="0, 0"></i>
-												<h4 class="header-title" style="display: inline-block;" id="class_name" contenteditable="true">Load Model </h4>
+												<h4 class="header-title" style="display: inline-block;" id="class_name" >Load Model </h4>
 													<div  style="margin:5.5rem;!important">
 														<i class="h1 dripicons-upload"></i>
 														<h3>Load Model</h3>
