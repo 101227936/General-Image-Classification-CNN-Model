@@ -18,12 +18,12 @@ from tensorflow.keras.layers import Dense, Dropout
 from tensorflow.keras.preprocessing.image import ImageDataGenerator
 from os.path import basename
 from sklearn.preprocessing import LabelBinarizer
-from tensorflow.keras.applications.mobilenet_v2 import MobileNetV2, preprocess_input
 
 WIDTH = 224
 HEIGHT = 224
 EPOCHS = int(sys.argv[2])
 BATCH_SIZE = int(sys.argv[3])
+MODEL = sys.argv[1]
 
 def get_files(path):
     all_files = []
@@ -132,7 +132,28 @@ for category in sub_folders:
 
 CLASSES = len(sub_folders)
 # setup model
-base_model = MobileNetV2(weights='imagenet', include_top=False, input_shape=(224,224,3), pooling='avg')
+
+if MODEL=="MobileNetV2":
+    from tensorflow.keras.applications.mobilenet_v2 import MobileNetV2, preprocess_input
+    base_model = MobileNetV2(weights='imagenet', include_top=False, input_shape=(224,224,3), pooling='avg')
+elif MODEL=="EfficientNetB3":
+    from tensorflow.keras.applications.efficientnet import EfficientNetB3, preprocess_input
+    base_model = EfficientNetB3(weights='imagenet', include_top=False, input_shape=(224,224,3), pooling='avg')
+elif MODEL=="InceptionV3":
+    from tensorflow.keras.applications.inception_v3 import InceptionV3, preprocess_input
+    base_model = InceptionV3(weights='imagenet', include_top=False, input_shape=(224,224,3), pooling='avg')
+elif MODEL=="DenseNet201":
+    from tensorflow.keras.applications.densenet import DenseNet201, preprocess_input
+    base_model = DenseNet201(weights='imagenet', include_top=False, input_shape=(224,224,3), pooling='avg')
+elif MODEL=="VGG16":
+    from tensorflow.keras.applications.vgg16 import VGG16, preprocess_input
+    base_model = VGG16(weights='imagenet', include_top=False, input_shape=(224,224,3), pooling='avg')
+elif MODEL=="ResNet50V2":
+    from tensorflow.keras.applications.resnet_v2 import ResNet50V2, preprocess_input
+    base_model = ResNet50V2(weights='imagenet', include_top=False, input_shape=(224,224,3), pooling='avg')
+elif MODEL=="Xception":
+    from tensorflow.keras.applications.xception import Xception, preprocess_input
+    base_model = Xception(weights='imagenet', include_top=False, input_shape=(224,224,3), pooling='avg')
 
 x = base_model.output
 x = Dropout(0.3)(x)
@@ -284,10 +305,20 @@ class_labels = list(validation_generator.class_indices.keys())
 cm = metrics.confusion_matrix(true_classes, predicted_classes)
 plot_confusion_matrix(cm=cm, classes=class_labels, title='Confusion Matrix', normalize = True)
 
+precision,recall,fscore,support=metrics.precision_recall_fscore_support(true_classes, predicted_classes, average='macro')
 
 score = multiclass_roc_auc_score(validation_generator.classes, predicted_classes, 'macro')
-score
 
+error_rate = metrics.mean_squared_error(true_classes, predicted_classes)
+
+f = open(dest_base+'/report.txt', "w")
+f.write('Accuracy  : {}\n'.format(np.mean(predicted_classes == true_classes)))
+f.write('Precision : {}\n'.format(precision))
+f.write('Recall    : {}\n'.format(recall))
+f.write('F-score   : {}\n'.format(fscore))
+f.write('Score     : {}\n'.format(score))
+f.write('Error Rate: {}\n'.format(error_rate))
+f.close()
 
 shutil.rmtree(TRAIN_DIR)
 shutil.rmtree(TEST_DIR)

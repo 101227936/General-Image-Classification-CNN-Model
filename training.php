@@ -99,7 +99,7 @@
                                                     <span class="input-group-btn input-group-prepend">
                                                         <button type="button" class="btn btn-primary btn-number" disabled="disabled" data-type="minus" data-field="epoch_size"><i class=" fas fa-angle-down"></i></button>
                                                     </span>
-                                                    <input data-toggle="touchspin" class="form-control input-number" name="epoch_size" id="epoch_size" type="text" value="1" min="1" max="10" require="">
+                                                    <input data-toggle="touchspin" class="form-control input-number" name="epoch_size" id="epoch_size" type="text" value="2" min="2" max="10" require="">
                                                     <span class="input-group-btn input-group-append"><button type="button" class="btn btn-primary btn-number" data-type="plus" data-field="epoch_size"><i class="fas fa-angle-up"></i></button>
                                                     </span>
                                                 </div>
