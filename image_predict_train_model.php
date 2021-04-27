@@ -36,7 +36,7 @@
             <!-- Start Page Content here -->
             <!-- ============================================================== -->
 
-            <div class="content-page" style="margin:3px; !important">
+            <div class="content-page" style="margin:15px !important;">
                 <div class="content">
 
                     <!-- Start Content-->
@@ -71,9 +71,7 @@
                                                     <button type="submit" form="export_model" name="export" id='btn_export' class="btn btn-primary btn-block waves-effect waves-light float-end" style="margin-top:40px;">Export Model</button>
                                                 </form>
                                             </div>
-                                           
                                         </div> <!-- end row -->
-
                                     </div> <!-- end card-body-->
                                 </div> <!-- end card-->
                             </div><!-- end col -->
@@ -372,11 +370,12 @@
                         <!-- end row -->  
                     </div> <!-- container -->
                 </div> <!-- content -->
-                <!-- Footer Start -->
-					<?php include "footer.php";?>
-                <!-- end Footer -->
             </div>
 
+
+                <!-- Footer Start -->
+                <?php include "footer.php";?>
+                <!-- end Footer -->
             <!-- ============================================================== -->
             <!-- End Page content -->
             <!-- ============================================================== -->

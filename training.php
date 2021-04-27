@@ -94,7 +94,7 @@
 
                                             <div class="input-prepend input-append form-group" style="padding:5px;!important">
                                             <i class="fas fa-question-circle" style="padding-right:5px;margin-bottom:7px;" title="Set your Epoch number. (Maximum 10)" data-plugin="tippy" data-tippy-placement="right-start" data-tippy-maxWidth="200px" data-tippy-offset="0, 0"></i>
-                                                <h3 class="header-title" style="display: inline-block;">Epoch </h3>
+                                                <h3 class="header-title" style="display: inline-block;">Epoch</h3>
                                                 <div class="input-group bootstrap-touchspin bootstrap-touchspin-injected">
                                                     <span class="input-group-btn input-group-prepend">
                                                         <button type="button" class="btn btn-primary btn-number" disabled="disabled" data-type="minus" data-field="epoch_size"><i class=" fas fa-angle-down"></i></button>
@@ -123,7 +123,7 @@
                                                 if(count($dirs)>1)
                                                 {
                                                     ?>
-                                                    <button type="submit" id='btn_submit' style="margin-top:1rem !important;" class="btn btn-primary btn-block waves-effect waves-light float-end">Train Model</button>
+                                                    <button type="submit" id='btn_submit' style="margin-top:20px !important;" class="btn btn-primary btn-block waves-effect waves-light float-end">Train Model</button>
                                                     <?php
                                                 }
                                             ?>                                                    
