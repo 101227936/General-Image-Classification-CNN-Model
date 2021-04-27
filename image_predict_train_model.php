@@ -64,11 +64,13 @@
 													<div id="class_list" style="max-height: 335px; overflow-y: auto;"></div>
 												</div>
                                                 <form action="predict_process.php" name="image_predict" id="image_predict" method="post" data-parsley-validate=""> 
-												    <input type="file" data-plugins="dropify" data-max-file-size="1M" accept="image/*" data-height="300">
-                                                    <button type="submit" form="image_predict" id='btn_predict' class="btn btn-primary btn-block waves-effect waves-light float-end" style="margin-top:35px;">Predict Image</button>
+                                                    <input type="file" data-plugins="dropify" data-max-file-size="1M" accept="image/*" data-height="300">
+                                                    <button type="submit" form="image_predict" id='btn_predict' class="btn btn-primary btn-block waves-effect waves-light float-end" style="margin-top:40px;">Predict Image</button>
                                                 </form>
-												<a href="" class="btn btn-primary btn-block waves-effect waves-light float-end" style="margin-top:35px;margin-bottom:10px;">Export Model</a>
-											</div>
+                                                <form method='post' action='zip_process.php' name="export_model" id="export_model">
+                                                    <button type="submit" form="export_model" name="export" id='btn_export' class="btn btn-primary btn-block waves-effect waves-light float-end" style="margin-top:40px;">Export Model</button>
+                                                </form>
+                                            </div>
                                            
                                         </div> <!-- end row -->
 
@@ -131,11 +133,10 @@
                                                             <div class="card mb-0">
                                                                 <div class="card-header" id="headingSeven">
                                                                     <h5 class="m-0 position-relative">
-                                                                        <a class="custom-accordion-title text-reset collapsed d-block"
+                                                                        <a class="custom-accordion-title text-reset d-block"
                                                                             data-toggle="collapse" href="#collapseSeven"
-                                                                            aria-expanded="false" aria-controls="collapseSeven">
-                                                                            Accuracy <i
-                                                                                class="mdi mdi-chevron-down accordion-arrow"></i>
+                                                                            aria-expanded="true" aria-controls="collapseSeven">
+                                                                            Accuracy <i class="mdi mdi-chevron-down accordion-arrow"></i>
                                                                         </a>
                                                                     </h5>
                                                                 </div>
@@ -143,7 +144,7 @@
                                                                     aria-labelledby="headingSeven"
                                                                     data-parent="#custom-accordion-one">
                                                                     <div class="card-body">
-                                                                    Accuracy is the percentage of classification that a model gets right during training. If the modal prediction is perfect, the accuracy will be one, else the accuracy is below one.
+                                                                        Accuracy is the percentage of classification that a model gets right during training. If the modal prediction is perfect, the accuracy will be one, else the accuracy is below one.
                                                                     </div>
                                                                 </div>
                                                             </div>
@@ -152,21 +153,20 @@
                                                         <img src="model/loss.png" alt="loss" class="img-fluid" style="height:400px; display: block;margin-left: auto;margin-right: auto;">
                                                         <div class="accordion custom-accordion" id="custom-accordion-one">
                                                             <div class="card mb-0">
-                                                                    <div class="card-header" id="headingSeven">
+                                                                    <div class="card-header" id="headingEight">
                                                                         <h5 class="m-0 position-relative">
-                                                                            <a class="custom-accordion-title text-reset collapsed d-block"
-                                                                                data-toggle="collapse" href="#collapseSeven"
-                                                                                aria-expanded="false" aria-controls="collapseSeven">
-                                                                                Loss <i
-                                                                                    class="mdi mdi-chevron-down accordion-arrow"></i>
+                                                                            <a class="custom-accordion-title text-reset d-block"
+                                                                                data-toggle="collapse" href="#collapseEight"
+                                                                                aria-expanded="true" aria-controls="collapseEight">
+                                                                                Loss <i class="mdi mdi-chevron-down accordion-arrow"></i>
                                                                             </a>
                                                                         </h5>
                                                                     </div>
-                                                                    <div id="collapseSeven" class="collapse show"
+                                                                    <div id="collapseEight" class="collapse show"
                                                                         aria-labelledby="headingSeven"
                                                                         data-parent="#custom-accordion-one">
                                                                         <div class="card-body">
-                                                                        Loss is a measure for evaluating how well a model learned to predict the right classifications for a given set of samples.
+                                                                            Loss is a measure for evaluating how well a model learned to predict the right classifications for a given set of samples.
                                                                         </div>
                                                                     </div>
                                                             </div>
@@ -180,24 +180,23 @@
 											<div class="row">
 											    <div class="col-lg-12">
                                                     <div class="form-group" style="overflow-y: scroll; height:410px;">
-                                                        <img src="model/roc.png" alt="Roc.png" class="img-fluid" style="height:330px; display: block;margin-left: auto;margin-right: auto;">
+                                                        <img src="model/roc.png" alt="Roc.png" class="img-fluid" style="height:400px; display: block;margin-left: auto;margin-right: auto;">
                                                         <div class="accordion custom-accordion" id="custom-accordion-one">
                                                             <div class="card mb-0">
-                                                                <div class="card-header" id="headingSeven">
+                                                                <div class="card-header" id="headingNine">
                                                                     <h5 class="m-0 position-relative">
-                                                                        <a class="custom-accordion-title text-reset collapsed d-block"
-                                                                            data-toggle="collapse" href="#collapseSeven"
-                                                                            aria-expanded="false" aria-controls="collapseSeven">
-                                                                            ROC curve <i
-                                                                                class="mdi mdi-chevron-down accordion-arrow"></i>
+                                                                        <a class="custom-accordion-title text-reset d-block"
+                                                                            data-toggle="collapse" href="#collapseNine"
+                                                                            aria-expanded="true" aria-controls="collapseNine">
+                                                                            ROC Curve <i class="mdi mdi-chevron-down accordion-arrow"></i>
                                                                         </a>
                                                                     </h5>
                                                                 </div>
-                                                                <div id="collapseSeven" class="collapse show"
+                                                                <div id="collapseNine" class="collapse show"
                                                                     aria-labelledby="headingSeven"
                                                                     data-parent="#custom-accordion-one">
                                                                     <div class="card-body">
-                                                                    <p>ROC curve shows the trade-off between sensitivity (or TPR) and specificity (1 – FPR). Classifiers that give curves closer to the top-left corner indicate a better performance. The closer the curve comes to the 45-degree diagonal of the ROC space, the less accurate the test.</p>
+                                                                        ROC curve shows the trade-off between sensitivity (or TPR) and specificity (1 – FPR). Classifiers that give curves closer to the top-left corner indicate a better performance. The closer the curve comes to the 45-degree diagonal of the ROC space, the less accurate the test.
                                                                     </div>
                                                                 </div>
                                                             </div>
@@ -211,25 +210,24 @@
 											<div class="row">
 												<div class="col-lg-12">
                                                     <div class="form-group" style="overflow-y: scroll; height:410px;">
-														<img src="model/cm.png" alt="Confusion Matrix.png" class="img-fluid" style="height:350px; display: block;margin-left: auto;margin-right: auto;">
+														<img src="model/cm.png" alt="Confusion Matrix.png" class="img-fluid" style="height:400px; display: block;margin-left: auto;margin-right: auto;">
 														<div class="accordion custom-accordion" id="custom-accordion-one">
                                                                 <div class="card mb-0">
-                                                                    <div class="card-header" id="headingSeven">
+                                                                    <div class="card-header" id="headingTen">
                                                                         <h5 class="m-0 position-relative">
-                                                                            <a class="custom-accordion-title text-reset collapsed d-block"
-                                                                                data-toggle="collapse" href="#collapseSeven"
-                                                                                aria-expanded="false" aria-controls="collapseSeven">
-                                                                                Confusion Matrix <i
-                                                                                    class="mdi mdi-chevron-down accordion-arrow"></i>
+                                                                            <a class="custom-accordion-title text-reset d-block"
+                                                                                data-toggle="collapse" href="#collapseTen"
+                                                                                aria-expanded="true" aria-controls="collapseTen">
+                                                                                Confusion Matrix <i class="mdi mdi-chevron-down accordion-arrow"></i>
                                                                             </a>
                                                                         </h5>
                                                                     </div>
-                                                                    <div id="collapseSeven" class="collapse show"
+                                                                    <div id="collapseTen" class="collapse show"
                                                                         aria-labelledby="headingSeven"
                                                                         data-parent="#custom-accordion-one">
                                                                         <div class="card-body">
-                                                                        Confusion Matrix summarizes how accurate the model's prediction are. User can use this to figure out which classes the model gets confused about.                                                                        </div>
-                                                                    </div>
+                                                                            Confusion Matrix summarizes how accurate the model's prediction are. User can use this to figure out which classes the model gets confused about.                                                                        </div>
+                                                                        </div>
                                                                 </div>
                                                         </div>
 													</div>
@@ -240,22 +238,21 @@
 										<div class="tab-pane show active" id="report">
 											<div class="row">
 												<div class="col-lg-12">
-													<div class="form-group" style="overflow-y: scroll;height:410px;">
+													<div class="form-group" style="overflow-y: scroll;height:425px;margin-bottom:0px;">
                                                         <iframe id="iframe" name="iframe" src="model/report.txt" title="report" style="border:none;height:130px;"></iframe>
                                                         <div class="accordion custom-accordion" id="custom-accordion-one">
                                                             <div class="card mb-0">
-                                                                <div class="card-header" id="headingNine">
+                                                                <div class="card-header" id="headingOne">
                                                                     <h5 class="m-0 position-relative">
                                                                         <a class="custom-accordion-title text-reset d-block"
-                                                                            data-toggle="collapse" href="#collapseNine"
-                                                                            aria-expanded="true" aria-controls="collapseNine">
-                                                                            Accuracy <i
-                                                                                class="mdi mdi-chevron-down accordion-arrow"></i>
+                                                                            data-toggle="collapse" href="#collapseOne"
+                                                                            aria-expanded="true" aria-controls="collapseOne">
+                                                                            Accuracy <i class="mdi mdi-chevron-down accordion-arrow"></i>
                                                                         </a>
                                                                     </h5>
                                                                 </div>
 
-                                                                <div id="collapseNine" class="collapse show"
+                                                                <div id="collapseOne" class="collapse show"
                                                                     aria-labelledby="headingFour"
                                                                     data-parent="#custom-accordion-one">
                                                                     <div class="card-body">
@@ -264,21 +261,19 @@
                                                                 </div>
                                                             </div>
 
-
-
                                                             <div class="card mb-0">
-                                                                <div class="card-header" id="headingFive">
+                                                                <div class="card-header" id="headingTwo">
                                                                     <h5 class="m-0 position-relative">
-                                                                        <a class="custom-accordion-title text-reset collapsed d-block"
-                                                                            data-toggle="collapse" href="#collapseFive"
-                                                                            aria-expanded="false" aria-controls="collapseFive">
-                                                                            Precision <i
-                                                                                class="mdi mdi-chevron-down accordion-arrow"></i>
+                                                                        <a class="custom-accordion-title text-reset d-block"
+                                                                            data-toggle="collapse" href="#collapseTwo"
+                                                                            aria-expanded="true" aria-controls="collapseTwo">
+                                                                            Precision <i class="mdi mdi-chevron-down accordion-arrow"></i>
                                                                         </a>
                                                                     </h5>
                                                                 </div>
-                                                                <div id="collapseFive" class="collapse show"
-                                                                    aria-labelledby="headingFive"
+
+                                                                <div id="collapseTwo" class="collapse show"
+                                                                    aria-labelledby="headingFour"
                                                                     data-parent="#custom-accordion-one">
                                                                     <div class="card-body">
                                                                         Precision is the ability of a classifier not to label an instance positive that is actually negative. The formula is TP/(TP + FP).
@@ -287,48 +282,81 @@
                                                             </div>
 
                                                             <div class="card mb-0">
-                                                                <div class="card-header" id="headingSix">
+                                                                <div class="card-header" id="headingThree">
                                                                     <h5 class="m-0 position-relative">
-                                                                        <a class="custom-accordion-title text-reset collapsed d-block"
-                                                                            data-toggle="collapse" href="#collapseSix"
-                                                                            aria-expanded="false" aria-controls="collapseSix">
-                                                                            Recall <i
-                                                                                class="mdi mdi-chevron-down accordion-arrow"></i>
+                                                                        <a class="custom-accordion-title text-reset d-block"
+                                                                            data-toggle="collapse" href="#collapseThree"
+                                                                            aria-expanded="true" aria-controls="collapseThree">
+                                                                            Recall <i class="mdi mdi-chevron-down accordion-arrow"></i>
                                                                         </a>
                                                                     </h5>
                                                                 </div>
-                                                                <div id="collapseSix" class="collapse show" aria-labelledby="headingSix"
+
+                                                                <div id="collapseThree" class="collapse show"
+                                                                    aria-labelledby="headingFour"
                                                                     data-parent="#custom-accordion-one">
                                                                     <div class="card-body">
-                                                                    Recall is a measure of the classifier's completeness; the ability of a classifier to correctly find all positive instances.
+                                                                        Recall is a measure of the classifier's completeness; the ability of a classifier to correctly find all positive instances.
                                                                     </div>
                                                                 </div>
                                                             </div>
 
                                                             <div class="card mb-0">
-                                                                <div class="card-header" id="headingSeven">
+                                                                <div class="card-header" id="headingFour">
                                                                     <h5 class="m-0 position-relative">
-                                                                        <a class="custom-accordion-title text-reset collapsed d-block"
-                                                                            data-toggle="collapse" href="#collapseSeven"
-                                                                            aria-expanded="false" aria-controls="collapseSeven">
-                                                                            Company Info <i
-                                                                                class="mdi mdi-chevron-down accordion-arrow"></i>
+                                                                        <a class="custom-accordion-title text-reset d-block"
+                                                                            data-toggle="collapse" href="#collapseFour"
+                                                                            aria-expanded="true" aria-controls="collapseFour">
+                                                                            F-score <i class="mdi mdi-chevron-down accordion-arrow"></i>
                                                                         </a>
                                                                     </h5>
                                                                 </div>
-                                                                <div id="collapseSeven" class="collapse show"
-                                                                    aria-labelledby="headingSeven"
+
+                                                                <div id="collapseFour" class="collapse show"
+                                                                    aria-labelledby="headingFour"
                                                                     data-parent="#custom-accordion-one">
                                                                     <div class="card-body">
-                                                                    F-score:  F-score  is a measure of a test's accuracy. The highest possible value of an F-score is 1.0, indicating perfect precision and recall, and the lowest possible value is 0, if either the precision or the recall is zero.
+                                                                        F-score  is a measure of a test's accuracy. The highest possible value of an F-score is 1.0, indicating perfect precision and recall, and the lowest possible value is 0, if either the precision or the recall is zero.
                                                                     </div>
+                                                                </div>
+                                                            </div>
 
+                                                            <div class="card mb-0">
+                                                                <div class="card-header" id="headingFive">
+                                                                    <h5 class="m-0 position-relative">
+                                                                        <a class="custom-accordion-title text-reset d-block"
+                                                                            data-toggle="collapse" href="#collapseFive"
+                                                                            aria-expanded="true" aria-controls="collapseFive">
+                                                                            Score <i class="mdi mdi-chevron-down accordion-arrow"></i>
+                                                                        </a>
+                                                                    </h5>
+                                                                </div>
+
+                                                                <div id="collapseFive" class="collapse show"
+                                                                    aria-labelledby="headingFour"
+                                                                    data-parent="#custom-accordion-one">
                                                                     <div class="card-body">
-                                                                    Score: Score is the number of actual occurrences of the class in the specified dataset. Imbalanced score in the training data may indicate structural weaknesses in the reported scores of the classifier and could indicate the need for stratified sampling or rebalancing. Score doesn’t change between models but instead diagnoses the evaluation process.                                                                           
+                                                                        Score is the number of actual occurrences of the class in the specified dataset. Imbalanced score in the training data may indicate structural weaknesses in the reported scores of the classifier and could indicate the need for stratified sampling or rebalancing. Score doesn’t change between models but instead diagnoses the evaluation process.
                                                                     </div>
+                                                                </div>
+                                                            </div>
 
+                                                            <div class="card mb-0">
+                                                                <div class="card-header" id="headingSix">
+                                                                    <h5 class="m-0 position-relative">
+                                                                        <a class="custom-accordion-title text-reset d-block"
+                                                                            data-toggle="collapse" href="#collapseSix"
+                                                                            aria-expanded="true" aria-controls="collapseSix">
+                                                                            Error Rate <i class="mdi mdi-chevron-down accordion-arrow"></i>
+                                                                        </a>
+                                                                    </h5>
+                                                                </div>
+
+                                                                <div id="collapseSix" class="collapse show"
+                                                                    aria-labelledby="headingFour"
+                                                                    data-parent="#custom-accordion-one">
                                                                     <div class="card-body">
-                                                                    Error Rate: Classification error rate is the proportion of instances misclassified over the whole set of instances. The lower the error rate, the better the model performance.                                                                    </div>
+                                                                    Classification error rate is the proportion of instances misclassified over the whole set of instances. The lower the error rate, the better the model performance.
                                                                     </div>
                                                                 </div>
                                                             </div>
@@ -337,22 +365,16 @@
 												</div>
 											</div> <!-- end row -->
                                         </div>
-
                                     </div> <!-- end tab-content -->
                                 </div> <!-- end card-box-->
-
                             </div> <!-- end col -->
                         </div>
                         <!-- end row -->  
-                        
                     </div> <!-- container -->
-
                 </div> <!-- content -->
-
                 <!-- Footer Start -->
 					<?php include "footer.php";?>
                 <!-- end Footer -->
-
             </div>
 
             <!-- ============================================================== -->
