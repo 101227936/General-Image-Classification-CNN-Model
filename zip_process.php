@@ -1,19 +1,11 @@
 <?php
+	$command = "python zip.py";
+
+	ini_set('max_execution_time', 0);
+	
+	$result = exec($command);
 
 	$filename = "./model/model.zip";
-	$file_path = "./model/";
-	$zip = new ZipArchive();
-	$zip->open($filename, ZipArchive::CREATE);
-	
-	// Add file into zip
-	$zip->addFile($file_path.'label.txt', 'label.txt');
-	$zip->addFile($file_path.'accuracy.png', 'accuracy.png');
-	$zip->addFile($file_path.'cm.png', 'cm.png');
-	$zip->addFile($file_path.'loss.png', 'loss.png');
-	$zip->addFile($file_path.'roc.png', 'roc.png');
-	$zip->addFile($file_path.'model.h5', 'model.h5');
-	
-	$zip->close();
 	
 	if (file_exists($filename)) {
 		header('Content-Type: application/zip');

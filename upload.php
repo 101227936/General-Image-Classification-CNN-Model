@@ -26,7 +26,7 @@
 
     </head>
 
-    <body data-layout-mode=horizontal>
+    <body data-layout-mode="horizontal">
         <!-- Begin page -->
         <div id="wrapper">
             <?php include "topbar.php";?>
@@ -34,7 +34,7 @@
             <!-- ============================================================== -->
             <!-- Start Page Content here -->
             <!-- ============================================================== -->
-            <div class="content-page" style="margin:15px; !important">
+            <div class="content-page" style="margin:15px !important;">
                 <div class="content">
                     <!-- Start Content-->
                     <div class="container-fluid">
