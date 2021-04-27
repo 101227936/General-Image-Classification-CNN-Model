@@ -9,10 +9,7 @@
 		
 		$result = exec($command, $output, $retval);
 		$result_array = json_decode($result);
-		//print_r($output);
-		//print_r($result);
-		//print_r($result_array);
-		header('Location: training.php');
+		header('Location: image_predict_train_model.php');
 	}
 	else die(header("HTTP/1.0 403 Forbidden"));
 ?>	
