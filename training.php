@@ -78,7 +78,7 @@
                                     
                                         <form action="train_process.php" name="InputCacheCheck" id="InputCacheCheck" method="post" data-parsley-validate="">
                                             <div class="input-prepend input-append form-group" style="padding:5px;!important">
-                                                <i class="fas fa-question-circle" style="padding-right:5px;margin-bottom:7px;" title="Select a net to train your model" data-plugin="tippy" data-tippy-placement="right-start" data-tippy-maxWidth="200px" data-tippy-offset="0, 0"></i>
+                                                <i class="fas fa-question-circle" style="padding-right:5px;margin-bottom:7px;" title="Select a net to train your model. A pre-trained model is a model that was trained on a large benchmark dataset to solve a problem similar to the one that we want to solve." data-plugin="tippy" data-tippy-placement="right-start" data-tippy-maxWidth="200px" data-tippy-offset="0, 0"></i>
                                                 <h3 class="header-title" style="display: inline-block;">Pre-trained Model</h3>
                                                 <select class="form-control" name="model_selection" id="model_selection" required="">
                                                     <option value="">Choose..</option>
@@ -93,7 +93,7 @@
                                             </div>
 
                                             <div class="input-prepend input-append form-group" style="padding:5px;!important">
-                                            <i class="fas fa-question-circle" style="padding-right:5px;margin-bottom:7px;" title="Set your Epoch number. (Maximum 10)" data-plugin="tippy" data-tippy-placement="right-start" data-tippy-maxWidth="200px" data-tippy-offset="0, 0"></i>
+                                            <i class="fas fa-question-circle" style="padding-right:5px;margin-bottom:7px;" title="Set your Epoch number (Maximum 10). The number of epochs is a hyperparameter that defines the number times that the learning algorithm will work through the entire training dataset. One epoch means that each sample in the training dataset has had an opportunity to update the internal model parameters." data-plugin="tippy" data-tippy-placement="right-start" data-tippy-maxWidth="200px" data-tippy-offset="0, 0"></i>
                                                 <h3 class="header-title" style="display: inline-block;">Epoch</h3>
                                                 <div class="input-group bootstrap-touchspin bootstrap-touchspin-injected">
                                                     <span class="input-group-btn input-group-prepend">
@@ -106,7 +106,7 @@
                                             </div>
 
                                             <div class="input-prepend input-append form-group" style="padding:5px;!important">
-                                            <i class="fas fa-question-circle" style="padding-right:5px;margin-bottom:7px;" title="Select a net to train your model" data-plugin="tippy" data-tippy-placement="right-start" data-tippy-maxWidth="200px" data-tippy-offset="0, 0"></i>
+                                            <i class="fas fa-question-circle" style="padding-right:5px;margin-bottom:7px;" title="Select a batch size to train your model. Batch size refers to the number of training examples utilized in one iteration. " data-plugin="tippy" data-tippy-placement="right-start" data-tippy-maxWidth="200px" data-tippy-offset="0, 0"></i>
                                                 <h3 class="header-title" style="display: inline-block;">Batch Size</h3>
                                                 <select class="form-control" name="batch_size" id="batch_size" required="">
                                                     <option value="">Choose..</option>
