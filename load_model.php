@@ -48,30 +48,16 @@
                             </div>
                         </div>     
                         <!-- end page title --> 
-
 						
                         <div class="row">
                             <div class="col-12">
                                 <div class="card">
-                                    <div class="card-body" style="padding-bottom:5px;!important">
-
-										<?php
-											$dirs = array_filter(glob('uploads/*'), 'is_dir');
-											$name = "Class ".count($dirs);
-											$new_name=$name;
-											$count=0;
-											while(in_array('uploads/'.$new_name, $dirs))
-											{
-												$count++;
-												$new_name=$name.'('.$count.')';
-											}
-										?>
-										
+                                    <div class="card-body" style="padding-bottom:5px;!important">										
 										<div class="col-md-12 col-sm-12">
-                                            <form action="upload_files.php" method="post" class="dropzone" style="min-height: 0px !important;" id="myAwesomeDropzone" name="myAwesomeDropzone" data-plugin="dropzone" data-previews-container="#file-previews"
+                                            <form action="upload_model.php" method="post" class="dropzone" style="min-height: 0px !important;" id="myAwesomeDropzone" name="myAwesomeDropzone" data-plugin="dropzone" data-previews-container="#file-previews"
 												data-upload-preview-template="#uploadPreviewTemplate">
 												<div class="fallback">
-													<input name="file[]" type="file" multiple />
+													<input name="file" type="file" accept=".h5,.zip"/>
 												</div>
 												<div class="dz-message needsclick" style="margin:5.5rem;!important">
 													<i class="h1 dripicons-cloud-upload"></i>
@@ -86,7 +72,7 @@
 									</div> <!-- end card-body-->
 
 									<div class="modal-footer" style="padding-top:0px;!important">
-										<button type="button" class="btn btn-primary btn-lg btn-block waves-effect waves-light float-end">Load Model</button>
+										<button type="button" id="btn_load" class="btn btn-primary btn-lg btn-block waves-effect waves-light float-end">Load Model</button>
 									</div>
                                 </div> <!-- end card-->
                             </div><!-- end col -->
@@ -122,5 +108,21 @@
 
         <!-- App js -->
         <script src="template/Template/Admin/dist/assets/js/app.min.js"></script>
+
+        <script>
+            Dropzone.options.myAwesomeDropzone = {
+                maxFiles: 1,
+                acceptedFiles: ".zip,.h5",
+                accept: function(file, done) {
+                    console.log("uploaded");
+                    done();
+                },
+                init: function() {
+                    this.on("maxfilesexceeded", function(file){
+                        alert("You only can upload 1 file!");
+                    });
+                }
+            };
+        </script>
     </body>
 </html>
