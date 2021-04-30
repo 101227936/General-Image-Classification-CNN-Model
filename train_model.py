@@ -142,18 +142,6 @@ elif MODEL=="EfficientNetB3":
 elif MODEL=="InceptionV3":
     from tensorflow.keras.applications.inception_v3 import InceptionV3, preprocess_input
     base_model = InceptionV3(weights='imagenet', include_top=False, input_shape=(224,224,3), pooling='avg')
-elif MODEL=="DenseNet201":
-    from tensorflow.keras.applications.densenet import DenseNet201, preprocess_input
-    base_model = DenseNet201(weights='imagenet', include_top=False, input_shape=(224,224,3), pooling='avg')
-elif MODEL=="VGG16":
-    from tensorflow.keras.applications.vgg16 import VGG16, preprocess_input
-    base_model = VGG16(weights='imagenet', include_top=False, input_shape=(224,224,3), pooling='avg')
-elif MODEL=="ResNet50V2":
-    from tensorflow.keras.applications.resnet_v2 import ResNet50V2, preprocess_input
-    base_model = ResNet50V2(weights='imagenet', include_top=False, input_shape=(224,224,3), pooling='avg')
-elif MODEL=="Xception":
-    from tensorflow.keras.applications.xception import Xception, preprocess_input
-    base_model = Xception(weights='imagenet', include_top=False, input_shape=(224,224,3), pooling='avg')
 
 x = base_model.output
 x = Dropout(0.3)(x)
