@@ -17,7 +17,7 @@ if "mobilenetv2" in model.name:
 
 testsite_array = []
 with open(dest_base+'/label.txt') as my_file:
-    metadata = dict(line.split() for line in my_file)
+    metadata = dict(line.split(" ", 1) for line in my_file)
 
 def predict(model, img):
     normalized_image_array = img_to_array(img)

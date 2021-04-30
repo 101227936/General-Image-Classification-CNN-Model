@@ -5,7 +5,7 @@
         $folder = "./model";
 		if (!empty($_FILES)) {
             $tmpFile = $_FILES['image']['tmp_name'];
-            $filename = $folder.'/'.time().'-'. $_FILES['image']['name'];
+            $filename = $folder.'/'.time().end(explode(".", $_FILES['image']['name']));
             move_uploaded_file($tmpFile,$filename);
 		}
 		$command = "python predict.py ".$filename;
