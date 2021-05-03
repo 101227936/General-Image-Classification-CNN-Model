@@ -228,13 +228,6 @@
                                         </div>
                                     </div> <!-- end card-->
                                 </div>
-                                
-
-
-
-
-
-
                             </div> <!-- end col -->
                         </div>
                         <!-- end row -->  

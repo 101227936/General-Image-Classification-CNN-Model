@@ -10,4 +10,5 @@ with zipfile.ZipFile(dest_base+'/model.zip','w',compression=zipfile.ZIP_DEFLATED
     zipF.write(dest_base+'/loss.png',basename(dest_base+'/loss.png'))
     zipF.write(dest_base+'/model.h5',basename(dest_base+'/model.h5'))
     zipF.write(dest_base+'/report.txt',basename(dest_base+'/report.txt'))
+    zipF.write(dest_base+'/roc.png',basename(dest_base+'/roc.png'))
     zipF.close()

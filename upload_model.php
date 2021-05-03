@@ -18,14 +18,11 @@
 				$command = "python unzip.py";
 				ini_set('max_execution_time', 0);
 				$result = exec($command);
-				echo $result;
-
-			}else if($ext == 'h5')
-			{
-				$filename = $folder.'/'.'user_model';
-				move_uploaded_file($tmpFile,$filename);
-			}
-			else die(header("HTTP/1.0 403 Forbidden"));
+				//if($result != true)
+				//{
+					//die(header("HTTP/1.0 403 Forbidden"));
+				//}
+			}else die(header("HTTP/1.0 403 Forbidden"));
 		}
 	}
 	else die(header("HTTP/1.0 403 Forbidden"));
