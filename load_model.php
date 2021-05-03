@@ -72,7 +72,7 @@
 									</div> <!-- end card-body-->
 
 									<div class="modal-footer" style="padding-top:0px;!important">
-										<button type="button" id="btn_load" class="btn btn-primary btn-lg btn-block waves-effect waves-light float-end">Load Model</button>
+										<button type="button" id="btn_load" onclick="window.location.href='image_predict_load_model.php'" class="btn btn-primary btn-lg btn-block waves-effect waves-light float-end">Load Model</button>
 									</div>
                                 </div> <!-- end card-->
                             </div><!-- end col -->
