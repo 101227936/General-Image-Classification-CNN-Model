@@ -90,7 +90,7 @@
                                                 <h3>Load Model</h3>
                                                 <p class="text-muted font-13">Upload your own trained model by using this system's model training functionality, you can easily load your pre-trained model without selecting the pre-trained model net, epoch and batch size.</p>
                                             </div>
-                                            <button type="button" onclick="window.location.href='#'" class="btn btn-primary btn-lg btn-block">Load Model</button>
+                                            <button type="button" onclick="window.location.href='load_model.php'" class="btn btn-primary btn-lg btn-block">Load Model</button>
                                         </div>
                                     </div>
                                 </div>
