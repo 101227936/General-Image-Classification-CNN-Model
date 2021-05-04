@@ -25,7 +25,7 @@
 
     </head>
 
-    <body data-layout-mode=horizontal>
+    <body data-layout-mode="horizontal">
 
         <!-- Pre-loader -->
         <div id="preloader">
@@ -42,7 +42,7 @@
             <!-- ============================================================== -->
             <!-- Start Page Content here -->
             <!-- ============================================================== -->
-            <div class="content-page" style="margin:15px; !important">
+            <div class="content-page" style="margin:15px !important;">
                 <div class="content">
                     <!-- Start Content-->
                     <div class="container-fluid">
@@ -94,7 +94,7 @@
                                 <div class="card">
                                     <div class="card-body">
                                         <form action="train_process.php" name="InputCacheCheck" id="InputCacheCheck" method="post" data-parsley-validate="">
-                                            <div class="input-prepend input-append form-group" style="padding:5px;!important">
+                                            <div class="input-prepend input-append form-group" style="padding:5px !important;">
                                                 <i class="fas fa-question-circle" style="padding-right:5px;margin-bottom:7px;" title="Select a pre-trained model to train your model" data-plugin="tippy" data-tippy-placement="right-start" data-tippy-maxWidth="200px" data-tippy-offset="0, 0"></i>
                                                 <h3 class="header-title" style="display: inline-block;">Pre-trained Model</h3>
                                                 <select class="form-control" name="model_selection" id="model_selection" required="">
@@ -109,7 +109,7 @@
                                                 </select>
                                             </div>
 
-                                            <div class="input-prepend input-append form-group" style="padding:5px;!important">
+                                            <div class="input-prepend input-append form-group" style="padding:5px !important;">
                                             <i class="fas fa-question-circle" style="padding-right:5px;margin-bottom:7px;" title="The model that you are training will work through the enitre training dataset by the number of times that you set, you might tend to increase this number to get a good training result (Maximum: 10)" data-plugin="tippy" data-tippy-placement="right-start" data-tippy-maxWidth="300px" data-tippy-offset="0, 0"></i>
                                                 <h3 class="header-title" style="display: inline-block;">Epoch</h3>
                                                 <div class="input-group bootstrap-touchspin bootstrap-touchspin-injected">
@@ -122,7 +122,7 @@
                                                 </div>
                                             </div>
 
-                                            <div class="input-prepend input-append form-group" style="padding:5px;!important">
+                                            <div class="input-prepend input-append form-group" style="padding:5px !important;">
                                             <i class="fas fa-question-circle" style="padding-right:5px;margin-bottom:7px;" title="The data will be split into the number of batches which the total number of images divided by the batch size number. One epoch will be complete once all the batches have been fed through the model, you might not need to increase this number to get a good training result" data-plugin="tippy" data-tippy-placement="right-start" data-tippy-maxWidth="300px" data-tippy-offset="0, 0"></i>
                                                 <h3 class="header-title" style="display: inline-block;">Batch Size</h3>
                                                 <select class="form-control" name="batch_size" id="batch_size" required="">

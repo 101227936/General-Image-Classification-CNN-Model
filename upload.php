@@ -46,7 +46,7 @@
                             <div class="col-12">
                                 <div class="page-title-box">
 									<div class="page-title-right">
-									<ol class="breadcrumb m-0">
+										<ol class="breadcrumb m-0">
                                             <li class="breadcrumb-item active">Upload</li>
 											<li class="breadcrumb-item"><a href="training.php">Training</a></li>
 											<?php
@@ -68,7 +68,7 @@
                         <div class="row">
                             <div class="col-12">
                                 <div class="card">
-                                    <div class="card-body" style="padding-bottom:5px;!important">
+                                    <div class="card-body" style="padding-bottom:5px !important;">
 										<?php
 											$dirs = array_filter(glob('uploads/*'), 'is_dir');
 											$name = "Class ".count($dirs);
@@ -89,7 +89,7 @@
 													<div class="fallback">
 														<input name="file[]" type="file" multiple />
 													</div>
-													<div class="dz-message needsclick" style="margin:5.5rem;!important">
+													<div class="dz-message needsclick" style="margin:5.5rem !important;">
 														<i class="h1 text-muted dripicons-cloud-upload"></i>
 														<h3>Drop files here or click to upload</h3>
 														<span class="text-muted font-13">(Please upload the images with less than 1MB and minimum 50 and maximum of 150 images allowed only)</span>
@@ -104,7 +104,7 @@
 											</div>
 										</div>
                                     </div> <!-- end card-body-->
-									<div class="modal-footer" style="padding-top:0px;!important">
+									<div class="modal-footer" style="padding-top:0px !important;">
 										<button id='upload' name='upload' class="btn btn-primary waves-effect waves-light float-end">Upload</button>
 									</div>
                                 </div> <!-- end card-->
