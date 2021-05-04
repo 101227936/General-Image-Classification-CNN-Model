@@ -103,7 +103,7 @@
 													<i class="fas fa-question-circle" style="padding-right:5px;margin-bottom:7px;" title="Show the result of prediction" data-plugin="tippy" data-tippy-placement="right-start" data-tippy-maxWidth="200px" data-tippy-offset="0, 0"></i>
 													<h3 class="header-title" style="display: inline-block;">Output</h3>
 												</div>
-												<img src="model/result.png?" + new Date().getTime() alt="result.png" onError="this.src ='template/Template/Admin/dist/assets/images/404.jpeg'" class="img-fluid" style="padding: 70px 0;display: block;margin-left: auto;margin-right: auto;">
+												<img src="model/result.png?<?=time()?>" + new Date().getTime() alt="result.png" onError="this.src ='template/Template/Admin/dist/assets/images/404.jpeg'" class="img-fluid" style="padding: 70px 0;display: block;margin-left: auto;margin-right: auto;">
 											</div>
                                         </div> <!-- end row -->
 
@@ -191,7 +191,7 @@
                                         </div>
                                         <div id="card_accu" class="collapse bg-light">
                                             <div class="card-body text-white">
-                                                <img src="model/accuracy.png" alt="accuracy" class="img-fluid" style="height:400px; display: block;margin-left: auto;margin-right: auto;">
+                                                <img src="model/accuracy.png?<?=time()?>" alt="accuracy" class="img-fluid" style="height:400px; display: block;margin-left: auto;margin-right: auto;">
                                             </div>
                                         </div>
                                     </div> <!-- end card-->
@@ -206,7 +206,7 @@
                                         </div>
                                         <div id="card_loss" class="collapse bg-light">
                                             <div class="card-body text-white">
-                                                <img src="model/loss.png" alt="loss" class="img-fluid" style="height:400px; display: block;margin-left: auto;margin-right: auto;">
+                                                <img src="model/loss.png?<?=time()?>" alt="loss" class="img-fluid" style="height:400px; display: block;margin-left: auto;margin-right: auto;">
                                             </div>
                                         </div>
                                     </div> <!-- end card-->
@@ -221,7 +221,7 @@
                                         </div>
                                         <div id="card_roc" class="collapse bg-light">
                                             <div class="card-body text-white">
-                                                <img src="model/roc.png" alt="roc" class="img-fluid" style="height:400px; display: block;margin-left: auto;margin-right: auto;">
+                                                <img src="model/roc.png?<?=time()?>" alt="roc" class="img-fluid" style="height:400px; display: block;margin-left: auto;margin-right: auto;">
                                             </div>
                                         </div>
                                     </div> <!-- end card-->
@@ -236,7 +236,7 @@
                                         </div>
                                         <div id="card_cm" class="collapse bg-light">
                                             <div class="card-body text-white">
-                                                <img src="model/cm.png" alt="confusion Matrix" class="img-fluid" style="height:400px; display: block;margin-left: auto;margin-right: auto;">
+                                                <img src="model/cm.png?<?=time()?>" alt="confusion Matrix" class="img-fluid" style="height:400px; display: block;margin-left: auto;margin-right: auto;">
                                             </div>
                                         </div>
                                     </div> <!-- end card-->
