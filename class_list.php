@@ -15,6 +15,8 @@
     {
         ?>
         <link href="template/Template/Admin/dist/assets/css/lightgallery.css" rel="stylesheet">
+        <link href="template/Template/Admin/dist/assets/libs/sweetalert2/sweetalert2.min.css" rel="stylesheet" type="text/css" />
+
         <div class="col-lg-12">
             <?php
                 foreach($dirs as $dir)
@@ -53,6 +55,11 @@
             ?>     
         </div><!-- end col -->
         
+        <!-- Sweet Alerts js -->
+		<script src="template/Template/Admin/dist/assets/libs/sweetalert2/sweetalert2.min.js"></script>
+        <!-- Sweet alert init js-->
+        <script src="template/Template/Admin/dist/assets/js/pages/sweet-alerts.init.js"></script>
+
         <script src="template/Template/Admin/dist/assets/js/lightgallery-all.min.js"></script>
         <script>
             $(document).ready(function(){
@@ -68,8 +75,19 @@
         <script src="template/Template/Admin/dist/assets/libs/jquery.mousewheel.min.js"></script>
         <script>
             $('[data-toggle="remove"]').on("click", function(e) {
-                if (confirm("Comfirm to delete?") == true) {
-                    $.ajax({
+                Swal.fire({
+                    title: 'Are you sure?',
+                    text: "You won't be able to revert this!",
+                    type: 'warning',
+                    showCancelButton: true,
+                    confirmButtonColor: '#6658dd',
+                    cancelButtonColor: '#d33',
+                    confirmButtonText: 'Confirm',
+                    allowOutsideClick: false,
+                    backdrop:'#eeeff3',
+                }).then((result) => {
+                    if (result.dismiss === Swal.DismissReason.success) {
+                        $.ajax({
                         type: "POST",
                         dataType : 'json',
                         url: "class_remove.php",
@@ -77,19 +95,27 @@
                             name: $(this).attr('data-class_name'),
                         },
                         success: function(result) {
-                            alert(result.Result);
-                            location.reload();
+                            Swal.fire({
+                                title: 'Success',
+                                text: result.Result,
+                                type: 'success',
+                                confirmButtonColor: '#6658dd',
+                                backdrop: '#eeeff3',
+                                allowOutsideClick: false,
+                                }).then(function(){
+                                    location.reload();
+                            });                            
                         },
                         error: function(result) {
                             console.log(result);
                             console.clear();
                         }
-                    });
-                } 
-                else {
-                    $("#class_list").load("class_list.php");
-                }
-                
+                        });
+                    } 
+                    else if (result.dismiss === Swal.DismissReason.cancel) {
+                        $("#class_list").load("class_list.php");
+                    }
+                })
             });
 
             $( ".class_name" ) .focusout(function(event) {
@@ -106,8 +132,17 @@
                         success: function(result) {
                             if(result.Status==true)
                             {
-                                alert(result.Result);
-                                event.target.innerText=class_data.attr('data-class_name');
+                                Swal.fire({
+                                    title: 'Failure',
+                                    text: result.Result,
+                                    type: 'error',
+                                    backdrop:'#eeeff3',
+                                    showConfirmButton: true,
+                                    confirmButtonColor: '#6658dd',
+                                    allowOutsideClick: false,
+                                }).then(function(){
+                                    $("#class_list").load("class_list.php");
+                                });
                             }
                             else
                             {
@@ -120,8 +155,16 @@
                                         new_name: event.target.textContent,
                                     },
                                     success: function(result) {
-                                        alert(result.Result);
-                                        $("#class_list").load("class_list.php");
+                                        Swal.fire({
+										title: 'Success',
+										text: result.Result,
+										type: 'success',
+										confirmButtonColor: '#6658dd',
+										backdrop:'#eeeff3',
+										allowOutsideClick: false,
+										}).then(function(){
+                                            $("#class_list").load("class_list.php");
+										});
                                     },
                                     error: function(result) {
                                         console.log(result);
@@ -168,7 +211,6 @@
                                 if(result.Status==true && result.Count==0)$("#class_list").load("class_list.php");
                                 else if(result.Status==true )
                                 {
-                                    
                                     var elements;
                                     if (that.core.s.dynamic) {
                                         elements = that.core.s.dynamicEl;
@@ -204,31 +246,35 @@
                                         that.core.modules.Thumbnail = new $.fn.lightGallery.modules.Thumbnail(that.core.$el);
                                     } else that.core.destroy();
                                 }
-                                else if(result.Status==false)alert(result.Result);
+                                else if(result.Status==false)
+                                {
+                                    Swal.fire({
+                                        title: 'Failure',
+                                        text: result.Result,
+                                        type: 'error',
+                                        showConfirmButton: false,
+                                        timer: 1500,
+                                    })
+                                }
                             },
                             error: function(result) {
                                 console.log(result);
                                 console.clear();
                             }
                         });
-
-                        
                     });
                 }
-
                 /**
                 * Destroy function must be defined.
                 * lightgallery will automatically call your module destroy function
                 * before destroying the gallery
                 */
                 Delete.prototype.destroy = function() {
-
                 }
 
                 // Attach your module with lightgallery
                 $.fn.lightGallery.modules.delete = Delete;
             })(jQuery, window, document);
-        
         </script>
         <?php
     }

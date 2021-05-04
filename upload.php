@@ -14,6 +14,9 @@
         <link href="template/Template/Admin/dist/assets/libs/dropzone/min/dropzone.min.css" rel="stylesheet" type="text/css" />
         <link href="template/Template/Admin/dist/assets/libs/dropify/css/dropify.min.css" rel="stylesheet" type="text/css" />
 
+		<!-- Sweet Alert-->
+		<link href="template/Template/Admin/dist/assets/libs/sweetalert2/sweetalert2.min.css" rel="stylesheet" type="text/css" />
+
 		<!-- App css -->
 		<link href="template/Template/Admin/dist/assets/css/bootstrap.min.css" rel="stylesheet" type="text/css" id="bs-default-stylesheet" />
 		<link href="template/Template/Admin/dist/assets/css/app.min.css" rel="stylesheet" type="text/css" id="app-default-stylesheet" />
@@ -42,10 +45,25 @@
                         <div class="row">
                             <div class="col-12">
                                 <div class="page-title-box">
-                                    <h4 class="page-title">Upload your images</h4>
-                                </div>
+									<div class="page-title-right">
+									<ol class="breadcrumb m-0">
+                                            <li class="breadcrumb-item active">Upload</li>
+											<li class="breadcrumb-item"><a href="training.php">Training</a></li>
+											<?php
+											$num = count(glob("model/" . "*"));
+											if($num!=0)
+											{
+											?>
+												<li class="breadcrumb-item"><a href="image_predict_train_model.php">Predict</a></li>
+											<?php
+											}
+											?>
+                                        </ol>
+                                    </div>
+                                    <h4 class="page-title">Upload Your Images</h4>
+								</div>
                             </div>
-                        </div>     
+                        </div>
                         <!-- end page title --> 
                         <div class="row">
                             <div class="col-12">
@@ -64,7 +82,7 @@
 										?>
 										<div class="row">
 											<div class="col-md-6 col-sm-12">
-												<i class="fas fa-question-circle" style="padding-right:5px;margin-bottom:7px;" title="Click Class Name to edit the name of class" data-plugin="tippy" data-tippy-placement="right-start" data-tippy-maxWidth="200px" data-tippy-offset="0, 0"></i>
+												<i class="fas fa-question-circle" style="padding-right:5px;margin-bottom:7px;" title="Click 'Class 0' to edit the name of class" data-plugin="tippy" data-tippy-placement="right-start" data-tippy-maxWidth="200px" data-tippy-offset="0, 0"></i>
 												<h4 class="header-title" style="display: inline-block;" id="class_name" contenteditable="true"><?=$new_name?></h4>
                                                 <form action="upload_files.php" method="post" class="dropzone" style="min-height: 0px !important;" id="myAwesomeDropzone" name="myAwesomeDropzone" data-plugin="dropzone" data-previews-container="#file-previews"
 													data-upload-preview-template="#uploadPreviewTemplate">
@@ -93,7 +111,7 @@
                             </div><!-- end col -->
                         </div>
                         <!-- end row -->  
-
+						
                         <!-- file preview template -->
                         <div class="d-none" id="uploadPreviewTemplate">
                             <div class="card mt-1 mb-0 shadow-none border">
@@ -144,6 +162,12 @@
 
         <!-- App js -->
         <script src="template/Template/Admin/dist/assets/js/app.min.js"></script>
+
+		<!-- Sweet Alerts js -->
+		<script src="template/Template/Admin/dist/assets/libs/sweetalert2/sweetalert2.min.js"></script>
+
+		<!-- Sweet alert init js-->
+		<script src="template/Template/Admin/dist/assets/js/pages/sweet-alerts.init.js"></script>
 		
 		<!-- Init js-->
 		<script>
@@ -170,7 +194,18 @@
 								$("#upload").click(function (e) {
 									e.preventDefault();
 									if(myDropzone.getAcceptedFiles().length>=50)myDropzone.processQueue();
-									else alert('Please select images');
+									else
+									{
+										Swal.fire({
+											title:'Failure',
+											html: 'Please upload the images<br>(Less than 1MB and  50 - 150 images allowed only)',
+											type: 'error',
+											backdrop:'#eeeff3',
+											confirmButtonColor: '#6658dd',
+											allowOutsideClick: false,
+											animation:true,
+										});
+									} 
 								});
 							},
 							processing: function(file) {
@@ -181,13 +216,31 @@
                                     myDropzone.getUploadingFiles().length === 0 && 
                                     myDropzone.getQueuedFiles().length === 0) 
                                 {
-									alert("Image Upload Successful");
-									window.location='training.php';
+									Swal.fire({
+										title: 'Success',
+										text: 'Upload images successful',
+										type: 'success',
+										confirmButtonColor: '#6658dd',
+										backdrop:'#eeeff3',
+										allowOutsideClick: false,
+										animation:true,
+										}).then(function(){
+											window.location='training.php';
+										});
+									//window.location='training.php';
 								}			
 							},
 							error: function(file, response){
-								alert(file.name+" is not added because "+response);
 								this.removeFile(file);
+								Swal.fire({
+									title:'Failure',
+									html: file.name+" is not added because "+response,
+									type: 'error',
+									backdrop:'#eeeff3',
+									confirmButtonColor: '#6658dd',
+									allowOutsideClick: false,
+									animation:true,
+								});
 							},
 							totaluploadprogress: function(progress) {
 								console.log(progress);
@@ -219,8 +272,18 @@
 						success: function(result) {
 							if(result.Status==true)
 							{
-								alert(result.Result);
-								event.target.innerText="<?=$new_name?>";
+								Swal.fire({
+                                    title: 'Failure',
+                                    text: result.Result,
+                                    type: 'error',
+									backdrop:'#eeeff3',
+                                    showConfirmButton: true,
+                                    confirmButtonColor: '#6658dd',
+                                    allowOutsideClick: false,
+									animation:true,
+                                }).then(function(){
+                                    event.target.innerText="<?=$new_name?>";
+                                });
 							}
 						},
 						error: function(result) {

@@ -17,6 +17,9 @@
 		<link href="template/Template/Admin/dist/assets/css/bootstrap-dark.min.css" rel="stylesheet" type="text/css" id="bs-dark-stylesheet" disabled />
 		<link href="template/Template/Admin/dist/assets/css/app-dark.min.css" rel="stylesheet" type="text/css" id="app-dark-stylesheet"  disabled />
 
+        <!-- Sweet Alert-->
+        <link href="template/Template/Admin/dist/assets/libs/sweetalert2/sweetalert2.min.css" rel="stylesheet" type="text/css" />
+
 		<!-- icons -->
 		<link href="template/Template/Admin/dist/assets/css/icons.min.css" rel="stylesheet" type="text/css" />
 
@@ -48,10 +51,25 @@
                         <div class="row">
                             <div class="col-12">
                                 <div class="page-title-box">
+									<div class="page-title-right">
+                                        <ol class="breadcrumb m-0">
+                                            <li class="breadcrumb-item"><a href="upload.php">Upload</a></li>
+                                            <li class="breadcrumb-item active">Training</li>
+                                            <?php
+                                            $num = count(glob("model/" . "*"));
+											if($num!=0)
+											{
+											?>
+												<li class="breadcrumb-item"><a href="image_predict_train_model.php">Predict</a></li>
+											<?php
+											}
+											?>
+                                        </ol>
+                                    </div>
                                     <h4 class="page-title">Training Model</h4>
-                                </div>
+								</div>
                             </div>
-                        </div>     
+                        </div>
                         <!-- end page title --> 
 
                         <div class="row">
@@ -61,7 +79,7 @@
                                 <div class="card">
                                     <div class="card-body">
                                         <div class="col-md-12 col-sm-12">
-                                            <i class="fas fa-question-circle" style="padding-right:5px;margin-bottom:7px;" title="Click Class Name to edit the name of class" data-plugin="tippy" data-tippy-placement="right-start" data-tippy-maxWidth="200px" data-tippy-offset="0, 0"></i>
+                                            <i class="fas fa-question-circle" style="padding-right:5px;margin-bottom:7px;" title="Show the images inside the class, you can edit the class name by clicking it" data-plugin="tippy" data-tippy-placement="right-start" data-tippy-maxWidth="200px" data-tippy-offset="0, 0"></i>
                                             <h3 class="header-title" style="display: inline-block;">Class List</h3>
                                             <div id="class_list" style="max-height: 335px; overflow-y: auto;"></div>
                                         </div>
@@ -75,10 +93,9 @@
                             <div class="col-md-6 col-sm-12">
                                 <div class="card">
                                     <div class="card-body">
-                                    
                                         <form action="train_process.php" name="InputCacheCheck" id="InputCacheCheck" method="post" data-parsley-validate="">
                                             <div class="input-prepend input-append form-group" style="padding:5px;!important">
-                                                <i class="fas fa-question-circle" style="padding-right:5px;margin-bottom:7px;" title="Select a net to train your model. A pre-trained model is a model that was trained on a large benchmark dataset to solve a problem similar to the one that we want to solve." data-plugin="tippy" data-tippy-placement="right-start" data-tippy-maxWidth="200px" data-tippy-offset="0, 0"></i>
+                                                <i class="fas fa-question-circle" style="padding-right:5px;margin-bottom:7px;" title="Select a pre-trained model to train your model" data-plugin="tippy" data-tippy-placement="right-start" data-tippy-maxWidth="200px" data-tippy-offset="0, 0"></i>
                                                 <h3 class="header-title" style="display: inline-block;">Pre-trained Model</h3>
                                                 <select class="form-control" name="model_selection" id="model_selection" required="">
                                                     <option value="">Choose..</option>
@@ -93,7 +110,7 @@
                                             </div>
 
                                             <div class="input-prepend input-append form-group" style="padding:5px;!important">
-                                            <i class="fas fa-question-circle" style="padding-right:5px;margin-bottom:7px;" title="Set your Epoch number (Maximum 10). The number of epochs is a hyperparameter that defines the number times that the learning algorithm will work through the entire training dataset. One epoch means that each sample in the training dataset has had an opportunity to update the internal model parameters." data-plugin="tippy" data-tippy-placement="right-start" data-tippy-maxWidth="200px" data-tippy-offset="0, 0"></i>
+                                            <i class="fas fa-question-circle" style="padding-right:5px;margin-bottom:7px;" title="The model that you are training will work through the enitre training dataset by the number of times that you set, you might tend to increase this number to get a good training result (Maximum: 10)" data-plugin="tippy" data-tippy-placement="right-start" data-tippy-maxWidth="300px" data-tippy-offset="0, 0"></i>
                                                 <h3 class="header-title" style="display: inline-block;">Epoch</h3>
                                                 <div class="input-group bootstrap-touchspin bootstrap-touchspin-injected">
                                                     <span class="input-group-btn input-group-prepend">
@@ -106,7 +123,7 @@
                                             </div>
 
                                             <div class="input-prepend input-append form-group" style="padding:5px;!important">
-                                            <i class="fas fa-question-circle" style="padding-right:5px;margin-bottom:7px;" title="Select a batch size to train your model. Batch size refers to the number of training examples utilized in one iteration. " data-plugin="tippy" data-tippy-placement="right-start" data-tippy-maxWidth="200px" data-tippy-offset="0, 0"></i>
+                                            <i class="fas fa-question-circle" style="padding-right:5px;margin-bottom:7px;" title="The data will be split into the number of batches which the total number of images divided by the batch size number. One epoch will be complete once all the batches have been fed through the model, you might not need to increase this number to get a good training result" data-plugin="tippy" data-tippy-placement="right-start" data-tippy-maxWidth="300px" data-tippy-offset="0, 0"></i>
                                                 <h3 class="header-title" style="display: inline-block;">Batch Size</h3>
                                                 <select class="form-control" name="batch_size" id="batch_size" required="">
                                                     <option value="">Choose..</option>
@@ -149,9 +166,6 @@
             <!-- ============================================================== -->
         </div>
         <!-- END wrapper -->
-
-
-       
 
         <!-- Right bar overlay-->
         <div class="rightbar-overlay"></div>

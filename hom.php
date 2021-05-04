@@ -43,12 +43,12 @@
                         
                             <!-- start page title -->
                             <div class="row">
-                                <div class="col-12">
-                                    <div class="page-title-box">
-                                        <h4 class="page-title">General Image Classification</h4>
+                            <div class="col-12">
+                                <div class="page-title-box">
+                                    <h4 class="page-title">General Image Classification</h4>
                                     </div>
                                 </div>
-                            </div>     
+                            </div>
                             <!-- end page title --> 
 
                             <div class="row">
@@ -62,7 +62,21 @@
                                                 <h3>Model Training</h3>
                                                 <p class="text-muted font-13">You can train your own general classification model with your own pre-trained model net, epoch and batch size by simply uploading your image datasets to the system.</p>
                                             </div>
-                                            <button type="button" onclick="window.location.href='training.php'" class="btn btn-primary btn-lg btn-block">Model Training</button>
+                                            <?php
+                                            $dirs = array_filter(glob('uploads/*'), 'is_dir');
+											if(count($dirs)!=0)
+											{
+											?>
+                                                <button type="button" onclick="window.location.href='training.php'" class="btn btn-primary btn-lg btn-block">Model Training</button>
+											<?php
+											}
+                                            else
+                                            {
+                                            ?>
+                                                <button type="button" onclick="window.location.href='upload.php'" class="btn btn-primary btn-lg btn-block">Model Training</button>
+                                            <?php
+                                            }
+                                            ?>
                                         </div>
                                     </div>
                                 </div>
@@ -76,7 +90,7 @@
                                                 <h3>Load Model</h3>
                                                 <p class="text-muted font-13">Upload your own trained model by using this system's model training functionality, you can easily load your pre-trained model without selecting the pre-trained model net, epoch and batch size.</p>
                                             </div>
-                                            <button type="button" onclick="window.location.href='load_model.php'" class="btn btn-primary btn-lg btn-block">Load Model</button>
+                                            <button type="button" onclick="window.location.href='#'" class="btn btn-primary btn-lg btn-block">Load Model</button>
                                         </div>
                                     </div>
                                 </div>
