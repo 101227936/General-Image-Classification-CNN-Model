@@ -302,12 +302,12 @@ score = multiclass_roc_auc_score(validation_generator.classes, predicted_classes
 error_rate = metrics.mean_squared_error(true_classes, predicted_classes)
 
 f = open(dest_base+'/report.txt', "w")
-f.write('Accuracy   : {}\n'.format(np.mean(predicted_classes == true_classes)))
-f.write('Precision  : {}\n'.format(precision))
-f.write('Recall     : {}\n'.format(recall))
-f.write('F-score    : {}\n'.format(fscore))
-f.write('Score      : {}\n'.format(score))
-f.write('Error Rate : {}\n'.format(error_rate))
+f.write('Accuracy   : {}\n'.round(format(np.mean(predicted_classes == true_classes)), 4))
+f.write('Precision  : {}\n'.round(format(precision), 4))
+f.write('Recall     : {}\n'.round(format(recall), 4))
+f.write('F-score    : {}\n'.round(format(fscore), 4))
+f.write('Score      : {}\n'.round(format(score), 4))
+f.write('Error Rate : {}\n'.round(format(error_rate), 4))
 f.close()
 
 shutil.rmtree(TRAIN_DIR)
