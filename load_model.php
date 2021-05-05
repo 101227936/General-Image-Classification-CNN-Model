@@ -43,6 +43,12 @@
             <!-- ============================================================== -->
             <!-- Start Page Content here -->
             <!-- ============================================================== -->
+            <?php
+                $command = "python remove_model_file.py";
+				ini_set('max_execution_time', 0);
+				$result = exec($command);
+                echo $result;
+            ?>
             <div class="content-page" style="margin:15px; !important">
                 <div class="content">
                     <!-- Start Content-->

@@ -1,4 +1,5 @@
 <?php
+	$proc = $_REQUEST['proc'];
 	if(!empty($_FILES["image"]))
 	{
         
@@ -18,8 +19,13 @@
 		$result_array = json_decode($result);
 
         unlink($filename);
-
-		header('Location: image_predict_train_model.php');
+		if($proc = "load")
+		{
+			header('Location: image_predict_load_model.php');
+		}else
+		{
+			header('Location: image_predict_train_model.php');
+		}
 	}
 	else die(header("HTTP/1.0 403 Forbidden"));
 ?>	
