@@ -59,42 +59,25 @@
                         <!-- end page title --> 
 						
                         <div class="row">
-                            <div class="col-12">
+                            <div class="col-lg-12 col-xl-12">
                                 <div class="card">
-                                    <div class="card-body" style="padding-bottom:5px;!important">										
-										<div class="col-md-12 col-sm-12">
-                                            <div class="col-lg-12 col-xl-12">
-                                                <div class="card">
-                                                    <div class="card-body">
-                                                        <div class="row">
-                                                            <div class="col-12">
-                                                                <div class="col-md-12 col-sm-12" style="padding-left:0px;">
-                                                                    <i class="fas fa-question-circle" style="padding-right:5px;margin-bottom:7px;" title="Upload your image to do prediction" data-plugin="tippy" data-tippy-placement="right-start" data-tippy-maxWidth="200px" data-tippy-offset="0, 0"></i>
-                                                                    <h3 class="header-title" style="display: inline-block;">Preview</h3>
-                                                                    <div id="class_list" style="max-height: 335px; overflow-y: auto;"></div>
-                                                                </div>
-                                                                <form action="upload_model.php" name="image_predict" id="image_predict" enctype="multipart/form-data" method="post" data-parsley-validate=""> 
-                                                                    <input name="file" type="file" accept=".zip" id="file" data-plugins="dropify" data-height="300" />
-                                                                    <button type="button" id="btn_load" class="btn btn-primary btn-lg btn-block waves-effect waves-light float-end">Load Model</button>
-                                                                </form>
-                                                                
-                                                            </div>
-                                                        </div> <!-- end row -->
-                                                    </div> <!-- end card-body-->
-                                                </div> <!-- end card-->
-                                            </div><!-- end col -->
-										</div>
-										<!-- Preview -->                                                
-                                        <div class="dropzone-previews mt-3" id="file-previews" style="margin-top:0.7rem !important; max-height: 328px; overflow-y: auto;"></div>
-                                    
-									</div> <!-- end card-body-->
-
+                                    <div class="card-body">
+                                        <div class="row">
+                                            <div class="col-12">
+												<div class="col-md-12 col-sm-12" style="padding-left:0px;">
+                                                    <i class="fas fa-question-circle" style="padding-right:5px;margin-bottom:7px;" title="Upload the model to do prediction, only accept zip file" data-plugin="tippy" data-tippy-placement="right-start" data-tippy-maxWidth="200px" data-tippy-offset="0, 0"></i>
+                                                    <h3 class="header-title" style="display: inline-block;">Upload Model</h3>
+												</div>
+                                                <form action="upload_model.php" name="image_predict" id="image_predict" enctype="multipart/form-data" method="post" data-parsley-validate=""> 
+                                                    <input name="file" type="file" accept=".zip" id="file" data-plugins="dropify" data-height="300" />
+                                                    <button type="button" id='btn_load' class="btn btn-primary btn-block waves-effect waves-light float-end" style="margin-top:30px;">Load Model</button>
+                                                </form>
+                                            </div>
+                                        </div> <!-- end row -->
+                                    </div> <!-- end card-body-->
                                 </div> <!-- end card-->
                             </div><!-- end col -->
-                        </div>
-                        <!-- end row -->  
-
-                       
+                        </div><!-- end row -->
                     </div> <!-- container -->
                 </div> <!-- content -->
 
