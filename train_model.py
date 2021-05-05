@@ -135,7 +135,7 @@ CLASSES = len(sub_folders)
 
 if MODEL=="MobileNetV2":
     from tensorflow.keras.applications.mobilenet_v2 import MobileNetV2, preprocess_input
-	base_model = MobileNetV2(weights='imagenet', include_top=False, input_shape=(224,224,3), pooling='avg')
+    base_model = MobileNetV2(weights='imagenet', include_top=False, input_shape=(224,224,3), pooling='avg')
 elif MODEL=="EfficientNetB3":
     from tensorflow.keras.applications.efficientnet import EfficientNetB3, preprocess_input
     base_model = EfficientNetB3(weights='imagenet', include_top=False, input_shape=(224,224,3), pooling='avg')
@@ -302,12 +302,12 @@ score = multiclass_roc_auc_score(validation_generator.classes, predicted_classes
 error_rate = metrics.mean_squared_error(true_classes, predicted_classes)
 
 f = open(dest_base+'/report.txt', "w")
-f.write('Accuracy   : {}\n'.round(format(np.mean(predicted_classes == true_classes)), 4))
-f.write('Precision  : {}\n'.round(format(precision), 4))
-f.write('Recall     : {}\n'.round(format(recall), 4))
-f.write('F-score    : {}\n'.round(format(fscore), 4))
-f.write('Score      : {}\n'.round(format(score), 4))
-f.write('Error Rate : {}\n'.round(format(error_rate), 4))
+f.write('Accuracy   : {}\n'.format(round(np.mean(predicted_classes == true_classes), 4)))
+f.write('Precision  : {}\n'.format(round(precision, 4)))
+f.write('Recall     : {}\n'.format(round(recall, 4)))
+f.write('F-score    : {}\n'.format(round(fscore, 4)))
+f.write('Score      : {}\n'.format(round(score, 4)))
+f.write('Error Rate : {}\n'.format(round(error_rate, 4)))
 f.close()
 
 shutil.rmtree(TRAIN_DIR)
