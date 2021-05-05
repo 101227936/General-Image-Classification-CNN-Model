@@ -133,8 +133,17 @@ for category in sub_folders:
 CLASSES = len(sub_folders)
 # setup model
 
-from tensorflow.keras.applications.mobilenet_v2 import MobileNetV2, preprocess_input
-base_model = MobileNetV2(weights='imagenet', include_top=False, input_shape=(224,224,3), pooling='avg')
+if MODEL=="MobileNetV2":
+    from tensorflow.keras.applications.mobilenet_v2 import MobileNetV2, preprocess_input
+	base_model = MobileNetV2(weights='imagenet', include_top=False, input_shape=(224,224,3), pooling='avg')
+elif MODEL=="EfficientNetB3":
+    from tensorflow.keras.applications.efficientnet import EfficientNetB3, preprocess_input
+    base_model = EfficientNetB3(weights='imagenet', include_top=False, input_shape=(224,224,3), pooling='avg')
+elif MODEL=="InceptionV3":
+    from tensorflow.keras.applications.inception_v3 import InceptionV3, preprocess_input
+    base_model = InceptionV3(weights='imagenet', include_top=False, input_shape=(224,224,3), pooling='avg')
+
+
 	
 x = base_model.output
 x = Dropout(0.3)(x)

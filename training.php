@@ -102,10 +102,10 @@
                                                     <option value="MobileNetV2">MobileNetV2</option>
                                                     <option value="EfficientNetB3">EfficientNetB3</option>
                                                     <option value="InceptionV3">InceptionV3</option>
-                                                    <option value="DenseNet201">DenseNet201</option>
-                                                    <option value="VGG16">VGG16</option>
-                                                    <option value="ResNet50V2">ResNet50V2</option>
-                                                    <option value="Xception">Xception</option>
+                                                    <option value="DenseNet201" disabled>DenseNet201 (Future)</option>
+                                                    <option value="VGG16" disabled>VGG16 (Future)</option>
+                                                    <option value="ResNet50V2" disabled>ResNet50V2 (Future)</option>
+                                                    <option value="Xception" disabled>Xception (Future)</option>
                                                 </select>
                                             </div>
 

@@ -14,6 +14,10 @@ model = load_model(dest_base+'/model.h5')
 
 if "mobilenetv2" in model.name:
     from tensorflow.keras.applications.mobilenet_v2 import MobileNetV2, preprocess_input
+elif "efficientnetb3" in model.name: 
+    from tensorflow.keras.applications.efficientnet import EfficientNetB3, preprocess_input
+elif "inception_v3" in model.name:
+    from tensorflow.keras.applications.inception_v3 import InceptionV3, preprocess_input
 
 testsite_array = []
 with open(dest_base+'/label.txt') as my_file:
