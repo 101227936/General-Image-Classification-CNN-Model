@@ -1,4 +1,7 @@
 <?php
+	$command = "python remove_model_file.py";
+	ini_set('max_execution_time', 0);
+	$result = exec($command);
 	if(!empty($_FILES["file"]))
 	{
 		$folder = "./model/";
