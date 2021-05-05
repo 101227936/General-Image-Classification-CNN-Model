@@ -19,10 +19,10 @@
 		$result_array = json_decode($result);
 
         unlink($filename);
-		if($proc = "load")
+		if($proc == "load")
 		{
 			header('Location: image_predict_load_model.php');
-		}else if($proc = "train")
+		}else if($proc == "train")
 		{
 			header('Location: image_predict_train_model.php');
 		}
