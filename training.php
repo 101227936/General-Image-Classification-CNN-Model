@@ -98,14 +98,18 @@
                                                 <i class="fas fa-question-circle" style="padding-right:5px;margin-bottom:7px;" title="Select a pre-trained model to train your model" data-plugin="tippy" data-tippy-placement="right-start" data-tippy-maxWidth="200px" data-tippy-offset="0, 0"></i>
                                                 <h3 class="header-title" style="display: inline-block;">Pre-trained Model</h3>
                                                 <select class="form-control" name="model_selection" id="model_selection" required="">
-                                                    <option value="">Choose..</option>
-                                                    <option value="MobileNetV2">MobileNetV2</option>
-                                                    <option value="EfficientNetB3">EfficientNetB3</option>
-                                                    <option value="InceptionV3">InceptionV3</option>
-                                                    <option value="DenseNet201" disabled>DenseNet201 (Future)</option>
-                                                    <option value="VGG16" disabled>VGG16 (Future)</option>
-                                                    <option value="ResNet50V2" disabled>ResNet50V2 (Future)</option>
-                                                    <option value="Xception" disabled>Xception (Future)</option>
+                                                    <optgroup label="--Available Model--">
+                                                        <option value="MobileNetV2">MobileNetV2</option>
+                                                        <option value="EfficientNetB3">EfficientNetB3</option>
+                                                        <option value="InceptionV3">InceptionV3</option>
+                                                    </optgroup>
+ 
+                                                    <optgroup label="--Comming Soon--">
+                                                        <option value="DenseNet201" disabled>DenseNet201</option>
+                                                        <option value="VGG16" disabled>VGG16</option>
+                                                        <option value="ResNet50V2" disabled>ResNet50V2</option>
+                                                        <option value="Xception" disabled>Xception</option>
+                                                    </optgroup>
                                                 </select>
                                             </div>
 
