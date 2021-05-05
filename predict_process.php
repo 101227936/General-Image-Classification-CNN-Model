@@ -22,7 +22,7 @@
 		if($proc = "load")
 		{
 			header('Location: image_predict_load_model.php');
-		}else
+		}else if($proc = "train")
 		{
 			header('Location: image_predict_train_model.php');
 		}
