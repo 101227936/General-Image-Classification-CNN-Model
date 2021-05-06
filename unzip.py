@@ -6,6 +6,7 @@ def checkFile():
     with zipfile.ZipFile('./model/model.zip', 'r') as zipObj:
         listofFiles = zipObj.namelist()
         for file in listofFiles:
+            print(file)
             if(file == 'accuracy.png' or 
                file == 'cm.png' or 
                file == 'label.txt' or 
@@ -21,8 +22,8 @@ def checkFile():
                 zipObj.extractall('./model/')
                 zipObj.close()
             os.remove('./model/model.zip')
-            return True
+            print(True)
         else:
             os.remove('./model/model.zip')
-            return False
+            print(False)
 checkFile();

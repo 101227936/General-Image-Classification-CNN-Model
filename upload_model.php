@@ -23,7 +23,7 @@
 					header('Location: image_predict_load_model.php');
 				}else
 				{
-					die(header("HTTP/1.0 403 Forbidden"));
+					die(header("Location: load_model.php"));
 				}
 			}else die(header("HTTP/1.0 403 Forbidden"));
 		}
