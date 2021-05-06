@@ -13,8 +13,11 @@
         <!-- Plugins css -->
         <link href="template/Template/Admin/dist/assets/libs/dropzone/min/dropzone.min.css" rel="stylesheet" type="text/css" />
         <link href="template/Template/Admin/dist/assets/libs/dropify/css/dropify.min.css" rel="stylesheet" type="text/css" />
-
-		<!-- App css -->
+        
+        <!-- Sweet Alert-->
+		<link href="template/Template/Admin/dist/assets/libs/sweetalert2/sweetalert2.min.css" rel="stylesheet" type="text/css" />
+		
+        <!-- App css -->
 		<link href="template/Template/Admin/dist/assets/css/bootstrap.min.css" rel="stylesheet" type="text/css" id="bs-default-stylesheet" />
 		<link href="template/Template/Admin/dist/assets/css/app.min.css" rel="stylesheet" type="text/css" id="app-default-stylesheet" />
 
@@ -52,10 +55,16 @@
                         <div class="row">
                             <div class="col-12">
                                 <div class="page-title-box">
+									<div class="page-title-right">
+										<ol class="breadcrumb m-0">
+                                            <li class="breadcrumb-item active"><a href="load_model.php">Load Model</a></li>
+                                            <li class="breadcrumb-item active">Predict</li>
+                                        </ol>
+                                    </div>
                                     <h4 class="page-title">Image Predict</h4>
-                                </div>
+								</div>
                             </div>
-                        </div>     
+                        </div>
                         <!-- end page title --> 
 
                         <div class="row">
@@ -72,7 +81,7 @@
                                                 <form action="predict_process.php" name="image_predict" id="image_predict" enctype="multipart/form-data" method="post" data-parsley-validate=""> 
                                                     <input type="file" name="image" id="image" data-plugins="dropify" data-max-file-size="1M" accept="image/*" data-height="300">
                                                     <input type="hidden" name="proc" value="load">
-                                                    <button type="submit" form="image_predict" id='btn_predict' class="btn btn-primary btn-block waves-effect waves-light float-end" style="margin-top:40px;">Predict Image</button>
+                                                    <button type="submit" form="image_predict" id='btn_predict' class="btn btn-primary btn-block waves-effect waves-light float-end" style="margin-top:67px;margin-bottom:50px;">Predict Image</button>
                                                 </form>
                                             </div>
                                         </div> <!-- end row -->
@@ -84,7 +93,7 @@
                                 <div class="card">
                                     <div class="card-body">
                                         <div class="row">
-                                            <div class="col-12">
+                                            <div class="col-12" style="height:495px;">
 												<div class="col-md-12 col-sm-12" style="padding-left:0px;">
 													<i class="fas fa-question-circle" style="padding-right:5px;margin-bottom:7px;" title="Show the result of prediction" data-plugin="tippy" data-tippy-placement="right-start" data-tippy-maxWidth="200px" data-tippy-offset="0, 0"></i>
 													<h3 class="header-title" style="display: inline-block;">Output</h3>
@@ -251,8 +260,6 @@
 		<!-- Tippy js-->
 		<script src="template/Template/Admin/dist/assets/libs/tippy.js/tippy.all.min.js"></script>
 
-       
-
         <!-- Vendor js -->
         <script src="template/Template/Admin/dist/assets/js/vendor.min.js"></script>
 
@@ -266,6 +273,12 @@
         <!-- App js -->
         <script src="template/Template/Admin/dist/assets/js/app.min.js"></script>
 
+        <!-- Sweet Alerts js -->
+		<script src="template/Template/Admin/dist/assets/libs/sweetalert2/sweetalert2.min.js"></script>
+
+        <!-- Sweet alert init js-->
+        <script src="template/Template/Admin/dist/assets/js/pages/sweet-alerts.init.js"></script>
+
         <script>
             $('#btn_predict').click(function(e){
                 if($('#image').val()!="")
@@ -276,6 +289,15 @@
                 else
                 {
                     e.preventDefault();
+                    Swal.fire({
+                        title: 'Failure',
+                        text: 'Please select image',
+                        type: 'error',
+                        confirmButtonColor: '#6658dd',
+                        backdrop:'#eeeff3',
+                        allowOutsideClick: false,
+                        animation:true
+                    });
               }
             });
         </script>

@@ -14,6 +14,9 @@
         <link href="template/Template/Admin/dist/assets/libs/dropzone/min/dropzone.min.css" rel="stylesheet" type="text/css" />
         <link href="template/Template/Admin/dist/assets/libs/dropify/css/dropify.min.css" rel="stylesheet" type="text/css" />
 
+        <!-- Sweet Alert-->
+        <link href="template/Template/Admin/dist/assets/libs/sweetalert2/sweetalert2.min.css" rel="stylesheet" type="text/css" />
+
 		<!-- App css -->
 		<link href="template/Template/Admin/dist/assets/css/bootstrap.min.css" rel="stylesheet" type="text/css" id="bs-default-stylesheet" />
 		<link href="template/Template/Admin/dist/assets/css/app.min.css" rel="stylesheet" type="text/css" id="app-default-stylesheet" />
@@ -26,7 +29,7 @@
 
     </head>
 
-    <body data-layout-mode=horizontal>
+    <body data-layout-mode="horizontal">
 
         <!-- Pre-loader -->
         <div id="preloader">
@@ -43,7 +46,7 @@
             <!-- ============================================================== -->
             <!-- Start Page Content here -->
             <!-- ============================================================== -->
-            <div class="content-page" style="margin:15px; !important">
+            <div class="content-page" style="margin:15px !important;">
                 <div class="content">
                     <!-- Start Content-->
                     <div class="container-fluid">
@@ -52,10 +55,24 @@
                         <div class="row">
                             <div class="col-12">
                                 <div class="page-title-box">
+									<div class="page-title-right">
+										<ol class="breadcrumb m-0">
+                                            <li class="breadcrumb-item active">Load Model</li>
+											<?php
+											$num = count(glob("model/" . "*"));
+											if($num!=0)
+											{
+											?>
+												<li class="breadcrumb-item"><a href="image_predict_load_model.php">Predict</a></li>
+											<?php
+											}
+											?>
+                                        </ol>
+                                    </div>
                                     <h4 class="page-title">Load Model</h4>
-                                </div>
+								</div>
                             </div>
-                        </div>     
+                        </div>
                         <!-- end page title --> 
 						
                         <div class="row">
@@ -109,6 +126,13 @@
         <!-- App js -->
         <script src="template/Template/Admin/dist/assets/js/app.min.js"></script>
 
+        <!-- Sweet Alerts js -->
+        <script src="template/Template/Admin/dist/assets/libs/sweetalert2/sweetalert2.min.js"></script>
+
+        <!-- Sweet alert init js-->
+        <script src="template/Template/Admin/dist/assets/js/pages/sweet-alerts.init.js"></script>
+
+
         <script>
            $("#btn_load").click(function (e) {
                 if($('#file').val()!="")
@@ -120,7 +144,15 @@
                 }
                 else
                 {
-                    alert("Please Select ZIP FILEEEEEE!!!!!");
+                    Swal.fire({
+                        title: 'Failure',
+                        text: 'Please select zip file',
+                        type: 'error',
+                        confirmButtonColor: '#6658dd',
+                        backdrop:'#eeeff3',
+                        allowOutsideClick: false,
+                        animation:true
+                    });
                 }
             });
         </script>
