@@ -1,6 +1,10 @@
 import os
 import glob
+import shutil;
 
 files = glob.glob('./model/*')
 for f in files:
-    os.remove(f)
+    try:
+        shutil.rmtree(f)
+    else:
+        os.remove(f)

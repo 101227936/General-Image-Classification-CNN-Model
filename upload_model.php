@@ -20,7 +20,14 @@
 				$command = "python unzip.py";
 				ini_set('max_execution_time', 0);
 				$result = exec($command);
-				header('Location: image_predict_load_model.php');
+
+				if($result == true)
+				{
+					header('Location: image_predict_load_model.php');
+				}else
+				{
+					die(header("HTTP/1.0 403 Forbidden"));
+				}
 			}else die(header("HTTP/1.0 403 Forbidden"));
 		}
 	}
