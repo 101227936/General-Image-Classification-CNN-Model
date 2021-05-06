@@ -18,7 +18,7 @@
 				ini_set('max_execution_time', 0);
 				$result = exec($command);
 
-				if($result == true)
+				if($result == 'True')
 				{
 					header('Location: image_predict_load_model.php');
 				}else
