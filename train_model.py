@@ -19,6 +19,13 @@ from tensorflow.keras.preprocessing.image import ImageDataGenerator
 from os.path import basename
 from sklearn.preprocessing import LabelBinarizer
 
+files = glob('./model/*')
+for f in files:
+    try:
+        shutil.rmtree(f)
+    except:
+        os.remove(f)
+
 WIDTH = 224
 HEIGHT = 224
 EPOCHS = int(sys.argv[2])
