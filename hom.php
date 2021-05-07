@@ -86,7 +86,7 @@
                                             <i class="fas fa-question-circle" style="padding-right:5px;margin-bottom:7px;" title="Upload your previous model training" data-plugin="tippy" data-tippy-placement="right-start" data-tippy-maxWidth="200px" data-tippy-offset="0, 0"></i>
                                             <h4 class="header-title" style="display: inline-block;">Load Model</h4>
                                             <div  style="margin:5.5rem !important;">
-                                                <i class="h1 dripicons-lightbulb"></i>
+                                                <i class="h1 dripicons-cloud-upload"></i>
                                                 <h3>Load Model</h3>
                                                 <p class="text-muted font-13">Upload your own trained model by using this system's model training functionality, you can easily load your pre-trained model without selecting the pre-trained model net, epoch and batch size.</p>
                                             </div>
