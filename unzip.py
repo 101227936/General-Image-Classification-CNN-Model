@@ -22,6 +22,8 @@ def checkFile():
                 zipObj.extractall('./model/')
                 zipObj.close()
             os.remove('./model/model.zip')
+            try: os.remove('/mode/result.png')
+            except: pass
             print(True)
         else:
             os.remove('./model/model.zip')
