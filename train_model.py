@@ -319,3 +319,6 @@ f.close()
 
 shutil.rmtree(TRAIN_DIR)
 shutil.rmtree(TEST_DIR)
+
+try: os.remove(dest_base+'/result.png')
+except: pass
