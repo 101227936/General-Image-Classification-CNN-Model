@@ -71,9 +71,6 @@ def image_process(img_path):
 import urllib.request
 image = ImageOps.fit(image_process(sys.argv[1]).resize((224, 224)), (224, 224), Image.ANTIALIAS)
 
-#headers = {'User-Agent':'Mozilla/5.0 (Windows NT 6.1; WOW64; rv:23.0) Gecko/20100101 Firefox/23.0'}
-#req = urllib.request.Request(url='https://biologydictionary.net/wp-content/uploads/2020/07/An-Axis-Deer.jpg', headers=headers)
-#image = ImageOps.fit(image_process(urllib.request.urlopen(req)).resize((224, 224)), (224, 224), Image.ANTIALIAS)
 pred = predict(model, image)
 
 for item in metadata.items():
