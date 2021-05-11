@@ -236,13 +236,31 @@
                 if(valueCurrent >= minValue) {
                     $(".btn-number[data-type='minus'][data-field='"+name+"']").removeAttr('disabled')
                 } else {
-                    alert('Sorry, the minimum value was reached');
+                    //alert('Sorry, the minimum value was reached');
+                    Swal.fire({
+                        title: 'Failure',
+                        text: 'Sorry, the minimum value was reached',
+                        type: 'error',
+                        backdrop:'#eeeff3',
+                        showConfirmButton: true,
+                        confirmButtonColor: '#6658dd',
+                        allowOutsideClick: false,
+                    });
                     $(this).val($(this).data('oldValue'));
                 }
                 if(valueCurrent <= maxValue) {
                     $(".btn-number[data-type='plus'][data-field='"+name+"']").removeAttr('disabled')
                 } else {
-                    alert('Sorry, the maximum value was reached');
+                    //alert('Sorry, the maximum value was reached');
+                    Swal.fire({
+                        title: 'Failure',
+                        text: 'Sorry, the maximum value was reached',
+                        type: 'error',
+                        backdrop:'#eeeff3',
+                        showConfirmButton: true,
+                        confirmButtonColor: '#6658dd',
+                        allowOutsideClick: false,
+                    });
                     $(this).val($(this).data('oldValue'));
                 }
             });

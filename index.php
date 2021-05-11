@@ -23,12 +23,11 @@
     </head>
 
     <body>
-
         <!--Navbar Start-->
         <nav class="navbar navbar-expand-lg fixed-top navbar-custom sticky sticky-dark">
             <div class="container-fluid">
                 <!-- LOGO -->
-                <a class="logo text-uppercase" href="index.html">
+                <a class="logo text-uppercase" href="index.php">
                     <img src="Landing/Logo/light-logo.png" alt="" class="logo-light" height="21" style="max-width: 404px;height: 70px;" />
                     
                     <img src="Landing/Logo/dark-logo.png" alt="" class="logo-dark" height="21" style="max-width: 404px;height: 70px;" />
