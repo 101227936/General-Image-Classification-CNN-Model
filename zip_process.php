@@ -1,4 +1,5 @@
 <?php
+	date_default_timezone_set("Asia/Kuala_Lumpur");
 	$command = "python zip.py";
 
 	ini_set('max_execution_time', 0);
@@ -9,7 +10,7 @@
 	
 	if (file_exists($filename)) {
 		header('Content-Type: application/zip');
-		header('Content-Disposition: attachment; filename="'.basename($filename).'"');
+		header('Content-Disposition: attachment; filename="'.date("Ymd_his")."_".basename($filename).'"');
 		header('Content-Length: ' . filesize($filename));
 	
 		flush();				// clean the output buffer
