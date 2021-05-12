@@ -153,8 +153,8 @@
                                 <img src="Landing/images/icons/download.png" alt="">
                                 <img src="Landing/images/icons/upload.png" alt="">
                             </div>
-                            <h4 class="mb-3">Export & Load Model + Model Summary </h4>
-                            <p class="text-muted">Allows user download or upload the model</p>
+                            <h4 class="mb-3">Export & Load Model</h4>
+                            <p class="text-muted">Allows user download or upload the model including the model summary</p>
                         </div>
                     </div>
                     <!-- end col -->
