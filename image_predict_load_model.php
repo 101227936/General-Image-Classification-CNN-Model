@@ -184,7 +184,7 @@
                                                 <a data-toggle="collapse" class="collapsed" href="#card_accu" role="button" aria-expanded="false" aria-controls="card_accu"><i class="mdi mdi-minus"></i></a>
                                             </div>
                                             <i class="fas fa-question-circle" style="padding-right:10px;" title="Accuracy is the percentage of classification that a model gets right during training. If the modal prediction is perfect, the accuracy will be one, else the accuracy is below one." data-plugin="tippy" data-tippy-placement="right-start" data-tippy-maxWidth="200px" data-tippy-offset="0, 0"></i>
-                                            <h5 class="card-title mb-0 text-white" style="display: inline-block;" id="class_name">Traning and Validation Accuracy</h4>
+                                            <h5 class="card-title mb-0 text-white" style="display: inline-block;" id="class_name">Training and Validation Accuracy</h4>
                                         </div>
                                         <div id="card_accu" class="collapse bg-light">
                                             <div class="card-body text-white">
@@ -199,7 +199,7 @@
                                                 <a data-toggle="collapse" class="collapsed" href="#card_loss" role="button" aria-expanded="false" aria-controls="card_loss"><i class="mdi mdi-minus"></i></a>
                                             </div>
                                             <i class="fas fa-question-circle" style="padding-right:10px;" title="Loss is a measure for evaluating how well a model learned to predict the right classifications for a given set of samples." data-plugin="tippy" data-tippy-placement="right-start" data-tippy-maxWidth="200px" data-tippy-offset="0, 0"></i>
-                                            <h5 class="card-title mb-0 text-white" style="display: inline-block;" id="class_name">Traning and Validation Loss</h4>
+                                            <h5 class="card-title mb-0 text-white" style="display: inline-block;" id="class_name">Training and Validation Loss</h4>
                                         </div>
                                         <div id="card_loss" class="collapse bg-light">
                                             <div class="card-body text-white">
