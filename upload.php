@@ -82,7 +82,7 @@
 										?>
 										<div class="row">
 											<div class="col-md-6 col-sm-12">
-												<i class="fas fa-question-circle" style="padding-right:5px;margin-bottom:7px;" title="Click 'Class 0' to edit the name of class" data-plugin="tippy" data-tippy-placement="right-start" data-tippy-maxWidth="200px" data-tippy-offset="0, 0"></i>
+												<i class="fas fa-question-circle" style="padding-right:5px;margin-bottom:7px;" title="Click Class Name to edit the name of class" data-plugin="tippy" data-tippy-placement="right-start" data-tippy-maxWidth="200px" data-tippy-offset="0, 0"></i>
 												<h4 class="header-title" style="display: inline-block;" id="class_name" contenteditable="true"><?=$new_name?></h4>
                                                 <form action="upload_files.php" method="post" class="dropzone" style="min-height: 0px !important;" id="myAwesomeDropzone" name="myAwesomeDropzone" data-plugin="dropzone" data-previews-container="#file-previews"
 													data-upload-preview-template="#uploadPreviewTemplate">

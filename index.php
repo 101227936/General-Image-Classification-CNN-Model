@@ -30,7 +30,7 @@
                 <a class="logo text-uppercase" href="index.php">
                     <img src="Landing/Logo/light-logo.png" alt="" class="logo-light" height="21" style="max-width: 404px;height: 70px;" />
                     
-                    <img src="Landing/Logo/dark-logo.png" alt="" class="logo-dark" height="21" style="max-width: 404px;height: 70px;" />
+                    <img src="Landing/Logo/dark-logo.png" alt="" class="logo-dark" height="21" style="max-width: 380px;height: 70px;" />
                 </a>
 
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">

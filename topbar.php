@@ -3,7 +3,7 @@
     <div class="container-fluid">
         <!-- LOGO -->
         <div class="logo-box">
-            <a href="Landing/index.php" class="logo logo-light text-center">
+            <a href="index.php" class="logo logo-light text-center">
                 <span class="logo-lg">
                     <img src="Landing/Logo/light-logo.png" alt="" height="40">
                 </span>
