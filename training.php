@@ -131,10 +131,10 @@
                                                 <h3 class="header-title" style="display: inline-block;">Batch Size</h3>
                                                 <select class="form-control" name="batch_size" id="batch_size" required="">
                                                     <option value="">Choose..</option>
+                                                    <option value="8">8</option>
                                                     <option value="16">16</option>
                                                     <option value="32">32</option>
                                                     <option value="64">64</option>
-                                                    <option value="128">128</option>
                                                 </select>
                                             </div>
                                             <a href="upload.php" class="btn btn-primary btn-block waves-effect waves-light float-end">Add Class</a>
