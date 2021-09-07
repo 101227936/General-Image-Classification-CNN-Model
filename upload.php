@@ -183,9 +183,9 @@
 						var e=t(this).attr("action"),
 						o=t(this).data("previewsContainer"),
 						i={
-							acceptedFiles: "image/jpeg,image/png,image/jpg",
+							acceptedFiles: "image/jpeg,image/png,image/jpg,application/octet-stream,.nii",
 							url:e,
-							maxFilesize: 1,
+							maxFilesize: 2000,
 							autoProcessQueue: false,
 							maxFiles: 150,
 							parallelUploads: 150,
@@ -193,12 +193,12 @@
 								myDropzone = this;
 								$("#upload").click(function (e) {
 									e.preventDefault();
-									if(myDropzone.getAcceptedFiles().length>=50)myDropzone.processQueue();
+									if(myDropzone.getAcceptedFiles().length>=20)myDropzone.processQueue();
 									else
 									{
 										Swal.fire({
-											title:'Failure',
-											html: 'Please upload the images<br>(Less than 1MB and  50 - 150 images allowed only)',
+											title:myDropzone.getAcceptedFiles().type,
+											html: 'Please upload the images<br>(Less than 1MB and  20 - 150 images allowed only)',
 											type: 'error',
 											backdrop:'#eeeff3',
 											confirmButtonColor: '#6658dd',
