@@ -23,6 +23,11 @@
 		<!-- icons -->
 		<link href="template/Template/Admin/dist/assets/css/icons.min.css" rel="stylesheet" type="text/css" />
 
+        <!--firebse-->
+        <script src="https://www.gstatic.com/firebasejs/ui/4.8.1/firebase-ui-auth.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/7.6.1/firebase-app.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/7.6.1/firebase-auth.js"></script>    
+        <link type="text/css" rel="stylesheet" href="https://www.gstatic.com/firebasejs/ui/4.8.1/firebase-ui-auth.css" />
 
     </head>
 
@@ -52,20 +57,17 @@
                         </div>
 
                         <!-- title-->
-                        <h4 class="mt-0">Sign In</h4>
-                        <p class="text-muted mb-5">Sign in With Email or Google to access account.</p>
+                        <h4 class="mt-0">Sign In / Sign Up</h4>
+                        <p class="text-muted mb-5">Sign in / Sign Up With Email or Google to access account.</p>
 
-                        <!-- form -->
-                        <form action="#">
-                            <div class="mt-5 form-group text-center">
-                                <button class="btn btn-primary btn-block" type="submit"><i class="mdi mdi-email mr-3"></i>Sign In With Email </button>
+                        <div class="container">
+                            <div class="row justify-content-center">
+                                <div class="col-lg-9">
+                                    <div id="firebaseui-auth-container"></div>
+                                    <div id="loader">Loading...</div>
+                                </div>
                             </div>
-
-                            <div class="mt-4 form-group text-center">
-                                <button class="btn btn-primary btn-block" type="submit"><i class="mdi mdi-google mr-3"></i>Sign In With Google </button>
-                            </div>
-                        </form>
-                        <!-- end form-->
+                        </div>
 
                         <!-- Footer-->
                         <footer class="footer footer-alt">
@@ -96,8 +98,44 @@
         <!-- Vendor js -->
         <script src="template/Template/Admin/dist/assets/js/vendor.min.js"></script>
 
-         <!-- App js -->
-         <script src="template/Template/Admin/dist/assets/js/app.min.js"></script>
+        <!-- App js -->
+        <script src="template/Template/Admin/dist/assets/js/app.min.js"></script>
         
+        <script src="firebase.js"></script>
+        
+        <script>
+            // Initialize the FirebaseUI Widget using Firebase.
+            var ui = new firebaseui.auth.AuthUI(firebase.auth());
+
+            var uiConfig =
+            {
+                callbacks:
+                {
+                    signInSuccessWithAuthResult: function(authResult, redirectUrl)
+                    {
+                        // User successfully signed in.
+                        // Return type determines whether we continue the redirect automatically
+                        // or whether we leave that to developer to handle.
+                        return true;
+                    },
+                    uiShown: function() 
+                    {
+                        // The widget is rendered.
+                        // Hide the loader.
+                        document.getElementById('loader').style.display = 'none';
+                    }
+                },
+                // Will use popup for IDP Providers sign-in flow instead of the default, redirect.
+                signInFlow: 'popup',
+                signInSuccessUrl: 'hom.php',
+                signInOptions: [
+                    // Leave the lines as is for the providers you want to offer your users.
+                    firebase.auth.EmailAuthProvider.PROVIDER_ID,
+                    firebase.auth.GoogleAuthProvider.PROVIDER_ID,
+                ]
+            };
+            // The start method will wait until the DOM is loaded.
+            ui.start('#firebaseui-auth-container', uiConfig);
+        </script>
     </body>
 </html>

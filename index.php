@@ -51,7 +51,7 @@
                             <a href="#about" class="nav-link">Our Team</a>
                         </li>
                     </ul>
-                    <button onclick="window.location.href='hom.php'" class="btn btn-info navbar-btn">Get Started</button>
+                    <button onclick="window.location.href='signin.php'" class="btn btn-info navbar-btn">Sign In / Sign Up</button>
                 </div>
             </div>
         </nav>
@@ -69,7 +69,7 @@
                                     <p class="text-white-50 home-desc mb-5">Image Classification System is a web application system where users can input images into different classes, train the model and test the model to see whether it can correctly classify the image.</p>
                                     <div class="subscribe">
                                         <div class="col-md-4" style="padding-bottom: 50px;padding-left: 0px;">
-                                            <button onclick="window.location.href='hom.php'" class="btn btn-info">Get Started</button>
+                                            <button onclick="window.location.href='signin.php'" class="btn btn-info">Get Started</button>
                                         </div>
                                     </div>
                                 </div>
