@@ -4,10 +4,25 @@
 	{
         
         $folder = "./model";
-		if (!empty($_FILES)) {
-            $tmpFile = $_FILES['image']['tmp_name'];
-            $filename = $folder.'/'.time().end(explode(".", $_FILES['image']['name']));
-            move_uploaded_file($tmpFile,$filename);
+		if (!empty($_FILES)) 
+		{
+			$tmpFile = $_FILES['image']['tmp_name'];
+			$ext = pathinfo($_FILES['image']['name'], PATHINFO_EXTENSION);
+			
+			if($ext == 'nii')
+			{
+				$filename = $_FILES['image']['name'];
+				move_uploaded_file($tmpFile,$filename);
+
+				$command = escapeshellcmd('python nii2png.py -i '.$_FILES['image']['name'].' -o '.$folder);
+				$output = shell_exec($command);
+
+				unlink($filename);
+			}else
+			{
+				$filename = $folder.'/'.time().end(explode(".", $_FILES['image']['name']));
+				move_uploaded_file($tmpFile,$filename);
+			}
 		}
 		$command = "python predict.py ".$filename;
 

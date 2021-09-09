@@ -15,6 +15,9 @@ import numpy, shutil, os, nibabel, imageio
 
 import sys, getopt
 
+import calendar;
+import time;
+
 def main(argv):
     inputfile = ''
     outputfile = ''
@@ -113,7 +116,8 @@ def main(argv):
 
         data = numpy.rot90(image_array[:, :, half_sices-1])
         print('Saving image...')
-        image_name = inputfile[:-4] + "_z" + "{:0>3}".format(str(half_sices))+ ".png"
+        ts = str(calendar.timegm(time.gmtime()))
+        image_name = ts + inputfile[:-4] + "_z" + "{:0>3}".format(str(half_sices))+ ".png"
         imageio.imwrite(image_name, data)
         print('Saved.')
 
