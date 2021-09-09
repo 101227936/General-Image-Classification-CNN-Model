@@ -76,6 +76,9 @@ firebase.auth().onAuthStateChanged(function(user)
 	if(user.photoURL == null)
 	{
 		document.getElementById('uImage').src = "Landing/images/defaultUser.jpg";
+		user.updateProfile({
+			photoURL: "Landing/images/defaultUser.jpg"
+		});
 	}
 	else
 	{
