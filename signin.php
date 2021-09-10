@@ -28,11 +28,24 @@
         <script src="https://www.gstatic.com/firebasejs/7.6.1/firebase-app.js"></script>
         <script src="https://www.gstatic.com/firebasejs/7.6.1/firebase-auth.js"></script>    
         <link type="text/css" rel="stylesheet" href="https://www.gstatic.com/firebasejs/ui/4.8.1/firebase-ui-auth.css" />
+        <script src="firebase.js"></script>
+        <script>
+            firebase.auth().onAuthStateChanged((user) => {
+                if (user) {
+                    window.location.href="hom.php";
+                }
+            });
+        </script>
 
     </head>
 
     <body class="auth-fluid-pages pb-0">
-
+        <!-- Pre-loader -->
+        <div id="preloader">
+            <div id="status">
+                <div class="spinner">Loading...</div>
+            </div>
+        </div>
         <div class="auth-fluid">
             <!--Auth fluid left content -->
             <div class="auth-fluid-form-box">
@@ -100,9 +113,7 @@
 
         <!-- App js -->
         <script src="template/Template/Admin/dist/assets/js/app.min.js"></script>
-        
-        <script src="firebase.js"></script>
-        
+                
         <script>
             // Initialize the FirebaseUI Widget using Firebase.
             var ui = new firebaseui.auth.AuthUI(firebase.auth());
@@ -113,9 +124,18 @@
                 {
                     signInSuccessWithAuthResult: function(authResult, redirectUrl)
                     {
+                        console.log(authResult);
                         // User successfully signed in.
                         // Return type determines whether we continue the redirect automatically
                         // or whether we leave that to developer to handle.
+                        /*$.ajax({
+                            method: "POST",
+                            url: "create_folder.php",
+                            data: {'uid': authResult.user.uid}
+                        })
+                        .done(function( msg ) {
+                            console.log(msg);
+                        });*/
                         return true;
                     },
                     uiShown: function() 
@@ -126,7 +146,7 @@
                     }
                 },
                 // Will use popup for IDP Providers sign-in flow instead of the default, redirect.
-                signInFlow: 'popup',
+                signInFlow: 'redirect',
                 signInSuccessUrl: 'hom.php',
                 signInOptions: [
                     // Leave the lines as is for the providers you want to offer your users.
