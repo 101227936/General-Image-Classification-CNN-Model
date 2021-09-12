@@ -6,6 +6,39 @@
 <script src="https://www.gstatic.com/firebasejs/7.6.1/firebase-auth.js"></script>    
 <link type="text/css" rel="stylesheet" href="https://www.gstatic.com/firebasejs/ui/4.8.1/firebase-ui-auth.css" />
 
+<!-- End Preloader-->
+<script src="firebase.js"></script>
+
+<script>
+	firebase.auth().onAuthStateChanged((user) => {
+	  if (user) {
+		// User is signed in, see docs for a list of available properties
+		// https://firebase.google.com/docs/reference/js/firebase.User
+		<?php
+			if(!isset($_GET['id']))
+			{
+				?>
+				window.location=window.location.href+"?id="+user.uid;
+				<?php
+			}
+			else
+			{
+				?>
+				const queryString = window.location.search;
+				const urlParams = new URLSearchParams(queryString);
+				const id = urlParams.get('id')
+				if(user.uid!=id)window.location=location.protocol + '//' + location.host + location.pathname+"?id="+user.uid;
+				<?php
+			}
+		?>
+		console.log("<?=(isset($_GET['id']))? $_GET['id']:null?>");
+		// ...
+	  } else {
+		window.location.href="index.php";
+	  }
+	});
+</script>
+
 <!-- Topbar Start -->
   <div class="navbar-custom">
     <div class="container-fluid">
@@ -65,9 +98,6 @@
 
 <!-- Sweet Alerts js -->
 <script src="template/Template/Admin/dist/assets/libs/sweetalert2/sweetalert2.min.js"></script>
-
-<!-- firebase js-->
-<script src="firebase.js"></script>
 
 <script>
 firebase.auth().onAuthStateChanged(function(user)
