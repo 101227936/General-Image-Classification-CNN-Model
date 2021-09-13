@@ -117,27 +117,6 @@ firebase.auth().onAuthStateChanged(function(user)
 	}
 });
 
-function signOut()
-{
-	firebase.auth().signOut().then(function() {
-		// The timeout allows the message to be displayed after the UI has changed to the signed out state.
-		setTimeout(function() 
-		{
-			swal({
-			title: 'Success',
-			text: "Logout successful!",
-			type: 'success',
-			confirmButtonColor: '#6658dd',
-			backdrop:'#eeeff3',
-			allowOutsideClick: false,
-			animation:true,
-			}).then(()=> {
-				window.location='index.php';
-			})
-		}, 1)
-	});
-}
-
 function askSignOut()
 {
 	swal({
@@ -152,7 +131,7 @@ function askSignOut()
     animation:true,
 	}).then(function (result) {
 		if (result.value) {
-			signOut();
+			firebase.auth().signOut();
 		}
 	})
 }
