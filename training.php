@@ -102,6 +102,7 @@
                                                         <option value="MobileNetV2">MobileNetV2</option>
                                                         <option value="EfficientNetB3">EfficientNetB3</option>
                                                         <option value="InceptionV3">InceptionV3</option>
+                                                        <option value="DenseNet201">DenseNet201</option>
                                                     </optgroup>
  
                                                     <optgroup label="--Comming Soon--">

@@ -18,6 +18,8 @@ elif "efficientnetb3" in model.name:
     from tensorflow.keras.applications.efficientnet import EfficientNetB3, preprocess_input
 elif "inception_v3" in model.name:
     from tensorflow.keras.applications.inception_v3 import InceptionV3, preprocess_input
+elif "densenet" in model.name:
+    from tensorflow.keras.applications.densenet import DenseNet201, preprocess_input
 
 testsite_array = []
 with open(dest_base+'/label.txt') as my_file:
