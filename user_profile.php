@@ -114,7 +114,7 @@
 
                                                     <div class="col-md-12">
                                                         <div class="form-group mb-3">
-                                                            <label>Password (at least 6 character)</label>
+                                                            <label>Password (at least 6 characters)</label>
                                                             <div class="input-group">
                                                                 <input type="password" class="form-control" placeholder="Enter your new password" id="password">
                                                                 <div class="input-group-append" data-password="false">
