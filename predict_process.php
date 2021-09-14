@@ -18,13 +18,15 @@
 				$output = shell_exec($command);
 
 				unlink($filename);
-			}else
+			}else if($ext == "jpg" || $ext == "png" || $ext == "jpeg")
 			{
 				$filename = $folder.'/'.time().end(explode(".", $_FILES['image']['name']));
 				move_uploaded_file($tmpFile,$filename);
-			}
+			}else{}
 		}
-		$command = "python predict.py ".$filename;
+		$files = scandir($folder);
+		$firstFile = $files[2];
+		$command = "python predict.py ".$folder.'/'.$firstFile;
 
 		$output=[];
 		$retval=[];
