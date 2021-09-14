@@ -96,7 +96,7 @@
 													<i class="fas fa-question-circle" style="padding-right:5px;margin-bottom:7px;" title="Show the result of prediction" data-plugin="tippy" data-tippy-placement="right-start" data-tippy-maxWidth="200px" data-tippy-offset="0, 0"></i>
 													<h3 class="header-title" style="display: inline-block;">Output</h3>
 												</div>
-												<img src="model/result.png?<?=time()?>" + new Date().getTime() alt="result.png" onError="this.src ='template/Template/Admin/dist/assets/images/404.jpeg'" class="img-fluid" style="padding: 70px 0;display: block;margin-left: auto;margin-right: auto;">
+												<img src="model/result.png?<?=time()?>" + new Date().getTime() alt="result.png" onError="this.src ='template/Template/Admin/dist/assets/images/wait_predict_result.png'" class="img-fluid" style="padding: 70px 0;display: block;margin-left: auto;margin-right: auto;">
 											</div>
                                         </div> <!-- end row -->
 
