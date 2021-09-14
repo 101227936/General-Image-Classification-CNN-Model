@@ -129,7 +129,58 @@
                                     <div class="row">
                                         <div class="col-12">
                                             <div class="page-title-box">
-                                                <h6 class="page-title">History Result</h6>      
+                                                <h6 class="page-title"> <i class="mdi mdi-history"></i> HISTORY RESULT</h6>
+                                                    <table id="datatable-buttons" class="table table-striped dt-responsive nowrap w-100">
+                                                        <thead>
+                                                            <tr>
+                                                                <th>Hidden Data</th>
+                                                                <th>Metadata + Number of image dataset</th>
+                                                                <th>Pre-trained Model</th>
+                                                                <th>Epoch</th>
+                                                                <th>Batch Size</th>
+                                                                <th>Accuracy </th>
+                                                            </tr>
+                                                        </thead>
+                                                    
+                                                        <tbody>
+                                                            <tr>
+                                                                <td><a data-toggle="collapse" class="collapsed" href="#card_accu" role="button" aria-expanded="false" aria-controls="card_accu"><i class="mdi mdi-chevron-down"></i></a></td>
+                                                                <td>Cats 500, Dogs 500</td>
+                                                                <td>DenseNet</td>
+                                                                <td>2</td>
+                                                                <td>16</td>
+                                                                <td>0.96</td>
+                                                            </tr>
+                                                        </tbody>
+                                                    </table>
+
+                                                    <div class="card">
+                                                    <div id="card_accu" class="collapse bg-light">
+                                                        <div class="card-body text-white">
+                                                        <table id="datatable-buttons2" class="table table-striped dt-responsive nowrap w-100 collapsed">
+                                                                <thead>
+                                                                    <tr>
+                                                                        <th>Precision</th>
+                                                                        <th>Recall</th>
+                                                                        <th>F-score</th>
+                                                                        <th>Score</th>
+                                                                        <th>Error Rate</th>
+                                                                    </tr>
+                                                                </thead>
+                                                            
+                                                                <tbody>
+                                                                    <tr>
+                                                                        <td>Jasmin wakaka</td>
+                                                                        <td>0.123</td>
+                                                                        <td>0.567</td>
+                                                                        <td>0.789</td>
+                                                                        <td>0.111</td>
+                                                                    </tr>
+                                                                </tbody>
+                                                            </table>                                            
+                                                        </div>
+                                                    </div>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
