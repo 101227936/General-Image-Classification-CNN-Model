@@ -31,14 +31,6 @@
 
     <body data-layout-mode="horizontal">
 
-        <!-- Pre-loader -->
-        <div id="preloader">
-            <div id="status">
-                <div class="spinner">Loading...</div>
-            </div>
-        </div>
-        <!-- End Preloader-->
-
         <!-- Begin page -->
         <div id="wrapper">
 			<?php include "topbar.php";?>
