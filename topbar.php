@@ -9,6 +9,13 @@
 <!-- End Preloader-->
 <script src="firebase.js"></script>
 
+<!-- Pre-loader -->
+<div id="preloader">
+	<div id="status">
+		<div class="spinner">Loading...</div>
+	</div>
+</div>
+
 <script>
 	firebase.auth().onAuthStateChanged((user) => {
 	  if (user) {
