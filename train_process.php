@@ -16,6 +16,8 @@
 			header('Location: image_predict_train_model.php');
 		}else if ($result2 == 'False')
 		{
+			$command3 = "python remove_file.py";
+			$result3 = exec($command3);
 			header('Location: training.php');
 
 		}else
