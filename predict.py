@@ -22,6 +22,8 @@ elif "densenet" in model.name:
     from tensorflow.keras.applications.densenet import DenseNet201, preprocess_input
 elif "resnet50v2" in model.name:
     from tensorflow.keras.applications.resnet_v2 import ResNet50V2, preprocess_input
+elif "vgg16" in model.name:
+    from tensorflow.keras.applications.vgg16 import VGG16, preprocess_input
 
 testsite_array = []
 with open(dest_base+'/label.txt') as my_file:

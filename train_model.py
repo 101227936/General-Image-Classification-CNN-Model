@@ -155,7 +155,9 @@ elif MODEL=="DenseNet201":
 elif MODEL=="ResNet50V2":
     from tensorflow.keras.applications.resnet_v2 import ResNet50V2, preprocess_input
     base_model = ResNet50V2(weights='imagenet', include_top=False, input_shape=(224,224,3), pooling='avg')
-
+elif MODEL=="VGG16":
+    from tensorflow.keras.applications.vgg16 import VGG16, preprocess_input
+    base_model = VGG16(weights='imagenet', include_top=False, input_shape=(224,224,3), pooling='avg')
 
 	
 x = base_model.output
