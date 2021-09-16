@@ -152,6 +152,9 @@ elif MODEL=="InceptionV3":
 elif MODEL=="DenseNet201":
     from tensorflow.keras.applications.densenet import DenseNet201, preprocess_input
     base_model = DenseNet201(weights='imagenet', include_top=False, input_shape=(224,224,3), pooling='avg')
+elif MODEL=="ResNet50V2":
+    from tensorflow.keras.applications.resnet_v2 import ResNet50V2, preprocess_input
+    base_model = ResNet50V2(weights='imagenet', include_top=False, input_shape=(224,224,3), pooling='avg')
 
 
 	

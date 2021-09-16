@@ -20,6 +20,8 @@ elif "inception_v3" in model.name:
     from tensorflow.keras.applications.inception_v3 import InceptionV3, preprocess_input
 elif "densenet" in model.name:
     from tensorflow.keras.applications.densenet import DenseNet201, preprocess_input
+elif "resnet50v2" in model.name:
+    from tensorflow.keras.applications.resnet_v2 import ResNet50V2, preprocess_input
 
 testsite_array = []
 with open(dest_base+'/label.txt') as my_file:

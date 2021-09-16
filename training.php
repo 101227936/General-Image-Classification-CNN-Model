@@ -95,12 +95,11 @@
                                                         <option value="EfficientNetB3">EfficientNetB3</option>
                                                         <option value="InceptionV3">InceptionV3</option>
                                                         <option value="DenseNet201">DenseNet201</option>
+                                                        <option value="ResNet50V2">ResNet50V2</option>
                                                     </optgroup>
  
                                                     <optgroup label="--Comming Soon--">
-                                                        <option value="DenseNet201" disabled>DenseNet201</option>
                                                         <option value="VGG16" disabled>VGG16</option>
-                                                        <option value="ResNet50V2" disabled>ResNet50V2</option>
                                                         <option value="Xception" disabled>Xception</option>
                                                     </optgroup>
                                                 </select>
