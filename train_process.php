@@ -1,3 +1,7 @@
+<!-- Sweet Alert-->
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
 <?php
 	if(!empty($_POST["model_selection"])&&!empty($_POST["model_selection"])&&!empty($_POST["model_selection"]))
 	{
@@ -18,8 +22,29 @@
 		{
 			$command3 = "python remove_file.py";
 			$result3 = exec($command3);
-			header('Location: training.php');
-
+			//header('Location: training.php');
+			?>
+			<!--Diplay error message-->
+			<script>
+				$( document ).ready(function() {
+					Swal.fire({
+						title: 'Failure',
+						text: 'GPU Memory problem. Please try again.',
+						icon: 'error',
+						confirmButtonColor: '#6658dd',
+						backdrop:'#eeeff3',
+						cancelButtonColor: '#d33',
+						confirmButtonText: 'Yes',
+						allowOutsideClick: false,
+						animation:true,
+					}).then(function (result) {
+						if (result.value) {
+							window.location.href="training.php";
+						}
+					})
+				});
+				</script>
+			<?php
 		}else
 		{
 			die(header("HTTP/1.0 403 Forbidden"));
