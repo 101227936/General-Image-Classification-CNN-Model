@@ -92,8 +92,11 @@
 													<div class="dz-message needsclick" style="margin:5.5rem !important;">
 														<i class="h1 text-muted dripicons-cloud-upload"></i>
 														<h3>Drop files here or click to upload</h3>
-														<span class="text-muted font-13">(Please upload the images with less than 1MB and minimum 50 and maximum of 150 images allowed only)</span>
-													</div>
+														<span class="text-muted font-16">Note: The system do support either IMAGE file (.jpeg,.jpg,.png) or NIFTI file (.nii)</span>
+														</br></br>
+														<span class="text-secondary font-13">IMAGE FILE : Please upload the images with less than 1MB and minimum 50 and maximum of 150 images allowed only</span>
+														</br></br>
+														<span class="text-secondary font-13">NIFTI FILE : Please upload the images with less than 1MB and minimum 20 and maximum of 50 images allowed only</span>
 												</form>
 											</div>
 											<div class="col-6">
