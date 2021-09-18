@@ -1,7 +1,7 @@
 <?php
 	if(!empty($_POST["name"]))
 	{
-		if(count(glob(dirname($_POST["name"])."/*")) <= 50)
+		if(count(glob(dirname($_POST["name"])."/*")) <= 20)
 		{
 			$response = array("Status"=>false, "Result"=>"Not more image allow to delete");
 			echo json_encode($response);
