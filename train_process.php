@@ -29,7 +29,7 @@
 				$( document ).ready(function() {
 					Swal.fire({
 						title: 'Failure',
-						text: 'GPU Memory problem. Please try again.',
+						html: 'There have some error occur.<br> You may try to lower the number of batch-size and train model again.',
 						icon: 'error',
 						confirmButtonColor: '#6658dd',
 						backdrop:'#eeeff3',
