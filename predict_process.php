@@ -16,8 +16,8 @@
 
 				$command = escapeshellcmd('python nii2png.py -i '.$_FILES['image']['name'].' -o '.$folder);
 				$output = shell_exec($command);
-
 				unlink($filename);
+				$filename = $folder.'/'.trim($output);
 			}else if($ext == "jpg" || $ext == "png" || $ext == "jpeg")
 			{
 				$filename = $folder.'/'.time().end(explode(".", $_FILES['image']['name']));

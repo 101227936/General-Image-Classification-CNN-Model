@@ -24,23 +24,18 @@ def main(argv):
     try:
         opts, args = getopt.getopt(argv,"hi:o:",["ifile=","ofile="])
     except getopt.GetoptError:
-        print('nii2png.py -i <inputfile> -o <outputfile>')
         sys.exit(2)
     for opt, arg in opts:
         if opt == '-h':
-            print('nii2png.py -i <inputfile> -o <outputfile>')
             sys.exit()
         elif opt in ("-i", "--input"):
             inputfile = arg
         elif opt in ("-o", "--output"):
             outputfile = arg
 
-    print('Input file is ', inputfile)
-    print('Output folder is ', outputfile)
 
     # set fn as your 4d nifti file
     image_array = nibabel.load(inputfile).get_data()
-    print(len(image_array.shape))
 
     # ask if rotate
     #ask_rotate = input('Would you like to rotate the orientation? (y/n) ')
@@ -66,14 +61,10 @@ def main(argv):
         # set destination folder
         if not os.path.exists(outputfile):
             os.makedirs(outputfile)
-            print("Created ouput directory: " + outputfile)
 
-        print('Reading NIfTI file...')
 
         total_volumes = image_array.shape[3]
         total_slices = image_array.shape[2]
-        print('Total Volumes: ' + total_volumes)
-        print('Total Slices: ' + total_slices)
 
         # iterate through volumes
         for current_volume in range(0, total_volumes):
@@ -85,19 +76,14 @@ def main(argv):
                     data = numpy.rot90(image_array[:, :, current_slice, current_volume])
                             
                     #alternate slices and save as png
-                    print('Saving image...')
                     image_name = inputfile[:-4] + "_t" + "{:0>3}".format(str(current_volume+1)) + "_z" + "{:0>3}".format(str(current_slice+1))+ ".png"
                     imageio.imwrite(image_name, data)
-                    print('Saved.')
 
                     #move images to folder
-                    print('Moving files...')
                     src = image_name
                     shutil.move(src, outputfile)
                     slice_counter += 1
-                    print('Moved.')
-
-        print('Finished converting images')
+        print(src)
 
     # else if 3D image inputted
     elif len(image_array.shape) == 3:
@@ -107,30 +93,24 @@ def main(argv):
         # set destination folder
         if not os.path.exists(outputfile):
             os.makedirs(outputfile)
-            print("Created ouput directory: " + outputfile)
 
-        print('Reading NIfTI file...')
 
         total_slices = image_array.shape[2]
         half_sices = round(total_slices / 2)
 
         data = numpy.rot90(image_array[:, :, half_sices-1])
-        print('Saving image...')
         ts = str(calendar.timegm(time.gmtime()))
         image_name = ts + inputfile[:-4] + "_z" + "{:0>3}".format(str(half_sices))+ ".png"
         imageio.imwrite(image_name, data)
-        print('Saved.')
 
-        #move images to folder
-        print('Moving image...')
         src = image_name
         shutil.move(src, outputfile)
         
-        print('Moved.')
-        print('Finished converting images')
+        print(src)
 
     else:
-        print('Not a 3D or 4D Image. Please try again.')
+        print("")
+
 
 # call the function to start the program
 if __name__ == "__main__":
