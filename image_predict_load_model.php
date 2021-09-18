@@ -92,7 +92,7 @@
 													<h3 class="header-title" style="display: inline-block;">Output</h3>
 													<div id="class_list" style="max-height: 335px; overflow-y: auto;"></div>
 												</div>
-                                                <img src="model/result.png?<?=time()?>" + new Date().getTime() alt="result.png" onError="this.src ='template/Template/Admin/dist/assets/images/404.jpeg'" class="img-fluid" style="padding: 70px 0;display: block;margin-left: auto;margin-right: auto;">											</div>
+                                                <img src="model/result.png?<?=time()?>" + new Date().getTime() alt="result.png" onError="this.src ='template/Template/Admin/dist/assets/images/wait_predict_result.png'" class="img-fluid" style="padding: 70px 0;display: block;margin-left: auto;margin-right: auto;">											</div>
                                            
                                         </div> <!-- end row -->
 
