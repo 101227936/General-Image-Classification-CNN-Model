@@ -18,7 +18,7 @@
 				unlink($filename);
 			}else
 			{
-				$filename = $folder.'/'.time().'-'. $_FILES['file']['name'];
+				$filename = $folder.'/'.time().'-'. str_replace("%","",$_FILES['file']['name']);
 				move_uploaded_file($tmpFile,$filename);
 			}
 		}
