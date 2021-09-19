@@ -93,17 +93,18 @@
 														<i class="h1 text-muted dripicons-cloud-upload"></i>
 														<h3>Drop files here or click to upload</h3>
 														<span class="text-muted font-16">Note: The system do support either IMAGE file (.jpeg,.jpg,.png) or NIFTI file (.nii)</span>
-														</br></br>
-														<span class="text-secondary font-13">IMAGE FILE : Please upload the images with less than 1MB and minimum 50 and maximum of 150 images allowed only</span>
-														</br></br>
-														<span class="text-secondary font-13">NIFTI FILE : Please upload the images with less than 1MB and minimum 20 and maximum of 50 images allowed only</span>
+														<br><br>
+														<span class="text-secondary font-13">Please upload the files with less than <strong>200 MB</strong>, total minimum of <strong>20</strong> and maximum of <strong>150</strong> files for one class.</span>
+														<br><br>
+														<span class="text-secondary font-13"><em>*You can upload the IMAGE and NIFTI files together in one class.</em></span>
+													</div>
 												</form>
 											</div>
 											<div class="col-6">
 												<!-- Preview -->
                                                 <i class="fas fa-question-circle" style="padding-right:5px;margin-bottom:7px;" title="Preview your uploaded images" data-plugin="tippy" data-tippy-placement="right-start" data-tippy-maxWidth="200px" data-tippy-offset="0, 0"></i>
                                                 <h4 class="header-title" style="display: inline-block;">Preview Container</h4>
-                                                <div class="dropzone-previews mt-3" id="file-previews" style="margin-top:0.7rem !important; max-height: 328px; overflow-y: auto;"></div>
+                                                <div class="dropzone-previews mt-3" id="file-previews" style="margin-top:0.7rem !important; max-height: 428px; overflow-y: auto;"></div>
 											</div>
 										</div>
                                     </div> <!-- end card-body-->
@@ -188,7 +189,7 @@
 						i={
 							acceptedFiles: "image/jpeg,image/png,image/jpg,application/octet-stream,.nii",
 							url:e,
-							maxFilesize: 2000,
+							maxFilesize: 200,
 							autoProcessQueue: false,
 							maxFiles: 150,
 							parallelUploads: 150,
@@ -196,12 +197,17 @@
 								myDropzone = this;
 								$("#upload").click(function (e) {
 									e.preventDefault();
-									if(myDropzone.getAcceptedFiles().length>=20)myDropzone.processQueue();
+									if(myDropzone.getAcceptedFiles().length>=20)
+									{
+										myDropzone.processQueue();
+										$("#status").delay(500).fadeIn();
+                						$("#preloader").delay(500).fadeIn("fast");
+									}
 									else
 									{
 										Swal.fire({
 											title:myDropzone.getAcceptedFiles().type,
-											html: 'Please upload the images<br>(Less than 1MB and  20 - 150 images allowed only)',
+											html: 'Please upload the files<br>(Less than 200 MB and  20 - 150 files allowed only)',
 											type: 'error',
 											backdrop:'#eeeff3',
 											confirmButtonColor: '#6658dd',
@@ -219,9 +225,11 @@
                                     myDropzone.getUploadingFiles().length === 0 && 
                                     myDropzone.getQueuedFiles().length === 0) 
                                 {
+									$("#status").delay(500).fadeOut();
+                					$("#preloader").delay(500).fadeOut("fast");
 									Swal.fire({
 										title: 'Success',
-										text: 'Upload images successful',
+										text: 'Upload files successful',
 										type: 'success',
 										confirmButtonColor: '#6658dd',
 										backdrop:'#eeeff3',
