@@ -158,6 +158,9 @@ elif MODEL=="ResNet50V2":
 elif MODEL=="VGG16":
     from tensorflow.keras.applications.vgg16 import VGG16, preprocess_input
     base_model = VGG16(weights='imagenet', include_top=False, input_shape=(224,224,3), pooling='avg')
+elif MODEL=="Xception":
+    from tensorflow.keras.applications.xception import Xception, preprocess_input
+    base_model = Xception(weights='imagenet', include_top=False, input_shape=(224,224,3), pooling='avg')
 
 	
 x = base_model.output
