@@ -30,7 +30,6 @@
     </head>
 
     <body data-layout-mode="horizontal">
-
         <!-- Begin page -->
         <div id="wrapper">
             <?php include "topbar.php";?>
@@ -148,6 +147,51 @@
                 }
             });
         </script>
+        
+        <script>
+            if(window.location.href.includes('?'))
+            {
+                <?php
+                $num = count(glob("model/" . "*"));
+                if($num!=0)
+                {
+                ?>
+                    swal({
+                    title: 'Confirm Navigation',
+                    text: 'You will lost all the unsaved prediction result. Are you sure you want to continue?',
+                    type: 'warning',
+                    showCancelButton: true,
+                    confirmButtonColor: '#6658dd',
+                    backdrop:'#eeeff3',
+                    cancelButtonColor: '#d33',
+                    confirmButtonText: 'Yes',
+                    allowOutsideClick: false,
+                    animation:true,
+                    }).then(function (result) {
+                        if (result.value)
+                        {
+                            $.ajax(
+                            'delete_files.php',
+                            {
+                                success: function() {
+                                    location.reload();
+                                },
+                                error: function() {
+                                }
+                            }
+                            );
+                        }
+                        else
+                        {
+                            window.location.href="hom.php";
+                        }
+                    })
+                <?php
+                }
+                ?>
+            }
+        </script>
+
     </body>
 </html>
 
