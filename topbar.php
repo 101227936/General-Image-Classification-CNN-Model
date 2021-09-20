@@ -66,6 +66,12 @@
                         <i class="mdi mdi-home"></i> 
                         Home
                     </a>
+                </li>	
+				<li class="dropdown d-none d-xl-block">
+                    <a class="nav-link dropdown-toggle waves-effect waves-light" href="predict_result_table.php" role="button">
+                        <i class="mdi mdi-information-outline"></i> 
+                        Overview Model Information
+                    </a>
                 </li>			
             </ul>
 
