@@ -99,9 +99,6 @@
                                                         <option value="VGG16">VGG16</option>
                                                         <option value="Xception">Xception</option>
                                                     </optgroup>
- 
-                                                    <optgroup label="--Comming Soon--">
-                                                    </optgroup>
                                                 </select>
                                             </div>
 
