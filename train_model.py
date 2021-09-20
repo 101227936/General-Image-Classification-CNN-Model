@@ -328,6 +328,22 @@ f.write('Score      : {}\n'.format(round(score, 4)))
 f.write('Error Rate : {}\n'.format(round(error_rate, 4)))
 f.close()
 
+f = open(dest_base+'/history.txt', "w")
+for category in sub_folders:
+    DIR = './uploads/' + category
+    LEN = str(len([name for name in os.listdir(DIR) if os.path.isfile(os.path.join(DIR, name))]))
+    f.write(category + ':'+ LEN + ' ')
+f.write("\n" + MODEL + "\n")
+f.write(str(EPOCHS) + "\n")
+f.write(str(BATCH_SIZE) + "\n")
+f.write('{}\n'.format(round(np.mean(predicted_classes == true_classes), 4)))
+f.write('{}\n'.format(round(precision, 4)))
+f.write('{}\n'.format(round(recall, 4)))
+f.write('{}\n'.format(round(fscore, 4)))
+f.write('{}\n'.format(round(score, 4)))
+f.write('{}\n'.format(round(error_rate, 4)))
+f.close()
+
 shutil.rmtree(TRAIN_DIR)
 shutil.rmtree(TEST_DIR)
 

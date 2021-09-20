@@ -234,6 +234,7 @@
                                         </div>
                                     </div> <!-- end card-->
                                 </div>
+                                <button type="button" onclick="saveRecord()" class="btn btn-primary btn-block waves-effect waves-light float-right" style="width:250px">Save Record</button>
                             </div> <!-- end col -->
                         </div>
                         <!-- end row -->  
@@ -299,6 +300,29 @@
                 }
             });
         </script>
+
+       <script>
+           function saveRecord()
+           {        
+                <?php
+                    $myFile = "model/history.txt";
+                    $lines = file($myFile);
+                ?>
+                var db = firebase.firestore();
+                db.collection("Users").doc("<?=$_GET['id'];?>").collection("History").add({
+                    metadata: '<?=trim($lines[0])?>',
+                    preTrainedModel: '<?=trim($lines[1])?>',
+                    epoch: '<?=trim($lines[2])?>',
+                    batchSize: '<?=trim($lines[3])?>',
+                    accuracy: '<?=trim($lines[4])?>',
+                    precision: '<?=trim($lines[5])?>',
+                    recall: '<?=trim($lines[6])?>',
+                    fsocre: '<?=trim($lines[7])?>',
+                    score: '<?=trim($lines[8])?>',
+                    errorRate: '<?=trim($lines[9])?>'
+                });
+            }
+       </script>
 
     </body>
 </html>
