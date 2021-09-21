@@ -315,7 +315,34 @@
                     fsocre: '<?=trim($lines[7])?>',
                     score: '<?=trim($lines[8])?>',
                     errorRate: '<?=trim($lines[9])?>'
-                });
+                    }).then(() => {
+                        swal({
+                                title: 'Save Model Success',
+                                type: 'success',
+                                confirmButtonColor: '#6658dd',
+                                backdrop:'#eeeff3',
+                                allowOutsideClick: false,
+                                animation:true,
+                                }).then(function (result) {
+                                    if (result.value) {
+                                        location.reload();
+                                    }
+                                })
+                    }).catch((error) => {
+                        swal({
+                                title: 'Failure',
+                                text: error.message,
+                                type: 'error',
+                                confirmButtonColor: '#6658dd',
+                                backdrop:'#eeeff3',
+                                allowOutsideClick: false,
+                                animation:true,
+                                }).then(function (result) {
+                                    if (result.value) {
+                                        location.reload();
+                                }
+                            })
+                    });
             }
        </script>
 
