@@ -26,6 +26,36 @@
     </head>
 
     <body data-layout-mode="horizontal">
+
+        <script>
+            const history123 = JSON.parse(window.localStorage.getItem("history123"));
+            if (performance.navigation.type == performance.navigation.TYPE_RELOAD)
+            {
+                window.location.href = 'get_history.php';
+            }
+        </script>
+
+        <?php
+            $length = $_COOKIE["length"];
+            $i = 0;
+            $history = array();
+            while($i < $length){
+                $push_arr = array('metadata' => "<script>document.write(history123[".$i."].metadata)</script>",
+                                    'preTrainedModel' => "<script>document.write(history123[".$i."].preTrainedModel)</script>",
+                                    'epoch' => "<script>document.write(history123[".$i."].epoch)</script>",
+                                    'batchSize' => "<script>document.write(history123[".$i."].batchSize)</script>",
+                                    'accuracy' => "<script>document.write(history123[".$i."].accuracy)</script>",
+                                    'precision' => "<script>document.write(history123[".$i."].precision)</script>",
+                                    'recall' => "<script>document.write(history123[".$i."].recall)</script>",
+                                    'fsocre' => "<script>document.write(history123[".$i."].fsocre)</script>",
+                                    'score' => "<script>document.write(history123[".$i."].score)</script>",
+                                    'errorRate' => "<script>document.write(history123[".$i."].errorRate)</script>");
+                array_push($history, $push_arr);
+                $i++;
+            }
+        ?>
+
+
         <!-- Begin page -->
         <div id="wrapper">
 
@@ -137,57 +167,63 @@
                                         <div class="col-12">
                                             <div class="page-title-box">
                                                 <h6 class="page-title"> <i class="mdi mdi-history"></i> HISTORY RESULT</h6>
-                                                    <table id="datatable-buttons" class="table table-striped dt-responsive nowrap w-100">
-                                                        <thead>
-                                                            <tr>
-                                                                <th>Hidden Data</th>
-                                                                <th>Metadata + Number of image dataset</th>
-                                                                <th>Pre-trained Model</th>
-                                                                <th>Epoch</th>
-                                                                <th>Batch Size</th>
-                                                                <th>Accuracy </th>
-                                                            </tr>
-                                                        </thead>
-                                                    
-                                                        <tbody>
-                                                            <tr>
-                                                                <td><a data-toggle="collapse" class="collapsed" href="#card_accu" role="button" aria-expanded="false" aria-controls="card_accu"><i class="mdi mdi-chevron-down"></i></a></td>
-                                                                <td>Cats 500, Dogs 500</td>
-                                                                <td>DenseNet</td>
-                                                                <td>2</td>
-                                                                <td>16</td>
-                                                                <td>0.96</td>
-                                                            </tr>
-                                                        </tbody>
-                                                    </table>
+                                                <table id="datatable-buttons" class="table table-striped dt-responsive nowrap w-100">
+                                                    <thead>
+                                                        <tr>
+                                                            <th>Hidden Data</th>
+                                                            <th>Metadata + Number of image dataset</th>
+                                                            <th>Pre-trained Model</th>
+                                                            <th>Epoch</th>
+                                                            <th>Batch Size</th>
+                                                            <th>Accuracy </th>
+                                                        </tr>
+                                                    </thead>
+                                                
+                                                    <?php
+                                                    $i = 0;
+                                                    foreach($history as $his)
+                                                    {?>
+                                                    <tbody>
+                                                        <tr>
+                                                            <td><a data-toggle="collapse" class="accordion-toggle collapsed" href=<?='#collapse'.$i?> role="button" aria-expanded="false" aria-controls="card_accu"><i class="mdi mdi-chevron-down"></i></a></td>
+                                                            <td><?=$his['metadata']?></td>
+                                                            <td><?=$his['preTrainedModel']?></td>
+                                                            <td><?=$his['epoch']?></td>
+                                                            <td><?=$his['batchSize']?></td>
+                                                            <td><?=$his['accuracy']?></td>
+                                                        </tr>
 
-                                                    <div class="card">
-                                                    <div id="card_accu" class="collapse bg-light">
-                                                        <div class="card-body text-white">
-                                                        <table id="datatable-buttons2" class="table table-striped dt-responsive nowrap w-100 collapsed">
-                                                                <thead>
-                                                                    <tr>
-                                                                        <th>Precision</th>
-                                                                        <th>Recall</th>
-                                                                        <th>F-score</th>
-                                                                        <th>Score</th>
-                                                                        <th>Error Rate</th>
-                                                                    </tr>
-                                                                </thead>
-                                                            
-                                                                <tbody>
-                                                                    <tr>
-                                                                        <td>Jasmin wakaka</td>
-                                                                        <td>0.123</td>
-                                                                        <td>0.567</td>
-                                                                        <td>0.789</td>
-                                                                        <td>0.111</td>
-                                                                    </tr>
-                                                                </tbody>
-                                                            </table>                                            
-                                                        </div>
-                                                    </div>
-                                                </div>
+                                                        <tr class="hide-table-padding">
+                                                            <td colspan="3">
+                                                                <div id=<?='collapse'.$i?> class="collapse in p-3">
+                                                                    <div class="row">
+                                                                        <div class="col-4">Precision</div>
+                                                                        <div class="col-3"><?=$his['precision']?></div>
+                                                                    </div>
+                                                                    <div class="row">
+                                                                        <div class="col-4">Recall</div>
+                                                                        <div class="col-3"><?=$his['recall']?></div>
+                                                                    </div>
+                                                                    <div class="row">
+                                                                        <div class="col-4">F-score</div>
+                                                                        <div class="col-3"><?=$his['fsocre']?></div>
+                                                                    </div>
+                                                                    <div class="row">
+                                                                        <div class="col-4">Score</div>
+                                                                        <div class="col-3"><?=$his['score']?></div>
+                                                                    </div>
+                                                                    <div class="row">
+                                                                        <div class="col-4">Error Rate</div>
+                                                                        <div class="col-3"><?=$his['errorRate']?></div>
+                                                                    </div>
+                                                                </div>
+                                                            </td>
+                                                        </tr>
+                                                    </tbody>
+                                                    <?php
+                                                    $i++;
+                                                    }?>
+                                                </table>
                                             </div>
                                         </div>
                                     </div>
@@ -529,5 +565,5 @@
 		</script>
 
     </body>
-
+    
 </html>
