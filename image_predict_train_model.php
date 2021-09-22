@@ -303,7 +303,9 @@
 
        <script>
            function saveRecord()
-           {        
+           {
+                $("#status").delay(500).fadeIn();
+                $("#preloader").delay(500).fadeIn("fast");
                 <?php
                     $myFile = "model/".$_GET['id']."/history.txt";
                     $lines = file($myFile);
@@ -321,6 +323,8 @@
                     score: '<?=trim($lines[8])?>',
                     errorRate: '<?=trim($lines[9])?>'
                     }).then(() => {
+                        $("#status").delay(500).fadeOut();
+                		$("#preloader").delay(500).fadeOut("fast");
                         swal({
                                 title: 'Save Model Success',
                                 type: 'success',
