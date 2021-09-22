@@ -1,6 +1,15 @@
 <?php
     if(!empty($_POST['uid']))
     {
+		if(!is_dir("./uploads")) 
+		{
+			mkdir("./uploads");
+		}
+		if(!is_dir("./model"))  
+		{
+			mkdir("./model");
+		}
+		
         $upload_folder = 'uploads/'.$_POST['uid'];
         $model_folder = 'model/'.$_POST['uid'];
         $dirs = array_filter(glob($upload_folder), 'is_dir');
