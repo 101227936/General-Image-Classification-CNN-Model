@@ -76,11 +76,12 @@
                                                 <form action="predict_process.php?id=<?=$_GET['id']?>" name="image_predict" id="image_predict" enctype="multipart/form-data" method="post" data-parsley-validate=""> 
                                                     <input type="file" name="image" id="image" data-plugins="dropify" accept="image/*" data-height="300" data-max-file-size-preview="50G">
                                                     <input type="hidden" name="proc" value="train">
-                                                    <button type="submit" form="image_predict" id='btn_predict' class="btn btn-primary btn-block waves-effect waves-light float-end" style="margin-top:40px;">Predict Image</button>
+                                                    <button type="submit" form="image_predict" id='btn_predict' class="btn btn-primary btn-block waves-effect waves-light float-end" style="margin-top:20px;">Predict Image</button>
                                                 </form>
                                                 <form method='post' action='zip_process.php?id=<?=$_GET['id']?>' name="export_model" id="export_model">
-                                                    <button type="submit" form="export_model" name="export" id='btn_export' class="btn btn-primary btn-block waves-effect waves-light float-end" style="margin-top:40px;">Export Model</button>
+                                                    <button type="submit" form="export_model" name="export" id='btn_export' class="btn btn-primary btn-block waves-effect waves-light float-end" style="margin-top:20px;">Export Model</button>
                                                 </form>
+                                                <button type="button" onclick="saveRecord()" class="btn btn-primary btn-block waves-effect waves-light float-right float-end" style="margin-top:20px;">Save Record</button>
                                             </div>
                                         </div> <!-- end row -->
                                     </div> <!-- end card-body-->
@@ -91,7 +92,7 @@
                                 <div class="card">
                                     <div class="card-body">
                                         <div class="row">
-                                            <div class="col-12" style="height:495px; ">
+                                            <div class="col-12" style="height:510px; ">
 												<div class="col-md-12 col-sm-12" style="padding-left:0px;">
 													<i class="fas fa-question-circle" style="padding-right:5px;margin-bottom:7px;" title="Show the result of prediction" data-plugin="tippy" data-tippy-placement="right-start" data-tippy-maxWidth="200px" data-tippy-offset="0, 0"></i>
 													<h3 class="header-title" style="display: inline-block;">Output</h3>
@@ -234,7 +235,6 @@
                                         </div>
                                     </div> <!-- end card-->
                                 </div>
-                                <button type="button" onclick="saveRecord()" class="btn btn-primary btn-block waves-effect waves-light float-right" style="width:250px">Save Record</button>
                             </div> <!-- end col -->
                         </div>
                         <!-- end row -->  
@@ -317,7 +317,7 @@
                     accuracy: '<?=trim($lines[4])?>',
                     precision: '<?=trim($lines[5])?>',
                     recall: '<?=trim($lines[6])?>',
-                    fsocre: '<?=trim($lines[7])?>',
+                    fscore: '<?=trim($lines[7])?>',
                     score: '<?=trim($lines[8])?>',
                     errorRate: '<?=trim($lines[9])?>'
                     }).then(() => {

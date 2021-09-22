@@ -47,7 +47,7 @@
                                     'accuracy' => "<script>document.write(history123[".$i."].accuracy)</script>",
                                     'precision' => "<script>document.write(history123[".$i."].precision)</script>",
                                     'recall' => "<script>document.write(history123[".$i."].recall)</script>",
-                                    'fsocre' => "<script>document.write(history123[".$i."].fsocre)</script>",
+                                    'fscore' => "<script>document.write(history123[".$i."].fscore)</script>",
                                     'score' => "<script>document.write(history123[".$i."].score)</script>",
                                     'errorRate' => "<script>document.write(history123[".$i."].errorRate)</script>");
                 array_push($history, $push_arr);
@@ -185,45 +185,51 @@
                                                     {?>
                                                     <tbody>
                                                         <tr>
-                                                            <td><a data-toggle="collapse" class="accordion-toggle collapsed" href=<?='#collapse'.$i?> role="button" aria-expanded="false" aria-controls="card_accu"><i class="mdi mdi-chevron-down"></i></a></td>
+                                                            <td><a data-toggle="collapse" class="collapsed" href="#card_accu" role="button" aria-expanded="false" aria-controls="card_accu"><i class="mdi mdi-chevron-down"></i></a></td>
                                                             <td><?=$his['metadata']?></td>
                                                             <td><?=$his['preTrainedModel']?></td>
                                                             <td><?=$his['epoch']?></td>
                                                             <td><?=$his['batchSize']?></td>
                                                             <td><?=$his['accuracy']?></td>
-                                                        </tr>
-
-                                                        <tr class="hide-table-padding">
-                                                            <td colspan="3">
-                                                                <div id=<?='collapse'.$i?> class="collapse in p-3">
-                                                                    <div class="row">
-                                                                        <div class="col-4">Precision</div>
-                                                                        <div class="col-3"><?=$his['precision']?></div>
-                                                                    </div>
-                                                                    <div class="row">
-                                                                        <div class="col-4">Recall</div>
-                                                                        <div class="col-3"><?=$his['recall']?></div>
-                                                                    </div>
-                                                                    <div class="row">
-                                                                        <div class="col-4">F-score</div>
-                                                                        <div class="col-3"><?=$his['fsocre']?></div>
-                                                                    </div>
-                                                                    <div class="row">
-                                                                        <div class="col-4">Score</div>
-                                                                        <div class="col-3"><?=$his['score']?></div>
-                                                                    </div>
-                                                                    <div class="row">
-                                                                        <div class="col-4">Error Rate</div>
-                                                                        <div class="col-3"><?=$his['errorRate']?></div>
-                                                                    </div>
-                                                                </div>
-                                                            </td>
-                                                        </tr>
+                                                    </tr>
                                                     </tbody>
                                                     <?php
                                                     $i++;
                                                     }?>
                                                 </table>
+                                                <div class="card">
+                                                    <div id="card_accu" class="collapse bg-light">
+                                                        <div class="card-body text-white">
+                                                        <table id="datatable-buttons2" class="table table-striped dt-responsive nowrap w-100 collapsed">
+                                                                <thead>
+                                                                    <tr>
+                                                                        <th>Precision</th>
+                                                                        <th>Recall</th>
+                                                                        <th>F-score</th>
+                                                                        <th>Score</th>
+                                                                        <th>Error Rate</th>
+                                                                    </tr>
+                                                                </thead>
+                                                                <?php
+                                                                $i = 0;
+                                                                foreach($history as $his)
+                                                                {?>
+                                                                <tbody>
+                                                                    <tr>
+                                                                        <td><?=$his['precision']?></td>
+                                                                        <td><?=$his['recall']?></td>
+                                                                        <td><?=$his['fscore']?></td>
+                                                                        <td><?=$his['score']?></td>
+                                                                        <td><?=$his['errorRate']?></td>
+                                                                    </tr>
+                                                                </tbody>
+                                                                <?php
+                                                                $i++;
+                                                                }?>
+                                                            </table>                                            
+                                                        </div>
+                                                    </div>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>

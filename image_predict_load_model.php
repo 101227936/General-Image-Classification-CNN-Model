@@ -74,8 +74,9 @@
                                                 <form action="predict_process.php?id=<?=$_GET['id']?>" name="image_predict" id="image_predict" enctype="multipart/form-data" method="post" data-parsley-validate=""> 
                                                     <input type="file" name="image" id="image" data-plugins="dropify" data-max-file-size="1M" accept="image/*" data-height="300">
                                                     <input type="hidden" name="proc" value="load">
-                                                    <button type="submit" form="image_predict" id='btn_predict' class="btn btn-primary btn-block waves-effect waves-light float-end" style="margin-top:67px;margin-bottom:50px;">Predict Image</button>
+                                                    <button type="submit" form="image_predict" id='btn_predict' class="btn btn-primary btn-block waves-effect waves-light float-end" style="margin-top:40px;">Predict Image</button>
                                                 </form>
+                                                <button type="button" onclick="saveRecord()" class="btn btn-primary btn-block waves-effect waves-light float-end" style="margin-top:40px;">Save Record</button>
                                             </div>
                                         </div> <!-- end row -->
                                     </div> <!-- end card-body-->
@@ -231,7 +232,6 @@
                                         </div>
                                     </div> <!-- end card-->
                                 </div>
-                                <button type="button" onclick="saveRecord()" class="btn btn-primary btn-block waves-effect waves-light float-right" style="width:250px">Save Record</button>
                             </div> <!-- end col -->
                         </div>
                         <!-- end row -->  
@@ -312,7 +312,7 @@
                     accuracy: '<?=trim($lines[4])?>',
                     precision: '<?=trim($lines[5])?>',
                     recall: '<?=trim($lines[6])?>',
-                    fsocre: '<?=trim($lines[7])?>',
+                    fscore: '<?=trim($lines[7])?>',
                     score: '<?=trim($lines[8])?>',
                     errorRate: '<?=trim($lines[9])?>'
                     }).then(() => {
