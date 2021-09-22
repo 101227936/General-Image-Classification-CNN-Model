@@ -1,7 +1,7 @@
 <?php
 	if(!empty($_POST["old_name"]) && !empty($_POST["new_name"]))
 	{
-		if(rename("uploads/".$_POST["old_name"], "uploads/".$_POST["new_name"])) 
+		if(rename("uploads/".$_GET['id'].'/'.$_POST["old_name"], "uploads/".$_GET['id'].'/'.$_POST["new_name"])) 
 		{
 			$response = array("Status"=>true, "Result"=>"Class Name Updated");
 			echo json_encode($response);

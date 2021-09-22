@@ -1,7 +1,7 @@
 <?php
 	if(!empty($_FILES["file"]))
 	{
-		$folder = "./model/";
+		$folder = "./model/".$_GET['id']."/";
 		
 		if (!empty($_FILES)) 
 		{
@@ -14,7 +14,7 @@
 				$filename = $folder.'/'.'model.zip';
 				move_uploaded_file($tmpFile,$filename);
 				
-				$command = "python unzip.py";
+				$command = "python unzip.py ".$_GET['id'];
 				ini_set('max_execution_time', 0);
 				$result = exec($command);
 
@@ -63,7 +63,7 @@
 								confirmButtonColor: '#6658dd',
 								allowOutsideClick: false,
 							}).then(function(){
-								location.replace('load_model.php');
+								location.replace('load_model.php?id=<?=$_GET['id']?>');
 								//die(header('Location: load_model.php'));
 							});
 						</script>

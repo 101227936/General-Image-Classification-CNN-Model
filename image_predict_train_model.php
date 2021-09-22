@@ -73,12 +73,12 @@
 													<h3 class="header-title" style="display: inline-block;">Preview</h3>
 													<div id="class_list" style="max-height: 335px; overflow-y: auto;"></div>
 												</div>
-                                                <form action="predict_process.php" name="image_predict" id="image_predict" enctype="multipart/form-data" method="post" data-parsley-validate=""> 
+                                                <form action="predict_process.php?id=<?=$_GET['id']?>" name="image_predict" id="image_predict" enctype="multipart/form-data" method="post" data-parsley-validate=""> 
                                                     <input type="file" name="image" id="image" data-plugins="dropify" accept="image/*" data-height="300" data-max-file-size-preview="50G">
                                                     <input type="hidden" name="proc" value="train">
                                                     <button type="submit" form="image_predict" id='btn_predict' class="btn btn-primary btn-block waves-effect waves-light float-end" style="margin-top:40px;">Predict Image</button>
                                                 </form>
-                                                <form method='post' action='zip_process.php' name="export_model" id="export_model">
+                                                <form method='post' action='zip_process.php?id=<?=$_GET['id']?>' name="export_model" id="export_model">
                                                     <button type="submit" form="export_model" name="export" id='btn_export' class="btn btn-primary btn-block waves-effect waves-light float-end" style="margin-top:40px;">Export Model</button>
                                                 </form>
                                             </div>
@@ -96,7 +96,7 @@
 													<i class="fas fa-question-circle" style="padding-right:5px;margin-bottom:7px;" title="Show the result of prediction" data-plugin="tippy" data-tippy-placement="right-start" data-tippy-maxWidth="200px" data-tippy-offset="0, 0"></i>
 													<h3 class="header-title" style="display: inline-block;">Output</h3>
 												</div>
-												<img src="model/result.png?<?=time()?>" + new Date().getTime() alt="result.png" onError="this.src ='template/Template/Admin/dist/assets/images/wait_predict_result.png'" class="img-fluid" style="padding: 70px 0;display: block;margin-left: auto;margin-right: auto;">
+												<img src="model/<?=$_GET['id']?>/result.png?<?=time()?>" + new Date().getTime() alt="result.png" onError="this.src ='template/Template/Admin/dist/assets/images/wait_predict_result.png'" class="img-fluid" style="padding: 70px 0;display: block;margin-left: auto;margin-right: auto;">
 											</div>
                                         </div> <!-- end row -->
 
@@ -124,12 +124,12 @@
                                         <div id="card_metadata" class="collapse show bg-light">
                                             <div class="card-body text-white">
                                                 <?php
-                                                    $no_of_lines = count(file("model/label.txt")); 
+                                                    $no_of_lines = count(file("model/".$_GET['id']."/label.txt")); 
                                                     //echo "There are $no_of_lines lines in $file"."\n";
                                                     print_r("<pre>");
                                                     for($i=$no_of_lines-1;$i>=0;$i--)
                                                     {
-                                                        print_r(explode(' ', file("model/label.txt")[$i], 2)[1]);
+                                                        print_r(explode(' ', file("model/".$_GET['id']."/label.txt")[$i], 2)[1]);
                                                     }                                                         
                                                     print_r("</pre>");
                                                 ?>
@@ -151,22 +151,22 @@
                                                 print_r("<pre>");
                                                 
                                                 print_r("<i class='fas fa-question-circle' style='padding-right:5px;margin-bottom:7px;' title='Accuracy is the percentage of classification that a model gets right during training. Higher the percentage, higher the model accuracy.' data-plugin='tippy' data-tippy-placement='right-start' data-tippy-maxWidth='300px' data-tippy-offset='0, 0'></i>");
-                                                print_r(file("model/report.txt")[0]."\n");
+                                                print_r(file("model/".$_GET['id']."/report.txt")[0]."\n");
 
                                                 print_r("<i class='fas fa-question-circle' style='padding-right:5px;margin-bottom:7px;' title='Precision is the ability of a classifier not to label an instance positive that is actually negative. The formula is TP/(TP + FP).' data-plugin='tippy' data-tippy-placement='right-start' data-tippy-maxWidth='300px' data-tippy-offset='0, 0'></i>");
-                                                print_r(file("model/report.txt")[1]."\n");
+                                                print_r(file("model/".$_GET['id']."/report.txt")[1]."\n");
 
                                                 print_r("<i class='fas fa-question-circle' style='padding-right:5px;margin-bottom:7px;' title='Recall is a measure of the classifier&#39s completeness; the ability of a classifier to correctly find all positive instances.' data-plugin='tippy' data-tippy-placement='right-start' data-tippy-maxWidth='300px' data-tippy-offset='0, 0'></i>");
-                                                print_r(file("model/report.txt")[2]."\n");
+                                                print_r(file("model/".$_GET['id']."/report.txt")[2]."\n");
 
                                                 print_r("<i class='fas fa-question-circle' style='padding-right:5px;margin-bottom:7px;' title='F-score  is a measure of a test&#39s accuracy. The highest possible value of an F-score is 1.0, indicating perfect precision and recall, and the lowest possible value is 0, if either the precision or the recall is zero.' data-plugin='tippy' data-tippy-placement='right-start' data-tippy-maxWidth='300px' data-tippy-offset='0, 0'></i>");
-                                                print_r(file("model/report.txt")[3]."\n");
+                                                print_r(file("model/".$_GET['id']."/report.txt")[3]."\n");
 
                                                 print_r("<i class='fas fa-question-circle' style='padding-right:5px;margin-bottom:7px;' title='Score is the number of actual occurrences of the class in the specified dataset. Imbalanced score in the training data may indicate structural weaknesses in the reported scores of the classifier and could indicate the need for stratified sampling or rebalancing. Score doesn&#39t change between models but instead diagnoses the evaluation process.' data-plugin='tippy' data-tippy-placement='right-start' data-tippy-maxWidth='300px' data-tippy-offset='0, 0'></i>");
-                                                print_r(file("model/report.txt")[4]."\n");
+                                                print_r(file("model/".$_GET['id']."/report.txt")[4]."\n");
 
                                                 print_r("<i class='fas fa-question-circle' style='padding-right:5px;margin-bottom:7px;' title='Classification error rate is the proportion of instances misclassified over the whole set of instances. The lower the error rate, the better the model performance.' data-plugin='tippy' data-tippy-placement='right-start' data-tippy-maxWidth='300px' data-tippy-offset='0, 0'></i>");
-                                                print_r(file("model/report.txt")[5]);
+                                                print_r(file("model/".$_GET['id']."/report.txt")[5]);
 
                                                 print_r("</pre>");
                                             ?>
@@ -184,7 +184,7 @@
                                         </div>
                                         <div id="card_accu" class="collapse bg-light">
                                             <div class="card-body text-white">
-                                                <img src="model/accuracy.png?<?=time()?>" alt="accuracy" class="img-fluid" style="height:400px; display: block;margin-left: auto;margin-right: auto;">
+                                                <img src="model/<?=$_GET['id']?>/accuracy.png?<?=time()?>" alt="accuracy" class="img-fluid" style="height:400px; display: block;margin-left: auto;margin-right: auto;">
                                             </div>
                                         </div>
                                     </div> <!-- end card-->
@@ -199,7 +199,7 @@
                                         </div>
                                         <div id="card_loss" class="collapse bg-light">
                                             <div class="card-body text-white">
-                                                <img src="model/loss.png?<?=time()?>" alt="loss" class="img-fluid" style="height:400px; display: block;margin-left: auto;margin-right: auto;">
+                                                <img src="model/<?=$_GET['id']?>/loss.png?<?=time()?>" alt="loss" class="img-fluid" style="height:400px; display: block;margin-left: auto;margin-right: auto;">
                                             </div>
                                         </div>
                                     </div> <!-- end card-->
@@ -214,7 +214,7 @@
                                         </div>
                                         <div id="card_roc" class="collapse bg-light">
                                             <div class="card-body text-white">
-                                                <img src="model/roc.png?<?=time()?>" alt="roc" class="img-fluid" style="height:400px; display: block;margin-left: auto;margin-right: auto;">
+                                                <img src="model/<?=$_GET['id']?>/roc.png?<?=time()?>" alt="roc" class="img-fluid" style="height:400px; display: block;margin-left: auto;margin-right: auto;">
                                             </div>
                                         </div>
                                     </div> <!-- end card-->
@@ -229,7 +229,7 @@
                                         </div>
                                         <div id="card_cm" class="collapse bg-light">
                                             <div class="card-body text-white">
-                                                <img src="model/cm.png?<?=time()?>" alt="confusion Matrix" class="img-fluid" style="height:400px; display: block;margin-left: auto;margin-right: auto;">
+                                                <img src="model/<?=$_GET['id']?>/cm.png?<?=time()?>" alt="confusion Matrix" class="img-fluid" style="height:400px; display: block;margin-left: auto;margin-right: auto;">
                                             </div>
                                         </div>
                                     </div> <!-- end card-->
@@ -305,7 +305,7 @@
            function saveRecord()
            {        
                 <?php
-                    $myFile = "model/history.txt";
+                    $myFile = "model/".$_GET['id']."/history.txt";
                     $lines = file($myFile);
                 ?>
                 var db = firebase.firestore();

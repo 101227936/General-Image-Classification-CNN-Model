@@ -3,9 +3,9 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 
 <?php
-	if(!empty($_POST["model_selection"])&&!empty($_POST["model_selection"])&&!empty($_POST["model_selection"]))
+	if(!empty($_POST["model_selection"])&&!empty($_POST["model_selection"])&&!empty($_POST["model_selection"])&&!empty($_GET['id']))
 	{
-		$command = "python train_model.py ".$_POST['model_selection']." ".$_POST['epoch_size']." ".$_POST['batch_size'];
+		$command = "python train_model.py ".$_POST['model_selection']." ".$_POST['epoch_size']." ".$_POST['batch_size']." ".$_GET['id'];
 		$output=[];
 		$retval=[];
 		ini_set('max_execution_time', 0);
@@ -13,14 +13,14 @@
 		$result = exec($command, $output, $retval);
 		$result_array = json_decode($result);
 
-		$command2 = "python check.py";
+		$command2 = "python check.py ".$_GET['id'];
 		$result2 = exec($command2);
 		if($result2 == 'True')
 		{
 			header('Location: image_predict_train_model.php');
 		}else if ($result2 == 'False')
 		{
-			$command3 = "python remove_file.py";
+			$command3 = "python remove_file.py ".$_GET['id'];
 			$result3 = exec($command3);
 			//header('Location: training.php');
 			?>

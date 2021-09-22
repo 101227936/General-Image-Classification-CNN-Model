@@ -1,8 +1,9 @@
 import os
+import sys
 
 def checkFile():
     count = 0
-    with os.scandir('model/') as entries:
+    with os.scandir('model/'+sys.argv[1]+'/') as entries:
         for file in entries:
             print(file.name) #with .name will read 'cm.png', without will read <DirEntry 'loss.png'>
             if(file.name == 'accuracy.png' or 

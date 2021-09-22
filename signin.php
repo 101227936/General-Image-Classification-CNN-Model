@@ -128,14 +128,14 @@
                         // User successfully signed in.
                         // Return type determines whether we continue the redirect automatically
                         // or whether we leave that to developer to handle.
-                        /*$.ajax({
+                        $.ajax({
                             method: "POST",
                             url: "create_folder.php",
                             data: {'uid': authResult.user.uid}
                         })
                         .done(function( msg ) {
                             console.log(msg);
-                        });*/
+                        });
                         return true;
                     },
                     uiShown: function() 

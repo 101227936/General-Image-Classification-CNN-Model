@@ -48,7 +48,7 @@
                                             <li class="breadcrumb-item"><a href="upload.php">Upload</a></li>
                                             <li class="breadcrumb-item active">Training</li>
                                             <?php
-                                            $num = count(glob("model/" . "*"));
+                                            $num = count(glob("model/".$_GET['id']. "/*"));
 											if($num!=0)
 											{
 											?>
@@ -85,7 +85,7 @@
                             <div class="col-md-6 col-sm-12">
                                 <div class="card">
                                     <div class="card-body">
-                                        <form action="train_process.php" name="InputCacheCheck" id="InputCacheCheck" method="post" data-parsley-validate="">
+                                        <form action="train_process.php?id=<?=$_GET['id']?>" name="InputCacheCheck" id="InputCacheCheck" method="post" data-parsley-validate="">
                                             <div class="input-prepend input-append form-group" style="padding:5px !important;">
                                                 <i class="fas fa-question-circle" style="padding-right:5px;margin-bottom:7px;" title="Select a pre-trained model to train your model" data-plugin="tippy" data-tippy-placement="right-start" data-tippy-maxWidth="200px" data-tippy-offset="0, 0"></i>
                                                 <h3 class="header-title" style="display: inline-block;">Pre-trained Model</h3>
@@ -129,7 +129,7 @@
                                             <a href="upload.php" class="btn btn-primary btn-block waves-effect waves-light float-end">Add Class</a>
                                      
                                             <?php
-                                                $dirs = array_filter(glob('uploads/*'), 'is_dir');
+                                                $dirs = array_filter(glob('uploads/'.$_GET['id'].'/*'), 'is_dir');
                                                 if(count($dirs)>1)
                                                 {
                                                     ?>
@@ -257,7 +257,7 @@
 
         <!-- Init js-->
 		<script>
-            $("#class_list").load("class_list.php");
+            $("#class_list").load("class_list.php?id=<?=$_GET['id']?>");
 		</script>
 
     </body>

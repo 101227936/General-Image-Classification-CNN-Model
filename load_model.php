@@ -50,7 +50,7 @@
 										<ol class="breadcrumb m-0">
                                             <li class="breadcrumb-item active">Load Model</li>
 											<?php
-											$num = count(glob("model/" . "*"));
+											$num = count(glob("model/".$_GET['id']. "/*"));
 											if($num!=0)
 											{
 											?>
@@ -76,7 +76,7 @@
                                                     <i class="fas fa-question-circle" style="padding-right:5px;margin-bottom:7px;" title="Upload the model to do prediction, only accept zip file" data-plugin="tippy" data-tippy-placement="right-start" data-tippy-maxWidth="200px" data-tippy-offset="0, 0"></i>
                                                     <h3 class="header-title" style="display: inline-block;">Upload Model</h3>
 												</div>
-                                                <form action="upload_model.php" name="image_predict" id="image_predict" enctype="multipart/form-data" method="post" data-parsley-validate=""> 
+                                                <form action="upload_model.php?id=<?=$_GET['id']?>" name="image_predict" id="image_predict" enctype="multipart/form-data" method="post" data-parsley-validate=""> 
                                                     <input name="file" type="file" accept=".zip" id="file" data-plugins="dropify" data-height="300" />
                                                     <button type="button" id='btn_load' class="btn btn-primary btn-block waves-effect waves-light float-end" style="margin-top:30px;">Load Model</button>
                                                 </form>
@@ -152,7 +152,7 @@
             if(window.location.href.includes('?'))
             {
                 <?php
-                $num = count(glob("model/" . "*"));
+                $num = count(glob("model/" .$_GET['id']. "/*"));
                 if($num!=0)
                 {
                 ?>
@@ -171,7 +171,7 @@
                         if (result.value)
                         {
                             $.ajax(
-                            'delete_files.php',
+                            'delete_files.php?id=<?=$_GET['id']?>',
                             {
                                 success: function() {
                                     location.reload();

@@ -1,9 +1,10 @@
 import zipfile
 import os
+import sys
 
 def checkFile():
     count = 0
-    with zipfile.ZipFile('./model/model.zip', 'r') as zipObj:
+    with zipfile.ZipFile('./model/'+sys.argv[1]+'/model.zip', 'r') as zipObj:
         listofFiles = zipObj.namelist()
         for file in listofFiles:
             print(file)
@@ -18,14 +19,14 @@ def checkFile():
                 continue
         zipObj.close()
         if count == 7:
-            with zipfile.ZipFile('./model/model.zip','r') as zipObj:
-                zipObj.extractall('./model/')
+            with zipfile.ZipFile('./model/'+sys.argv[1]+'/model.zip','r') as zipObj:
+                zipObj.extractall('./model/'+sys.argv[1]+'/')
                 zipObj.close()
-            os.remove('./model/model.zip')
-            try: os.remove('./model/result.png')
+            os.remove('./model/'+sys.argv[1]+'/model.zip')
+            try: os.remove('./model/'+sys.argv[1]+'/result.png')
             except: pass
             print(True)
         else:
-            os.remove('./model/model.zip')
+            os.remove('./model/'+sys.argv[1]+'/model.zip')
             print(False)
 checkFile();

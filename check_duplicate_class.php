@@ -1,7 +1,7 @@
 <?php
 	if(!empty($_POST["name"]))
 	{
-		if(is_dir("uploads/".$_POST["name"])) 
+		if(is_dir("uploads/".$_GET['id'].'/'.$_POST["name"])) 
 		{
 			$response = array("Status"=>true, "Result"=>"Class Name Duplicated");
 			echo json_encode($response);

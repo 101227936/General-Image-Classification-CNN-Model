@@ -1,6 +1,5 @@
-
 <?php
-    $dirs = array_filter(glob('uploads/*'), 'is_dir');
+    $dirs = array_filter(glob('uploads/'.$_GET['id'].'/*'), 'is_dir');
     if(count($dirs)==0)
     {
         ?>
@@ -29,7 +28,7 @@
                                     <a data-toggle="collapse" class="collapsed" href="#card_<?=array_search($dir,$dirs)?>" role="button" aria-expanded="false" aria-controls="card_<?=array_search($dir,$dirs)?>"><i class="mdi mdi-minus"></i></a>
                                     <a href="#" data-toggle="remove" data-class_name="<?=end($link_array)?>"><i class="mdi mdi-close"></i></a>
                                 </div>
-                                    <h5 class="card-title mb-0 text-white class_name" style="display: inline-block;" id="class_name<?=array_search($dir,$dirs)?>" contenteditable="true" ><?=end($link_array)?></h4>
+                                    <h5 class="card-title mb-0 text-white class_name" style="display: inline-block;" id="class_name<?=array_search($dir,$dirs)?>" contenteditable="true" onclick="document.execCommand('selectAll',false,null);document.execCommand('delete',false,null)"><?=end($link_array)?></h4>
                             </div>
                             <div id="card_<?=array_search($dir,$dirs)?>" class="collapse bg-secondary">
                                 <div class="card-body text-white">
@@ -90,7 +89,7 @@
                         $.ajax({
                         type: "POST",
                         dataType : 'json',
-                        url: "class_remove.php",
+                        url: "class_remove.php?id=<?=$_GET['id']?>",
                         data: { 
                             name: $(this).attr('data-class_name'),
                         },
@@ -113,7 +112,7 @@
                         });
                     } 
                     else if (result.dismiss === Swal.DismissReason.cancel) {
-                        $("#class_list").load("class_list.php");
+                        $("#class_list").load("class_list.php?id=<?=$_GET['id']?>");
                     }
                 })
             });
@@ -125,7 +124,7 @@
                     $.ajax({
                         type: "POST",
                         dataType : 'json',
-                        url: "check_duplicate_class.php",
+                        url: "check_duplicate_class.php?id=<?=$_GET['id']?>",
                         data: { 
                             name: event.target.textContent,
                         },
@@ -141,7 +140,7 @@
                                     confirmButtonColor: '#6658dd',
                                     allowOutsideClick: false,
                                 }).then(function(){
-                                    $("#class_list").load("class_list.php");
+                                    $("#class_list").load("class_list.php?id=<?=$_GET['id']?>");
                                 });
                             }
                             else
@@ -149,7 +148,7 @@
                                 $.ajax({
                                     type: "POST",
                                     dataType : 'json',
-                                    url: "class_rename.php",
+                                    url: "class_rename.php?id=<?=$_GET['id']?>",
                                     data: { 
                                         old_name: class_data.attr('data-class_name'),
                                         new_name: event.target.textContent,
@@ -163,7 +162,7 @@
 										backdrop:'#eeeff3',
 										allowOutsideClick: false,
 										}).then(function(){
-                                            $("#class_list").load("class_list.php");
+                                            $("#class_list").load("class_list.php?id=<?=$_GET['id']?>");
 										});
                                     },
                                     error: function(result) {
@@ -174,8 +173,8 @@
                             }
                         },
                         error: function(result) {
-                            console.log(result);
-                            console.clear();
+                            $("#class_list").load("class_list.php?id=<?=$_GET['id']?>");
+							console.clear();
                         }
                     });
                 }
@@ -203,12 +202,12 @@
                         $.ajax({
                             type: "POST",
                             dataType : 'json',
-                            url: "image_remove.php",
+                            url: "image_remove.php?id=<?=$_GET['id']?>",
                             data: { 
                                 name: that.core.$outer.find('.lg-inner').children().eq(that.core.index).find("div").eq(1).find("img").attr('src'),
                             },
                             success: function(result) {
-                                if(result.Status==true && result.Count==0)$("#class_list").load("class_list.php");
+                                if(result.Status==true && result.Count==0)$("#class_list").load("class_list.php?id=<?=$_GET['id']?>");
                                 else if(result.Status==true )
                                 {
                                     var elements;

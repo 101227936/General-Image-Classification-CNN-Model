@@ -1,12 +1,12 @@
 <?php
 	date_default_timezone_set("Asia/Kuala_Lumpur");
-	$command = "python zip.py";
+	$command = "python zip.py ".$_GET['id'];
 
 	ini_set('max_execution_time', 0);
 	
 	$result = exec($command);
 
-	$filename = "./model/model.zip";
+	$filename = "./model/".$_GET['id']."/model.zip";
 	
 	if (file_exists($filename)) {
 		header('Content-Type: application/zip');

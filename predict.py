@@ -8,7 +8,7 @@ from tensorflow.keras.models import load_model
 
 from PIL import Image, ImageOps
 
-dest_base = './model'
+dest_base = './model/'+sys.argv[2]
 
 model = load_model(dest_base+'/model.h5')
 

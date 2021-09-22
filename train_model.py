@@ -19,7 +19,7 @@ from tensorflow.keras.preprocessing.image import ImageDataGenerator
 from os.path import basename
 from sklearn.preprocessing import LabelBinarizer
 
-files = glob('./model/*')
+files = glob('./model/'+sys.argv[4]+'/*')
 for f in files:
     try:
         shutil.rmtree(f)
@@ -101,8 +101,8 @@ def multiclass_roc_auc_score(true_classes, predicted_classes, average="macro"):
     plt.savefig(dest_base+'/roc.png', facecolor=fig.get_facecolor())
     return metrics.roc_auc_score(true_classes, predicted_classes, average=average)
 
-dir_path = './uploads'
-dest_base = './model'
+dir_path = './uploads/'+sys.argv[4]
+dest_base = './model/'+sys.argv[4]
 dest_path = dest_base+'/train'
 #filter the hidden folder
 sub_folders = []
@@ -330,7 +330,7 @@ f.close()
 
 f = open(dest_base+'/history.txt', "w")
 for category in sub_folders:
-    DIR = './uploads/' + category
+    DIR = './uploads/' + sys.argv[4] + '/'+ category
     LEN = str(len([name for name in os.listdir(DIR) if os.path.isfile(os.path.join(DIR, name))]))
     f.write(category + ':'+ LEN + ' ')
 f.write("\n" + MODEL + "\n")

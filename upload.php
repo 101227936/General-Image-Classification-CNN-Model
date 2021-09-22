@@ -50,7 +50,7 @@
                                             <li class="breadcrumb-item active">Upload</li>
 											<li class="breadcrumb-item"><a href="training.php">Training</a></li>
 											<?php
-											$num = count(glob("model/" . "*"));
+											$num = count(glob("model/".$_GET['id']."/*"));
 											if($num!=0)
 											{
 											?>
@@ -70,11 +70,11 @@
                                 <div class="card">
                                     <div class="card-body" style="padding-bottom:5px !important;">
 										<?php
-											$dirs = array_filter(glob('uploads/*'), 'is_dir');
+											$dirs = array_filter(glob('uploads/'.$_GET['id'].'/*'), 'is_dir');
 											$name = "Class ".count($dirs);
 											$new_name=$name;
 											$count=0;
-											while(in_array('uploads/'.$new_name, $dirs))
+											while(in_array('uploads/'.$_GET['id'].'/'.$new_name, $dirs))
 											{
 												$count++;
 												$new_name=$name.'('.$count.')';
@@ -84,7 +84,7 @@
 											<div class="col-md-6 col-sm-12">
 												<i class="fas fa-question-circle" style="padding-right:5px;margin-bottom:7px;" title="Click Class Name to edit the name of class" data-plugin="tippy" data-tippy-placement="right-start" data-tippy-maxWidth="200px" data-tippy-offset="0, 0"></i>
 												<h4 class="header-title" style="display: inline-block;" id="class_name" contenteditable="true"><?=$new_name?></h4>
-                                                <form action="upload_files.php" method="post" class="dropzone" style="min-height: 0px !important;" id="myAwesomeDropzone" name="myAwesomeDropzone" data-plugin="dropzone" data-previews-container="#file-previews"
+                                                <form action="upload_files.php?id=<?=$_GET['id']?>" method="post" class="dropzone" style="min-height: 0px !important;" id="myAwesomeDropzone" name="myAwesomeDropzone" data-plugin="dropzone" data-previews-container="#file-previews"
 													data-upload-preview-template="#uploadPreviewTemplate">
 													<div class="fallback">
 														<input name="file[]" type="file" multiple />
@@ -236,7 +236,7 @@
 										allowOutsideClick: false,
 										animation:true,
 										}).then(function(){
-											window.location='training.php';
+											window.location='training.php?id=<?=$_GET['id']?>';
 										});
 									//window.location='training.php';
 								}			
@@ -276,7 +276,7 @@
 					$.ajax({
 						type: "POST",
 						dataType : 'json',
-						url: "check_duplicate_class.php",
+						url: "check_duplicate_class.php?id=<?=$_GET['id']?>",
 						data: { 
 							name: event.target.textContent,
 						},

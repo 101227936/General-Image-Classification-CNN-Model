@@ -11,9 +11,9 @@
 	if(!empty($_POST["name"]))
 	{
 		
-		if(is_dir("uploads/".$_POST["name"])) 
+		if(is_dir("uploads/".$_GET['id'].'/'.$_POST["name"])) 
 		{
-			$folder = "./uploads/".$_POST["name"];
+			$folder = "./uploads/".$_GET['id'].'/'.$_POST["name"];
 			rmdir_recursive($folder);
 			$response = array("Status"=>true, "Result"=>"Class Name Deleted");
 			echo json_encode($response);

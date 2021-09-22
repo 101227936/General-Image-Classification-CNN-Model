@@ -1,7 +1,7 @@
 <?php
 	if(!empty($_POST["name"]))
 	{
-		$folder = "./uploads/".$_POST['name'];
+		$folder = "./uploads/".$_GET['id'].'/'.$_POST['name'];
 		mkdir($folder);
 		
 		if (!empty($_FILES)) 

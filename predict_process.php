@@ -3,7 +3,7 @@
 	if(!empty($_FILES["image"]))
 	{
         
-        $folder = "./model";
+        $folder = "./model/".$_GET['id'];
 		if (!empty($_FILES)) 
 		{
 			$tmpFile = $_FILES['image']['tmp_name'];
@@ -26,7 +26,7 @@
 		}
 		$files = scandir($folder);
 		$firstFile = $files[2];
-		$command = "python predict.py ".$folder.'/'.$firstFile;
+		$command = "python predict.py ".$folder.'/'.$firstFile." ".$_GET['id'];
 
 		$output=[];
 		$retval=[];
