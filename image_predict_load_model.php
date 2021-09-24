@@ -306,7 +306,7 @@
                     $lines = file($myFile);
                 ?>
                 var db = firebase.firestore();
-                db.collection("Users").doc("<?=$_GET['id'];?>").collection("History").add({
+                db.collection("Users").doc("<?=$_GET['id'];?>").collection("History").doc("<?=time()?>").set({
                     metadata: '<?=trim($lines[0])?>',
                     preTrainedModel: '<?=trim($lines[1])?>',
                     epoch: '<?=trim($lines[2])?>',
