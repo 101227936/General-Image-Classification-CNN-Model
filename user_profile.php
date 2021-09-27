@@ -185,7 +185,7 @@
                                                     {?>
                                                     <tbody>
                                                         <tr>
-                                                            <td><a data-toggle="collapse" class="collapsed" href="#card_accu" role="button" aria-expanded="false" aria-controls="card_accu"><i class="mdi mdi-chevron-down"></i></a></td>
+                                                            <td><a data-toggle="collapse" class="collapsed" href=<?='#collapse'.$i?> role="button" aria-expanded="false" aria-controls="card_accu"><i class="mdi mdi-chevron-down"></i></a></td>
                                                             <td><?=$his['metadata']?></td>
                                                             <td><?=$his['preTrainedModel']?></td>
                                                             <td><?=$his['epoch']?></td>
@@ -197,39 +197,40 @@
                                                     $i++;
                                                     }?>
                                                 </table>
+                                                
+                                                <?php
+                                                $i = 0;
+                                                foreach($history as $his)
+                                                {?>
                                                 <div class="card">
-                                                    <div id="card_accu" class="collapse bg-light">
+                                                    <div id=<?='collapse'.$i?> class="collapse bg-light">
                                                         <div class="card-body text-white">
                                                         <table id="datatable-buttons2" class="table table-striped dt-responsive nowrap w-100 collapsed">
-                                                                <thead>
-                                                                    <tr>
-                                                                        <th>Precision</th>
-                                                                        <th>Recall</th>
-                                                                        <th>F-score</th>
-                                                                        <th>Score</th>
-                                                                        <th>Error Rate</th>
-                                                                    </tr>
-                                                                </thead>
-                                                                <?php
-                                                                $i = 0;
-                                                                foreach($history as $his)
-                                                                {?>
-                                                                <tbody>
-                                                                    <tr>
-                                                                        <td><?=$his['precision']?></td>
-                                                                        <td><?=$his['recall']?></td>
-                                                                        <td><?=$his['fscore']?></td>
-                                                                        <td><?=$his['score']?></td>
-                                                                        <td><?=$his['errorRate']?></td>
-                                                                    </tr>
-                                                                </tbody>
-                                                                <?php
-                                                                $i++;
-                                                                }?>
-                                                            </table>                                            
+                                                            <thead>
+                                                                <tr>
+                                                                    <th>Precision</th>
+                                                                    <th>Recall</th>
+                                                                    <th>F-score</th>
+                                                                    <th>Score</th>
+                                                                    <th>Error Rate</th>
+                                                                </tr>
+                                                            </thead>
+                                                            <tbody>
+                                                                <tr>
+                                                                    <td><?=$his['precision']?></td>
+                                                                    <td><?=$his['recall']?></td>
+                                                                    <td><?=$his['fscore']?></td>
+                                                                    <td><?=$his['score']?></td>
+                                                                    <td><?=$his['errorRate']?></td>
+                                                                </tr>
+                                                            </tbody>
+                                                        </table>                                            
                                                         </div>
                                                     </div>
                                                 </div>
+                                                <?php
+                                                $i++;
+                                                }?>
                                             </div>
                                         </div>
                                     </div>
