@@ -206,7 +206,7 @@
                                                                     </div>
                                                                     <div class="row">
                                                                         <div class="col-4">F-score</div>
-                                                                        <div class="col-3"><?=$his['fsocre']?></div>
+                                                                        <div class="col-3"><?=$his['fscore']?></div>
                                                                     </div>
                                                                     <div class="row">
                                                                         <div class="col-4">Score</div>
