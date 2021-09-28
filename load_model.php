@@ -183,7 +183,7 @@
                         }
                         else
                         {
-                            window.location.href="hom.php";
+                            window.location.href="home.php";
                         }
                     })
                 <?php

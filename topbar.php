@@ -58,19 +58,25 @@
                         <img src="Landing/Logo/light-logo.png" alt="" height="40">
                     </span>
                 </a>
+				<a href="index.php" class="logo logo-light text-center">
+                    <span class="logo-sm">
+                        <img src="Landing/Logo/light-logo-sm.png" alt="" height="30">
+                    </span>
+                </a>
             </div>
 
-            <ul class="list-unstyled topnav-menu topnav-menu-left m-0">  
-                <li class="dropdown d-none d-xl-block">
-                    <a class="nav-link dropdown-toggle waves-effect waves-light" href="hom.php" role="button">
+			<ul class="list-unstyled topnav-menu topnav-menu-left m-0">
+				
+                <li class="dropdown">
+                    <a class="nav-link dropdown-toggle waves-effect waves-light" href="home.php" role="button" style="padding:0px 5px !important;">
                         <i class="mdi mdi-home"></i> 
                         Home
                     </a>
                 </li>	
-				<li class="dropdown d-none d-xl-block">
-                    <a class="nav-link dropdown-toggle waves-effect waves-light" href="predict_result_table.php" role="button">
+				<li class="dropdown d-xl-block">
+                    <a class="nav-link dropdown-toggle waves-effect waves-light" href="predict_result_table.php" role="button" style="padding:0px 8px !important;">
                         <i class="mdi mdi-information-outline"></i> 
-                        Overview Model Information
+                        Overview
                     </a>
                 </li>			
             </ul>
@@ -79,7 +85,7 @@
 				<ul class="list-unstyled topnav-menu float-right mb-0">
 
 					<li class="dropdown notification-list topbar-dropdown">
-						<a class="nav-link dropdown-toggle nav-user mr-0 waves-effect waves-light" data-toggle="dropdown" href="#" role="button" aria-haspopup="false" aria-expanded="false">
+						<a class="nav-link dropdown-toggle nav-user mr-0 waves-effect waves-light" data-toggle="dropdown" href="#" style="padding:0px 5px !important;" role="button" aria-haspopup="false" aria-expanded="false">
 							<img src="Landing/Logo/light-logo.png" id="uImage" alt="user-image" class="rounded-circle">
 							<span class="pro-user-name ml-1" id="uName">
 								Default Username

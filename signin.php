@@ -32,7 +32,7 @@
         <script>
             firebase.auth().onAuthStateChanged((user) => {
                 if (user) {
-                    window.location.href="hom.php";
+                    window.location.href="home.php";
                 }
             });
         </script>
