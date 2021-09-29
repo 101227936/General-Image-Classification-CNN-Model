@@ -321,7 +321,8 @@
                         $("#status").delay(500).fadeOut();
                 		$("#preloader").delay(500).fadeOut("fast");
                         swal({
-                                title: 'Save Model Success',
+                                title: 'Success',
+								text: 'Save predict result successful',
                                 type: 'success',
                                 confirmButtonColor: '#6658dd',
                                 backdrop:'#eeeff3',
