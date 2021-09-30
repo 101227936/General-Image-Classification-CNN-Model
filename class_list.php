@@ -119,7 +119,21 @@
 
             $( ".class_name" ) .focusout(function(event) {
                 var class_data = $( this ).siblings().find('a').eq(1);
-                if(class_data.attr('data-class_name')!=event.target.textContent)
+				if(event.target.textContent.match(/[|\\/~^:,;?!&%$@*+]/))
+				{
+					Swal.fire({
+						title: 'Failure',
+						text: "Invalid naming of folder",
+						type: 'error',
+						backdrop:'#eeeff3',
+						showConfirmButton: true,
+						confirmButtonColor: '#6658dd',
+						allowOutsideClick: false,
+					}).then(function(){
+						$("#class_list").load("class_list.php?id=<?=$_GET['id']?>");
+					});
+				}
+                else if(class_data.attr('data-class_name')!=event.target.textContent)
                 {
                     $.ajax({
                         type: "POST",

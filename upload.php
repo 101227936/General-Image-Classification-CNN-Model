@@ -273,35 +273,53 @@
 			Array.from(document.querySelectorAll('#class_name')).forEach(function(element, index, array){
 				element.addEventListener('focusout', function(event){
 					event.preventDefault();
-					$.ajax({
-						type: "POST",
-						dataType : 'json',
-						url: "check_duplicate_class.php?id=<?=$_GET['id']?>",
-						data: { 
-							name: event.target.textContent,
-						},
-						success: function(result) {
-							if(result.Status==true)
-							{
-								Swal.fire({
-                                    title: 'Failure',
-                                    text: result.Result,
-                                    type: 'error',
-									backdrop:'#eeeff3',
-                                    showConfirmButton: true,
-                                    confirmButtonColor: '#6658dd',
-                                    allowOutsideClick: false,
-									animation:true,
-                                }).then(function(){
-                                    event.target.innerText="<?=$new_name?>";
-                                });
+					if(event.target.textContent.match(/[|\\/~^:,;?!&%$@*+]/))
+					{
+						Swal.fire({
+							title: 'Failure',
+							text: "Invalid naming of folder",
+							type: 'error',
+							backdrop:'#eeeff3',
+							showConfirmButton: true,
+							confirmButtonColor: '#6658dd',
+							allowOutsideClick: false,
+						}).then(function(){
+							event.target.innerText="<?=$new_name?>";
+						});
+					}
+					else
+					{
+						$.ajax({
+							type: "POST",
+							dataType : 'json',
+							url: "check_duplicate_class.php?id=<?=$_GET['id']?>",
+							data: { 
+								name: event.target.textContent,
+							},
+							success: function(result) {
+								if(result.Status==true)
+								{
+									Swal.fire({
+										title: 'Failure',
+										text: result.Result,
+										type: 'error',
+										backdrop:'#eeeff3',
+										showConfirmButton: true,
+										confirmButtonColor: '#6658dd',
+										allowOutsideClick: false,
+										animation:true,
+									}).then(function(){
+										event.target.innerText="<?=$new_name?>";
+									});
+								}
+							},
+							error: function(result) {
+								console.log(result);
+								console.clear();
 							}
-						},
-						error: function(result) {
-							console.log(result);
-							console.clear();
-						}
-					});
+						});
+					}
+					
 					
 				})
 			})
