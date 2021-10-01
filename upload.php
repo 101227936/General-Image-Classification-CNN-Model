@@ -187,7 +187,7 @@
 						var e=t(this).attr("action"),
 						o=t(this).data("previewsContainer"),
 						i={
-							acceptedFiles: "image/jpeg,image/png,image/jpg,application/octet-stream,.nii",
+							acceptedFiles: "image/jpeg,image/png,image/jpg,.nii",
 							url:e,
 							maxFilesize: 200,
 							autoProcessQueue: false,

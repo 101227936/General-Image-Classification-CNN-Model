@@ -72,7 +72,7 @@
 													<div id="class_list" style="max-height: 335px; overflow-y: auto;"></div>
 												</div>
                                                 <form action="predict_process.php?id=<?=$_GET['id']?>" name="image_predict" id="image_predict" enctype="multipart/form-data" method="post" data-parsley-validate=""> 
-                                                    <input type="file" name="image" id="image" data-plugins="dropify" data-max-file-size="1M" accept="image/*" data-height="300">
+                                                    <input type="file" name="image" id="image" data-plugins="dropify" data-max-file-size="200M" data-allowed-file-extensions="jpg jpeg png nii" data-height="300" data-max-file-size-preview="50G">
                                                     <input type="hidden" name="proc" value="load">
                                                     <button type="submit" form="image_predict" id='btn_predict' class="btn btn-primary btn-block waves-effect waves-light float-end" style="margin-top:40px;">Predict Image</button>
                                                 </form>
