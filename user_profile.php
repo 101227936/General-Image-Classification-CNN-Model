@@ -246,11 +246,15 @@
 					{ title: "Epoch" },
 					{ title: "Batch Size" },
 					{ title: "Accuracy" },
-					{ title: "Precision" },
-					{ title: "Recall" },
-					{ title: "F-score" },
-					{ title: "Score" },
-					{ title: "Error Rate" }
+					{ title: "Precision", "className": "none" },
+					{ title: "Recall", "className": "none" },
+					{ title: "F-score", "className": "none" },
+					{ title: "Score", "className": "none" },
+					{ title: "Error Rate", "className": "none" }
+				],
+				"columnDefs": [
+							{ responsivePriority: 1, targets: 0 },
+							{ responsivePriority: 2, targets: 4 }
 				],
 				language: {
 					paginate: {
