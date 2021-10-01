@@ -20,42 +20,18 @@
 
 		<link href="template/Template/Admin/dist/assets/css/bootstrap-dark.min.css" rel="stylesheet" type="text/css" id="bs-dark-stylesheet" disabled />
 		<link href="template/Template/Admin/dist/assets/css/app-dark.min.css" rel="stylesheet" type="text/css" id="app-dark-stylesheet"  disabled />
+		
+		 <!-- third party css -->
+        <link href="template/Template/Admin/dist/assets/libs/datatables.net-responsive-bs4/css/responsive.bootstrap4.min.css" rel="stylesheet" type="text/css" />
+        <link href="template/Template/Admin/dist/assets/libs/datatables.net-buttons-bs4/css/buttons.bootstrap4.min.css" rel="stylesheet" type="text/css" />
+        <link href="template/Template/Admin/dist/assets/libs/datatables.net-select-bs4/css//select.bootstrap4.min.css" rel="stylesheet" type="text/css" />
+        <!-- third party css end -->
 
 		<!-- icons -->
 		<link href="template/Template/Admin/dist/assets/css/icons.min.css" rel="stylesheet" type="text/css" />
     </head>
 
     <body data-layout-mode="horizontal">
-
-        <script>
-            const history123 = JSON.parse(window.localStorage.getItem("history123"));
-            if (performance.navigation.type == performance.navigation.TYPE_RELOAD)
-            {
-                window.location.href = 'get_history.php';
-            }
-        </script>
-
-        <?php
-            $length = $_COOKIE["length"];
-            $i = 0;
-            $history = array();
-            while($i < $length){
-                $push_arr = array('metadata' => "<script>document.write(history123[".$i."].metadata)</script>",
-                                    'preTrainedModel' => "<script>document.write(history123[".$i."].preTrainedModel)</script>",
-                                    'epoch' => "<script>document.write(history123[".$i."].epoch)</script>",
-                                    'batchSize' => "<script>document.write(history123[".$i."].batchSize)</script>",
-                                    'accuracy' => "<script>document.write(history123[".$i."].accuracy)</script>",
-                                    'precision' => "<script>document.write(history123[".$i."].precision)</script>",
-                                    'recall' => "<script>document.write(history123[".$i."].recall)</script>",
-                                    'fscore' => "<script>document.write(history123[".$i."].fscore)</script>",
-                                    'score' => "<script>document.write(history123[".$i."].score)</script>",
-                                    'errorRate' => "<script>document.write(history123[".$i."].errorRate)</script>");
-                array_push($history, $push_arr);
-                $i++;
-            }
-        ?>
-
-
         <!-- Begin page -->
         <div id="wrapper">
 
@@ -167,62 +143,7 @@
                                         <div class="col-12">
                                             <div class="page-title-box">
                                                 <h6 class="page-title"> <i class="mdi mdi-history"></i> HISTORY RESULT</h6>
-                                                <table id="datatable-buttons" class="table table-striped dt-responsive nowrap w-100">
-                                                    <thead>
-                                                        <tr>
-                                                            <th>Hidden Data</th>
-                                                            <th>Metadata + Number of image dataset</th>
-                                                            <th>Pre-trained Model</th>
-                                                            <th>Epoch</th>
-                                                            <th>Batch Size</th>
-                                                            <th>Accuracy </th>
-                                                        </tr>
-                                                    </thead>
-                                                
-                                                    <?php
-                                                    $i = 0;
-                                                    foreach($history as $his)
-                                                    {?>
-                                                    <tbody>
-                                                        <tr>
-                                                            <td><a data-toggle="collapse" class="accordion-toggle collapsed" href=<?='#collapse'.$i?> role="button" aria-expanded="false" aria-controls="card_accu"><i class="mdi mdi-chevron-down"></i></a></td>
-                                                            <td><?=$his['metadata']?></td>
-                                                            <td><?=$his['preTrainedModel']?></td>
-                                                            <td><?=$his['epoch']?></td>
-                                                            <td><?=$his['batchSize']?></td>
-                                                            <td><?=$his['accuracy']?></td>
-                                                        </tr>
-
-                                                        <tr class="hide-table-padding">
-                                                            <td colspan="3">
-                                                                <div id=<?='collapse'.$i?> class="collapse in p-3">
-                                                                    <div class="row">
-                                                                        <div class="col-4">Precision</div>
-                                                                        <div class="col-3"><?=$his['precision']?></div>
-                                                                    </div>
-                                                                    <div class="row">
-                                                                        <div class="col-4">Recall</div>
-                                                                        <div class="col-3"><?=$his['recall']?></div>
-                                                                    </div>
-                                                                    <div class="row">
-                                                                        <div class="col-4">F-score</div>
-                                                                        <div class="col-3"><?=$his['fscore']?></div>
-                                                                    </div>
-                                                                    <div class="row">
-                                                                        <div class="col-4">Score</div>
-                                                                        <div class="col-3"><?=$his['score']?></div>
-                                                                    </div>
-                                                                    <div class="row">
-                                                                        <div class="col-4">Error Rate</div>
-                                                                        <div class="col-3"><?=$his['errorRate']?></div>
-                                                                    </div>
-                                                                </div>
-                                                            </td>
-                                                        </tr>
-                                                    </tbody>
-                                                    <?php
-                                                    $i++;
-                                                    }?>
+												<table id="datatable-buttons" class="table table-striped dt-responsive nowrap w-100">
                                                 </table>
                                             </div>
                                         </div>
@@ -259,6 +180,18 @@
        <!-- Plugins js -->
        <script src="template/Template/Admin/dist/assets/libs/dropzone/min/dropzone.min.js"></script>
        <script src="template/Template/Admin/dist/assets/libs/dropify/js/dropify.min.js"></script>
+	   
+	   <script src="template/Template/Admin/dist/assets/libs/datatables.net/js/jquery.dataTables.min.js"></script>
+        <script src="template/Template/Admin/dist/assets/libs/datatables.net-bs4/js/dataTables.bootstrap4.min.js"></script>
+        <script src="template/Template/Admin/dist/assets/libs/datatables.net-responsive/js/dataTables.responsive.min.js"></script>
+        <script src="template/Template/Admin/dist/assets/libs/datatables.net-responsive-bs4/js/responsive.bootstrap4.min.js"></script>
+        <script src="template/Template/Admin/dist/assets/libs/datatables.net-buttons/js/dataTables.buttons.min.js"></script>
+        <script src="template/Template/Admin/dist/assets/libs/datatables.net-buttons-bs4/js/buttons.bootstrap4.min.js"></script>
+        <script src="template/Template/Admin/dist/assets/libs/datatables.net-buttons/js/buttons.html5.min.js"></script>
+        <script src="template/Template/Admin/dist/assets/libs/datatables.net-buttons/js/buttons.flash.min.js"></script>
+        <script src="template/Template/Admin/dist/assets/libs/datatables.net-buttons/js/buttons.print.min.js"></script>
+        <script src="template/Template/Admin/dist/assets/libs/datatables.net-keytable/js/dataTables.keyTable.min.js"></script>
+        <script src="template/Template/Admin/dist/assets/libs/datatables.net-select/js/dataTables.select.min.js"></script>
 
        <!-- App js -->
        <script src="template/Template/Admin/dist/assets/js/app.min.js"></script>
@@ -279,8 +212,65 @@
 
         });
        </script>
-
-       <script>
+	   
+		<script>
+		function getDatainTable(){
+			var dataSet = new Array();
+			var i=1;
+			var db = firebase.firestore();
+			db.collection("Users").doc("<?=$_GET['id'];?>").collection("History").get().then((querySnapshot) => {
+				querySnapshot.forEach((doc) => {
+					console.log(doc.data());
+					dataSet.push([doc.data().metadata,
+									doc.data().preTrainedModel,
+									doc.data().epoch,
+									doc.data().batchSize,
+									doc.data().accuracy,
+									doc.data().precision,
+									doc.data().recall,
+									doc.data().fscore,
+									doc.data().score,
+									doc.data().errorRate]);
+                    i=i+1;
+				})
+			}).then(function() {
+				$("#datatable-buttons").DataTable({
+				data: dataSet,
+				"paging":   true,
+				"lengthChange": false,
+				"searching": false,
+				"pageLength": 3,
+				columns: [
+					{ title: "Metadata + Number of image dataset" },
+					{ title: "Pre-trained Model" },
+					{ title: "Epoch" },
+					{ title: "Batch Size" },
+					{ title: "Accuracy" },
+					{ title: "Precision" },
+					{ title: "Recall" },
+					{ title: "F-score" },
+					{ title: "Score" },
+					{ title: "Error Rate" }
+				],
+				language: {
+					paginate: {
+						previous: "<i class='mdi mdi-chevron-left'>",
+						next: "<i class='mdi mdi-chevron-right'>"
+					}
+				},
+				drawCallback: function() {
+					$(".dataTables_paginate > .pagination").addClass("pagination-rounded")
+				}
+			});
+			});
+			
+			
+		}
+		$(document).ready(function() {
+			getDatainTable();
+		});
+		</script>
+		<script>
            function validateUsername()
            {
                 firebase.auth().onAuthStateChanged(function(user)
