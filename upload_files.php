@@ -11,14 +11,14 @@
 			
 			if($ext == 'nii')
 			{
-				$filename = str_replace("%","",$_FILES['file']['name']);
+				$filename = uniqid().'.'.$ext;
 				move_uploaded_file($tmpFile,$filename);
 				$command = escapeshellcmd('python nii2png.py -i '.$filename.' -o "'.$folder.'"');
 				$output = shell_exec($command);
 				unlink($filename);
 			}else
 			{
-				$filename = $folder.'/'.time().'-'. str_replace("%","",$_FILES['file']['name']);
+				$filename = $folder.'/'.time().'-'. uniqid().'.'.$ext;
 				move_uploaded_file($tmpFile,$filename);
 			}
 		}
