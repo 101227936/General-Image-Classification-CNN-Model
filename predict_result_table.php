@@ -56,9 +56,9 @@
                                         <div class="card-box">
                                             <h4 class="header-title">General Image</h4>
                                             <p class="sub-header">
-                                            We classify 3 classes, each of them contains 100 image datasets.
+                                            We classify 2 classes, each of them contains 150 image datasets.
                                             The size of the images is using 224 x 224 (Width x Height). 
-                                            We have set the Epoch to 5 times and the batch-size is 16 to do training.
+                                            We have set the Epoch to 5 times and the batch-size is 32 to do training.
                                             <br>
                                             *The result may have different depends on different device.
                                         </p>
@@ -76,44 +76,44 @@
                                                     <tbody class="text-center">
                                                     <tr>
                                                         <th scope="row">MobileNetV2</th>
-                                                        <td>94%</td>
-                                                        <td>42 sec</td>
+                                                        <td>95%</td>
+                                                        <td>50 sec</td>
                                                         <td>8.5 MB</td>
                                                     </tr>
                                                     <tr>
                                                         <th scope="row">EfficientNetB3</th>
-                                                        <td>96%</td>
-                                                        <td>1 min 41 sec</td>
+                                                        <td>97%</td>
+                                                        <td>2 min 04 sec</td>
                                                         <td>40 MB</td>
                                                     </tr>
                                                     <tr>
                                                         <th scope="row">InceptionV3</th>
-                                                        <td>90%</td>
-                                                        <td>1 min 02 sec</td>
+                                                        <td>92%</td>
+                                                        <td>1 min 13 sec</td>
                                                         <td>80 MB</td>
                                                     </tr>
                                                     <tr>
                                                         <th scope="row">DenseNet201</th>
-                                                        <td>94%</td>
-                                                        <td>2 min 38 sec</td>
+                                                        <td>96%</td>
+                                                        <td>3 min 09 sec</td>
                                                         <td>68 MB</td>
                                                     </tr>
                                                     <tr>
                                                         <th scope="row">ResNet50V2</th>
                                                         <td>97%</td>
-                                                        <td>1 min 20 sec</td>
+                                                        <td>1 min 34 sec</td>
                                                         <td>86 MB</td>
                                                     </tr>
                                                     <tr>
                                                         <th scope="row">VGG16</th>
-                                                        <td>90%</td>
-                                                        <td>3 min</td>
+                                                        <td>87%</td>
+                                                        <td>3 min 40 sec</td>
                                                         <td>54 MB</td>
                                                     </tr>
                                                     <tr>
                                                         <th scope="row">Xception</th>
                                                         <td>94%</td>
-                                                        <td>1 min 34 sec</td>
+                                                        <td>1 min 50 sec</td>
                                                         <td>76 MB</td>
                                                     </tr>
                                                     </tbody>
