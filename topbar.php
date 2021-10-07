@@ -94,7 +94,7 @@
 						</a>
 						<div class="dropdown-menu dropdown-menu-right profile-dropdown" style="">
 							<!-- item-->
-							<a href="get_history.php" class="dropdown-item notify-item">
+							<a href="user_profile.php" class="dropdown-item notify-item">
 								<i class="fe-user"></i>
 								<span>My Account</span>
 							</a>
