@@ -38,6 +38,7 @@
 	•	Please go to https://www.apachefriends.org/download.html  to download the XAMPP Installer. Please download the appropriate XAMPP according to your operating system.
 		
 	•	After completing the download, please install the XAMPP in computer.
+	
 	•	In the “C:\xampp\htdocs” and create a new folder called “ICS”. (You can change “ICS” to any name that you like.)
 	* If you have the XAMPP, skip the steps above.
 
@@ -45,6 +46,7 @@
  	![alt text](https://github.com/101227936/General-Image-Classification-CNN-Model/blob/main/Readme_Screenshot/3.jpg?raw=true)
 	
 	•	Open the XAMPP
+	
 	•	Click the “Config” and “Apache (httpd.conf)” button
  	
 	![alt text](https://github.com/101227936/General-Image-Classification-CNN-Model/blob/main/Readme_Screenshot/4.jpg?raw=true)
@@ -141,4 +143,4 @@
 	Here have some advice or possible solution when you are not able to open our web application.
 	1.	Please make sure all the installation and setup are following the steps and done correctly.
 
-	You have done the installation and please go to README.doc for our web application tutorial and you may proceed to the “User Manual File” to get more information about the General Classification System.
+	You have done the installation and please go to our web application and you may proceed to the GitHub Wiki Page to get more information about the Image Classification System.
