@@ -127,7 +127,7 @@
 	
 	2.6 Extract the ZIP file
 
-	•	Extract the ZIP file which download from GitHub and enter the folder just extracted and put it to C:\xampp\htdocs\ICS.
+	•	Extract the ZIP file which download from GitHub and enter the folder which extracted and put all the file and folder to C:\xampp\htdocs\ICS.
 	
 	![alt text](https://github.com/101227936/General-Image-Classification-CNN-Model/blob/main/Readme_Screenshot/17.jpg?raw=true)
 	
