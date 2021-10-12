@@ -117,7 +117,7 @@
 	
 	•	Click the “Code” button and “Download ZIP” button.
 
-	* If you don’t have the GitHub account, please follow the 2.4.1 step to create a GitHub account first.
+	* If you don’t have the GitHub account, please follow the 2.5.1 step to create a GitHub account first.
 
 	2.5.1 Create a GitHub account
 	
