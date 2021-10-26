@@ -1,4 +1,10 @@
+<!-- Sweet Alert-->
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<link href="template/Template/Admin/dist/assets/libs/sweetalert2/sweetalert2.min.css" rel="stylesheet" type="text/css" />
+
 <?php
+	error_reporting(0);
 	$proc = $_REQUEST['proc'];
 	if(!empty($_FILES["image"]))
 	{
@@ -36,12 +42,69 @@
 		$result_array = json_decode($result);
 
         unlink($filename);
-		if($proc == "load")
+		
+		if($result != null)
 		{
-			header('Location: image_predict_load_model.php');
-		}else if($proc == "train")
+			if($proc == "load")
+			{
+				?>
+					<script>
+						$(document).ready(function() {
+							Swal.fire({ 
+								title: 'Success', 
+								text: 'Image Predict Successful', 
+								type: 'success', 
+								confirmButtonColor: '#6658dd', 
+								backdrop:'#eeeff3', 
+								allowOutsideClick: false, 
+								animation:true, 
+							}).then(function(){ 
+								window.location.href="image_predict_load_model.php";
+							})
+						});
+					</script>
+				<?php
+			}else if($proc == "train")
+			{
+				?>
+					<script>
+						$(document).ready(function() {
+							Swal.fire({ 
+								title: 'Success', 
+								text: 'Image Predict Successful', 
+								type: 'success', 
+								confirmButtonColor: '#6658dd', 
+								backdrop:'#eeeff3', 
+								allowOutsideClick: false, 
+								animation:true, 
+							}).then(function(){ 
+								window.location.href="image_predict_train_model.php";
+							})
+						});
+					</script>
+				<?php
+			}
+		}else
 		{
-			header('Location: image_predict_train_model.php');
+			?>
+				<script>
+					$(document).ready(function() {
+						Swal.fire({ 
+							title: 'Failure',
+							html: 'There have some error occur.<br> You may try to upload the predict image again.',
+							icon: 'error',
+							confirmButtonColor: '#6658dd',
+							backdrop:'#eeeff3',
+							cancelButtonColor: '#d33',
+							confirmButtonText: 'Yes',
+							allowOutsideClick: false,
+							animation:true,
+						}).then(function(){ 
+							window.location.href="image_predict_train_model.php";
+						})
+					});
+				</script>
+			<?php
 		}
 	}
 	else die(header("HTTP/1.0 403 Forbidden"));

@@ -1,6 +1,7 @@
 <!-- Sweet Alert-->
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<link href="template/Template/Admin/dist/assets/libs/sweetalert2/sweetalert2.min.css" rel="stylesheet" type="text/css" />
 
 <?php
 	if(!empty($_POST["model_selection"])&&!empty($_POST["model_selection"])&&!empty($_POST["model_selection"])&&!empty($_GET['id']))
@@ -16,8 +17,23 @@
 		$command2 = "python check.py ".$_GET['id'];
 		$result2 = exec($command2);
 		if($result2 == 'True')
-		{
-			header('Location: image_predict_train_model.php');
+		{?>
+			<script>
+				$(document).ready(function() {
+					Swal.fire({ 
+						title: 'Success', 
+						text: 'Model Training Successful', 
+						type: 'success', 
+						confirmButtonColor: '#6658dd', 
+						backdrop:'#eeeff3', 
+						allowOutsideClick: false, 
+						animation:true, 
+					}).then(function(){ 
+						window.location.href="image_predict_train_model.php";
+					})
+				});
+			</script>
+		<?php
 		}else if ($result2 == 'False')
 		{
 			$command3 = "python remove_file.py ".$_GET['id'];
