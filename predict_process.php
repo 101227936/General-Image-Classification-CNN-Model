@@ -1,5 +1,13 @@
-<!-- Sweet Alert-->
-<script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
+<!-- App css -->
+<link href="template/Template/Admin/dist/assets/css/bootstrap.min.css" rel="stylesheet" type="text/css" id="bs-default-stylesheet" />
+<link href="template/Template/Admin/dist/assets/css/app.min.css" rel="stylesheet" type="text/css" id="app-default-stylesheet" />
+<link href="template/Template/Admin/dist/assets/css/bootstrap-dark.min.css" rel="stylesheet" type="text/css" id="bs-dark-stylesheet" disabled />
+<link href="template/Template/Admin/dist/assets/css/app-dark.min.css" rel="stylesheet" type="text/css" id="app-dark-stylesheet"  disabled />
+
+<!-- Sweet Alerts js & Sweet alert init js-->-->
+<script src="template/Template/Admin/dist/assets/libs/sweetalert2/sweetalert2.min.js"></script>
+<script src="template/Template/Admin/dist/assets/js/pages/sweet-alerts.init.js"></script>
+
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 <link href="template/Template/Admin/dist/assets/libs/sweetalert2/sweetalert2.min.css" rel="stylesheet" type="text/css" />
 

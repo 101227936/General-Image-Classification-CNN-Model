@@ -107,9 +107,8 @@
 												<!-- Preview -->
                                                 <i class="fas fa-question-circle" style="padding-right:5px;margin-bottom:7px;" title="Preview your uploaded images" data-plugin="tippy" data-tippy-placement="right-start" data-tippy-maxWidth="200px" data-tippy-offset="0, 0"></i>
                                                 <h4 class="header-title" style="display: inline-block;">Preview Container</h4>
+												<h4 class="header-title" id="output" style="display: inline-block;position: absolute; right: 0px;">Total Files: 0</h4>
                                                 <div class="dropzone-previews mt-3" id="file-previews" style="margin-top:0.7rem !important; max-height: 428px; overflow-y: auto;"></div>
-												<p></p>
-												<h4 class="header-title" id="output">Total Files: 0</h4>
 											</div>
 										</div>
                                     </div> <!-- end card-body-->
@@ -221,8 +220,11 @@
 										});
 									} 
 								});
-								this.on("addedfile", function(file) {
-									$("#output").html('Total Files: ' + myDropzone.getAcceptedFiles().length);
+								myDropzone.on("addedfile", function(file) {
+									$("#output").html('Total Files: ' + myDropzone.files.length);
+								});
+								myDropzone.on("removedfile", function(file) {
+									$("#output").html('Total Files: ' + myDropzone.files.length);
 								});
 							},
 							processing: function(file) {
