@@ -73,7 +73,7 @@
                                         <div class="row">
                                             <div class="col-12">
 												<div class="col-md-12 col-sm-12" style="padding-left:0px;">
-                                                    <i class="fas fa-question-circle" style="padding-right:5px;margin-bottom:7px;" title="Upload the model to do prediction, only accept zip file" data-plugin="tippy" data-tippy-placement="right-start" data-tippy-maxWidth="200px" data-tippy-offset="0, 0"></i>
+                                                    <i class="fas fa-question-circle" style="padding-right:5px;margin-bottom:7px;" title="Upload the model to do prediction, only accept zip file downloaded from our website" data-plugin="tippy" data-tippy-placement="right-start" data-tippy-maxWidth="200px" data-tippy-offset="0, 0"></i>
                                                     <h3 class="header-title" style="display: inline-block;">Upload Model</h3>
 												</div>
                                                 <form action="upload_model.php?id=<?=$_GET['id']?>" name="image_predict" id="image_predict" enctype="multipart/form-data" method="post" data-parsley-validate=""> 

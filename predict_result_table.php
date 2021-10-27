@@ -44,8 +44,7 @@
                             <div class="row">
                             <div class="col-12">
                                 <div class="page-title-box">
-                                    <h4 class="page-title">Overview Model Information</h4>
-                                    </div>
+                                    <h4 class="page-title"><i class="fas fa-question-circle" style="padding-right:5px;margin-bottom:7px;" title="The performance for each of the pre-trained models. Guideline for the user to have a brief understanding on each pre-trained models." data-plugin="tippy" data-tippy-placement="right-start" data-tippy-maxWidth="200px" data-tippy-offset="0, 0"></i>Overview Model Information</h4> 
                                 </div>
                             </div>
                             <!-- end page title --> 
@@ -68,7 +67,7 @@
                                                     <thead>
                                                     <tr>
                                                         <th>Pre-Trained Model</th>
-                                                        <th>Overall Accuracy(avg)</th>
+                                                        <th>Overall Accuracy(%)</th>
                                                         <th>Training Speed</th>
                                                         <th>Model File Size</th>
                                                     </tr>
@@ -139,7 +138,7 @@
                                                     <thead>
                                                     <tr>
                                                         <th>Pre-Trained Model</th>
-                                                        <th>Overall Accuracy(avg)</th>
+                                                        <th>Overall Accuracy(%)</th>
                                                         <th>Training Speed</th>
                                                         <th>Model File Size</th>
                                                     </tr>
