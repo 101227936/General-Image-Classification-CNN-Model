@@ -114,7 +114,7 @@
                                     <div class="card">
                                         <div class="card-header bg-primary py-3 text-white">
                                             <div class="card-widgets">
-                                                <a data-toggle="collapse" href="#card_metadata" role="button" aria-expanded="false" aria-controls="card_metadata"><i class="mdi mdi-minus"></i></a>
+                                                <a data-toggle="collapse" href="#card_metadata" role="button" aria-expanded="false" aria-controls="card_metadata"><i class="mdi mdi-chevron-up"></i></a>
                                             </div>
                                             <i class="fas fa-question-circle" style="padding-right:10px;" title="Metadata is data that describes the dataset." data-plugin="tippy" data-tippy-placement="right-start" data-tippy-maxWidth="300px" data-tippy-offset="0, 0"></i>
                                             <h5 class="card-title mb-0 text-white" style="display: inline-block;" id="class_name">Metadata</h4>
@@ -138,7 +138,7 @@
                                     <div class="card">
                                         <div class="card-header bg-primary py-3 text-white">
                                             <div class="card-widgets">
-                                                <a data-toggle="collapse" class="collapsed" href="#card_cr" role="button" aria-expanded="false" aria-controls="card_cr"><i class="mdi mdi-minus"></i></a>
+                                                <a data-toggle="collapse" class="collapsed" href="#card_cr" role="button" aria-expanded="false" aria-controls="card_cr"><i class="mdi mdi-chevron-up"></i></a>
                                             </div>
                                             <i class="fas fa-question-circle" style="padding-right:10px;" title="A Classification report is used to measure the quality of predictions from a classification algorithm." data-plugin="tippy" data-tippy-placement="right-start" data-tippy-maxWidth="300px" data-tippy-offset="0, 0"></i>
                                             <h5 class="card-title mb-0 text-white" style="display: inline-block;" id="class_name">Classification Report</h4>
@@ -175,7 +175,7 @@
                                     <div class="card">
                                         <div class="card-header bg-primary py-3 text-white">
                                             <div class="card-widgets">
-                                                <a data-toggle="collapse" class="collapsed" href="#card_accu" role="button" aria-expanded="false" aria-controls="card_accu"><i class="mdi mdi-minus"></i></a>
+                                                <a data-toggle="collapse" class="collapsed" href="#card_accu" role="button" aria-expanded="false" aria-controls="card_accu"><i class="mdi mdi-chevron-up"></i></a>
                                             </div>
                                             <i class="fas fa-question-circle" style="padding-right:10px;" title="Accuracy is the percentage of classification that a model gets right during training. If the modal prediction is perfect, the accuracy will be one, else the accuracy is below one." data-plugin="tippy" data-tippy-placement="right-start" data-tippy-maxWidth="200px" data-tippy-offset="0, 0"></i>
                                             <h5 class="card-title mb-0 text-white" style="display: inline-block;" id="class_name">Training and Validation Accuracy</h4>
@@ -190,7 +190,7 @@
                                     <div class="card">
                                         <div class="card-header bg-primary py-3 text-white">
                                             <div class="card-widgets">
-                                                <a data-toggle="collapse" class="collapsed" href="#card_loss" role="button" aria-expanded="false" aria-controls="card_loss"><i class="mdi mdi-minus"></i></a>
+                                                <a data-toggle="collapse" class="collapsed" href="#card_loss" role="button" aria-expanded="false" aria-controls="card_loss"><i class="mdi mdi-chevron-up"></i></a>
                                             </div>
                                             <i class="fas fa-question-circle" style="padding-right:10px;" title="Loss is a measure for evaluating how well a model learned to predict the right classifications for a given set of samples." data-plugin="tippy" data-tippy-placement="right-start" data-tippy-maxWidth="200px" data-tippy-offset="0, 0"></i>
                                             <h5 class="card-title mb-0 text-white" style="display: inline-block;" id="class_name">Training and Validation Loss</h4>
@@ -205,7 +205,7 @@
                                     <div class="card">
                                         <div class="card-header bg-primary py-3 text-white">
                                             <div class="card-widgets">
-                                                <a data-toggle="collapse" class="collapsed" href="#card_roc" role="button" aria-expanded="false" aria-controls="card_roc"><i class="mdi mdi-minus"></i></a>
+                                                <a data-toggle="collapse" class="collapsed" href="#card_roc" role="button" aria-expanded="false" aria-controls="card_roc"><i class="mdi mdi-chevron-up"></i></a>
                                             </div>
                                             <i class="fas fa-question-circle" style="padding-right:10px;" title="ROC curve shows the trade-off between sensitivity (or TPR) and specificity (1 – FPR). Classifiers that give curves closer to the top-left corner indicate a better performance. The closer the curve comes to the 45-degree diagonal of the ROC space, the less accurate the test." data-plugin="tippy" data-tippy-placement="right-start" data-tippy-maxWidth="300px" data-tippy-offset="0, 0"></i>
                                             <h5 class="card-title mb-0 text-white" style="display: inline-block;" id="class_name">ROC Curve</h4>
@@ -220,7 +220,7 @@
                                     <div class="card">
                                         <div class="card-header bg-primary py-3 text-white">
                                             <div class="card-widgets">
-                                                <a data-toggle="collapse" class="collapsed" href="#card_cm" role="button" aria-expanded="false" aria-controls="card_cm"><i class="mdi mdi-minus"></i></a>
+                                                <a data-toggle="collapse" class="collapsed" href="#card_cm" role="button" aria-expanded="false" aria-controls="card_cm"><i class="mdi mdi-chevron-up"></i></a>
                                             </div>
                                             <i class="fas fa-question-circle" style="padding-right:10px;" title="Confusion Matrix summarizes how accurate the model's prediction are. User can use this to figure out which classes the model gets confused about." data-plugin="tippy" data-tippy-placement="right-start" data-tippy-maxWidth="300px" data-tippy-offset="0, 0"></i>
                                             <h5 class="card-title mb-0 text-white" style="display: inline-block;" id="class_name">Confusion Matrix</h4>
