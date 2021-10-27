@@ -322,19 +322,6 @@
 										event.target.innerText="<?=$new_name?>";
 									});
 								}
-								else
-								{
-									Swal.fire({
-										title: 'Success',
-										text: 'Class Name Updated',
-										type: 'success',
-										backdrop:'#eeeff3',
-										showConfirmButton: true,
-										confirmButtonColor: '#6658dd',
-										allowOutsideClick: false,
-										animation:true
-									});
-								}
 							},
 							error: function(result) {
 								console.log(result);
