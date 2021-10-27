@@ -285,14 +285,14 @@
                     e.preventDefault();
                     Swal.fire({
                         title: 'Failure',
-                        text: 'Please select image',
+                        html: 'Please upload an image file (.jpg, .jpeg, .png, .nii) with size smaller than 200 MB',
                         type: 'error',
                         confirmButtonColor: '#6658dd',
                         backdrop:'#eeeff3',
                         allowOutsideClick: false,
                         animation:true
                     });
-              }
+                }
             });
         </script>
 
@@ -322,7 +322,7 @@
                 		$("#preloader").delay(500).fadeOut("fast");
                         swal({
                                 title: 'Success',
-								text: 'Save predict result successful',
+								text: 'Save metadata & classification report successful',
                                 type: 'success',
                                 confirmButtonColor: '#6658dd',
                                 backdrop:'#eeeff3',

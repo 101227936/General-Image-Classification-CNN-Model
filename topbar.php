@@ -140,7 +140,8 @@ firebase.auth().onAuthStateChanged(function(user)
 function askSignOut()
 {
 	swal({
-	title: 'Are you sure to logout?',
+	title: 'Are you sure?',
+	text:'You will be return to the landing page and you will need to log in again next time',
 	type: 'warning',
 	showCancelButton: true,
 	confirmButtonColor: '#6658dd',

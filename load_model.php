@@ -137,7 +137,7 @@
                 {
                     Swal.fire({
                         title: 'Failure',
-                        text: 'Please select zip file',
+                        text: 'Please upload the model zip file downloaded from our website.',
                         type: 'error',
                         confirmButtonColor: '#6658dd',
                         backdrop:'#eeeff3',
@@ -157,8 +157,8 @@
                 {
                 ?>
                     swal({
-                    title: 'Confirm Navigation',
-                    text: 'You will lost all the unsaved prediction result. Are you sure you want to continue?',
+                    title: 'Are you sure?',
+                    text: 'You will lost all the unsaved model summary and the prediction result.',
                     type: 'warning',
                     showCancelButton: true,
                     confirmButtonColor: '#6658dd',

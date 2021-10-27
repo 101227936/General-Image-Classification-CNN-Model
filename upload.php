@@ -208,7 +208,7 @@
 									else
 									{
 										Swal.fire({
-											title:myDropzone.getAcceptedFiles().type,
+											title: 'Failure',
 											html: 'Please upload the files<br>(Less than 200 MB and  20 - 150 files allowed only)',
 											type: 'error',
 											backdrop:'#eeeff3',
@@ -243,7 +243,6 @@
 										}).then(function(){
 											window.location='training.php?id=<?=$_GET['id']?>';
 										});
-									//window.location='training.php';
 								}			
 							},
 							error: function(file, response){
@@ -278,16 +277,17 @@
 			Array.from(document.querySelectorAll('#class_name')).forEach(function(element, index, array){
 				element.addEventListener('focusout', function(event){
 					event.preventDefault();
-					if(event.target.textContent.match(/[|\\/~^:,;?!&%$@*+]/))
+					if(event.target.textContent.match(/[/:?\\*\"<>|]/))
 					{
 						Swal.fire({
 							title: 'Failure',
-							text: "Invalid naming of folder",
+							html: "Class name can't contain any of the following characters: <br> \\ / : * ? \" < > |",
 							type: 'error',
 							backdrop:'#eeeff3',
 							showConfirmButton: true,
 							confirmButtonColor: '#6658dd',
 							allowOutsideClick: false,
+							animation:true,
 						}).then(function(){
 							event.target.innerText="<?=$new_name?>";
 						});
@@ -317,6 +317,19 @@
 										event.target.innerText="<?=$new_name?>";
 									});
 								}
+								else
+								{
+									Swal.fire({
+										title: 'Success',
+										text: 'Class Name Updated',
+										type: 'success',
+										backdrop:'#eeeff3',
+										showConfirmButton: true,
+										confirmButtonColor: '#6658dd',
+										allowOutsideClick: false,
+										animation:true
+									});
+								}
 							},
 							error: function(result) {
 								console.log(result);
@@ -324,8 +337,6 @@
 							}
 						});
 					}
-					
-					
 				})
 			})
 		</script>

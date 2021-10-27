@@ -18,6 +18,15 @@
 
         <div class="col-lg-12">
             <?php
+                if(count($dirs)==1)
+                {
+            ?>
+                <div class="alert alert-info" role="alert">
+                    <i class="mdi mdi-alert-circle-outline mr-2"></i>Please add the second class before train the model.
+                </div>
+            <?php
+                }
+
                 foreach($dirs as $dir)
                 {
                     $link_array = explode('/',$dir);
@@ -53,11 +62,6 @@
                 }
             ?>     
         </div><!-- end col -->
-        
-        <!-- Sweet Alerts js -->
-		<script src="template/Template/Admin/dist/assets/libs/sweetalert2/sweetalert2.min.js"></script>
-        <!-- Sweet alert init js-->
-        <script src="template/Template/Admin/dist/assets/js/pages/sweet-alerts.init.js"></script>
 
         <script src="template/Template/Admin/dist/assets/js/lightgallery-all.min.js"></script>
         <script>
@@ -119,11 +123,11 @@
 
             $( ".class_name" ) .focusout(function(event) {
                 var class_data = $( this ).siblings().find('a').eq(1);
-				if(event.target.textContent.match(/[|\\/~^:,;?!&%$@*+]/))
+				if(event.target.textContent.match(/[/:?\\*\"<>|]/))
 				{
 					Swal.fire({
 						title: 'Failure',
-						text: "Invalid naming of folder",
+						html: "Class name can't contain any of the following characters: <br> \\ / : * ? \" < > |",
 						type: 'error',
 						backdrop:'#eeeff3',
 						showConfirmButton: true,

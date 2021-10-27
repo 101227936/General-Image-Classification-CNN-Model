@@ -174,6 +174,7 @@
 
         <!-- App js -->
         <script src="template/Template/Admin/dist/assets/js/app.min.js"></script>
+
         <script>
             $('#btn_submit').click(function(e){
                 if($('#model_selection').val()!="" && $('#batch_size').val()!="")
@@ -225,10 +226,9 @@
                 if(valueCurrent >= minValue) {
                     $(".btn-number[data-type='minus'][data-field='"+name+"']").removeAttr('disabled')
                 } else {
-                    //alert('Sorry, the minimum value was reached');
                     Swal.fire({
                         title: 'Failure',
-                        text: 'Sorry, the minimum value was reached',
+                        text: 'The number of Epoch can only be an integer value between 2 - 10',
                         type: 'error',
                         backdrop:'#eeeff3',
                         showConfirmButton: true,
@@ -240,10 +240,9 @@
                 if(valueCurrent <= maxValue) {
                     $(".btn-number[data-type='plus'][data-field='"+name+"']").removeAttr('disabled')
                 } else {
-                    //alert('Sorry, the maximum value was reached');
                     Swal.fire({
                         title: 'Failure',
-                        text: 'Sorry, the maximum value was reached',
+                        text: 'The number of Epoch can only be an integer value between 2 - 10',
                         type: 'error',
                         backdrop:'#eeeff3',
                         showConfirmButton: true,

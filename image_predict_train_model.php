@@ -79,7 +79,7 @@
                                                     <button type="submit" form="image_predict" id='btn_predict' class="btn btn-primary btn-block waves-effect waves-light float-end" style="margin-top:20px;">Predict Image</button>
                                                 </form>
                                                 <form method='post' action='zip_process.php?id=<?=$_GET['id']?>' name="export_model" id="export_model">
-                                                    <button type="submit" form="export_model" name="export" id='btn_export' class="btn btn-primary btn-block waves-effect waves-light float-end" style="margin-top:20px;">Export Model</button>
+                                                    <button type="submit" form="export_model" name="export" id='btn_export' class="btn btn-primary btn-block waves-effect waves-light float-end" style="margin-top:20px;">Download Model</button>
                                                 </form>
                                                 <button type="button" onclick="saveRecord()" class="btn btn-primary btn-block waves-effect waves-light float-right float-end" style="margin-top:20px;">Save Record</button>
                                             </div>
@@ -290,7 +290,7 @@
                     e.preventDefault();
                     Swal.fire({
                         title: 'Failure',
-                        text: 'Please select image',
+                        html: 'Please upload an image file (.jpg, .jpeg, .png, .nii) with size smaller than 200 MB',
                         type: 'error',
                         confirmButtonColor: '#6658dd',
                         backdrop:'#eeeff3',
@@ -327,7 +327,7 @@
                 		$("#preloader").delay(500).fadeOut("fast");
                         swal({
                                 title: 'Success',
-								text: 'Save predict result successful',
+								text: 'Save metadata & classification report successful',
                                 type: 'success',
                                 confirmButtonColor: '#6658dd',
                                 backdrop:'#eeeff3',

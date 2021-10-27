@@ -142,7 +142,8 @@
                                     <div class="row">
                                         <div class="col-12">
                                             <div class="page-title-box">
-                                                <h6 class="page-title"> <i class="mdi mdi-history"></i> HISTORY RESULT</h6>
+                                                <i class="fas fa-question-circle" style="padding-right:5px;margin-bottom:7px;" title="Show the number of files in each classes, the pre-trained model + number of epoch and batch size that you used to train the model and the classification report that you have saved before" data-plugin="tippy" data-tippy-placement="right-start" data-tippy-maxWidth="300px" data-tippy-offset="0, 0"></i>
+                                                <h6 class="page-title" style="display: inline-block;">History Result</h6>
 												<table id="datatable-buttons" class="table table-striped dt-responsive nowrap w-100">
                                                 </table>
                                             </div>
@@ -241,11 +242,11 @@
 				"searching": false,
 				"pageLength": 3,
 				columns: [
-					{ title: "Metadata + Number of image dataset" },
+					{ title: "Class name + Number of files that uploaded in a class" },
 					{ title: "Pre-trained Model" },
-					{ title: "Epoch" },
-					{ title: "Batch Size" },
-					{ title: "Accuracy" },
+					{ title: "Number of Epoch" },
+					{ title: "Number of Batch Size" },
+					{ title: "Overall Accuracy" },
 					{ title: "Precision", "className": "none" },
 					{ title: "Recall", "className": "none" },
 					{ title: "F-score", "className": "none" },
@@ -287,7 +288,8 @@
                             displayName: uname,
                         }).then(() => {
                             swal({
-                                title: 'Update Username Success',
+                                title: 'Success',
+                                text:'Update username successful',
                                 type: 'success',
                                 confirmButtonColor: '#6658dd',
                                 backdrop:'#eeeff3',
@@ -317,8 +319,8 @@
                     else
                     {
                         swal({
-                            title: 'Update Username Failed',
-                            text:'Username column cannot be empty.',
+                            title: 'Failure',
+                            text:'Column cannot be empty',
                             type: 'error',
                             confirmButtonColor: '#6658dd',
                             backdrop:'#eeeff3',
@@ -369,7 +371,8 @@
                                 photoURL: uphotourl,
                             }).then(() => {
                                 swal({
-                                title: 'Update Photo URL Success',
+                                title: 'Success',
+                                text:'Update photo URL successful',
                                 type: 'success',
                                 confirmButtonColor: '#6658dd',
                                 backdrop:'#eeeff3',
@@ -400,7 +403,7 @@
                         else
                         {
                             swal({
-                                title: 'Update Photo URL Failed',
+                                title: 'Failure',
                                 text:'Photo URL incorrect, cannot link to the image.',
                                 type: 'error',
                                 confirmButtonColor: '#6658dd',
@@ -417,8 +420,8 @@
                     else
                     {
                         swal({
-                            title: 'Update Photo URL Failed',
-                            text:'Photo URL column cannot be empty.',
+                            title: 'Failure',
+                            text:'Column cannot be empty.',
                             type: 'error',
                             confirmButtonColor: '#6658dd',
                             backdrop:'#eeeff3',
@@ -444,7 +447,8 @@
 
                         user.updateEmail(uemail).then(() => {
                             swal({
-                            title: 'Update Email Success',
+                            title: 'Success',
+                            text:'Update email successful',
                             type: 'success',
                             confirmButtonColor: '#6658dd',
                             backdrop:'#eeeff3',
@@ -476,8 +480,8 @@
                     else
                     {
                         swal({
-                            title: 'Update Email Failed',
-                            text:'Email column cannot be empty.',
+                            title: 'Failure',
+                            text:'Column cannot be empty.',
                             type: 'error',
                             confirmButtonColor: '#6658dd',
                             backdrop:'#eeeff3',
@@ -504,7 +508,8 @@
 
                         user.updatePassword(upassword).then(() => {
                             swal({
-                            title: 'Update Password Success',
+                            title: 'Success',
+                            text:'Update password successful',
                             type: 'success',
                             confirmButtonColor: '#6658dd',
                             backdrop:'#eeeff3',
@@ -536,8 +541,8 @@
                     else
                     {
                         swal({
-                            title: 'Update Password Failed',
-                            text:'Password column cannot be empty.',
+                            title: 'Failure',
+                            text:'Column cannot be empty.',
                             type: 'error',
                             confirmButtonColor: '#6658dd',
                             backdrop:'#eeeff3',
