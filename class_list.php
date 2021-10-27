@@ -33,8 +33,9 @@
                     ?>
                         <div class="card">
                             <div class="card-header bg-dark py-3 text-white">
+                            <i class="mdi mdi-square-edit-outline"></i>
                                 <div class="card-widgets">
-                                    <a data-toggle="collapse" class="collapsed" href="#card_<?=array_search($dir,$dirs)?>" role="button" aria-expanded="false" aria-controls="card_<?=array_search($dir,$dirs)?>"><i class="mdi mdi-minus"></i></a>
+                                    <a data-toggle="collapse" class="collapsed" href="#card_<?=array_search($dir,$dirs)?>" role="button" aria-expanded="false" aria-controls="card_<?=array_search($dir,$dirs)?>"><i class="mdi mdi-chevron-up"></i></a>
                                     <a href="#" data-toggle="remove" data-class_name="<?=end($link_array)?>"><i class="mdi mdi-close"></i></a>
                                 </div>
                                     <h5 class="card-title mb-0 text-white class_name" style="display: inline-block;" id="class_name<?=array_search($dir,$dirs)?>" contenteditable="true" onclick="document.execCommand('selectAll',false,null);document.execCommand('delete',false,null)"><?=end($link_array)?></h4>
