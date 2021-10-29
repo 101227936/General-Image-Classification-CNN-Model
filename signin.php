@@ -24,7 +24,7 @@
 		<link href="template/Template/Admin/dist/assets/css/icons.min.css" rel="stylesheet" type="text/css" />
 
         <!--firebse-->
-        <script src="https://www.gstatic.com/firebasejs/ui/4.8.1/firebase-ui-auth.js"></script>
+        <script src="template/Template/Admin/dist/assets/js/firebase-ui-auth.js"></script>
         <script src="https://www.gstatic.com/firebasejs/7.6.1/firebase-app.js"></script>
         <script src="https://www.gstatic.com/firebasejs/7.6.1/firebase-auth.js"></script>    
         <link type="text/css" rel="stylesheet" href="https://www.gstatic.com/firebasejs/ui/4.8.1/firebase-ui-auth.css" />
@@ -149,13 +149,26 @@
                 signInFlow: 'redirect',
                 signInSuccessUrl: 'home.php',
                 signInOptions: [
-                    // Leave the lines as is for the providers you want to offer your users.
-                    firebase.auth.EmailAuthProvider.PROVIDER_ID,
-                    firebase.auth.GoogleAuthProvider.PROVIDER_ID,
+					{
+						  provider: firebase.auth.EmailAuthProvider.PROVIDER_ID,
+						  fullLabel: 'With Email Account',
+					  
+					},
+					{
+					    provider: firebase.auth.GoogleAuthProvider.PROVIDER_ID,
+						fullLabel: 'With Google Account'
+					  
+					}
                 ]
             };
             // The start method will wait until the DOM is loaded.
             ui.start('#firebaseui-auth-container', uiConfig);
+			setTimeout(function() {
+				var button = document.querySelector('[data-provider-id="google.com"]');
+				if (button) {
+				  button.innerHTML = `Sign up with Google`;
+				}
+			  });
         </script>
     </body>
 </html>

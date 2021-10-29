@@ -26,7 +26,33 @@
 
 		<!-- icons -->
 		<link href="template/Template/Admin/dist/assets/css/icons.min.css" rel="stylesheet" type="text/css" />
+		<style>
+			p.zoom { position:absolute; top:0px; right:0px; color:#555; font:bold 12px/1 sans-serif;}
 
+			/* these styles are for the demo, but are not required for the plugin */
+			.zoom {
+				display:inline-block;
+				position: relative;
+			}
+
+			/* magnifying glass icon */
+			.zoom:after {
+				content:'';
+				display:block; 
+				width:33px; 
+				height:33px; 
+				position:absolute; 
+				top:0;
+				right:0;
+				background:url(icon.png);
+			}
+
+			.zoom img {
+				display: block;
+			}
+
+			.zoom img::selection { background-color: transparent; }
+		</style>
     </head>
 
     <body data-layout-mode="horizontal">
@@ -63,7 +89,7 @@
                         <!-- end page title --> 
 
                         <div class="row">
-                            <div class="col-lg-3 col-xl-3">
+                            <div class="col-lg-2 col-xl-2">
                                 <div class="card">
                                     <div class="card-body">
                                         <div class="row">
@@ -88,16 +114,21 @@
                                 </div> <!-- end card-->
                             </div><!-- end col -->
 
-							<div class="col-lg-4 col-xl-4">
+							<div class="col-lg-5 col-xl-5">
                                 <div class="card">
                                     <div class="card-body">
                                         <div class="row">
-                                            <div class="col-12" style="height:510px; ">
+                                            <div class="col-12">
 												<div class="col-md-12 col-sm-12" style="padding-left:0px;">
 													<i class="fas fa-question-circle" style="padding-right:5px;margin-bottom:7px;" title="Show the result of prediction" data-plugin="tippy" data-tippy-placement="right-start" data-tippy-maxWidth="200px" data-tippy-offset="0, 0"></i>
 													<h3 class="header-title" style="display: inline-block;">Output</h3>
 												</div>
-												<img src="model/<?=$_GET['id']?>/result.png?<?=time()?>" + new Date().getTime() alt="result.png" onError="this.src ='template/Template/Admin/dist/assets/images/wait_predict_result.png'" class="img-fluid" style="padding: 70px 0;display: block;margin-left: auto;margin-right: auto;">
+												<div class="card-body text-white">
+													<span class='zoom' id='ex0'>
+														<img src="model/<?=$_GET['id']?>/result.png?<?=time()?>" + new Date().getTime() alt="result.png" onError="this.src ='template/Template/Admin/dist/assets/images/wait_predict_result.png'" class="img-fluid" style="width:100%; display: block;margin-left: auto;margin-right: auto;">
+														<p class="zoom">Click and Drag to Zoom</p>
+													</span>
+												</div>
 											</div>
                                         </div> <!-- end row -->
 
@@ -185,7 +216,10 @@
                                         </div>
                                         <div id="card_accu" class="collapse bg-light">
                                             <div class="card-body text-white">
-                                                <img src="model/<?=$_GET['id']?>/accuracy.png?<?=time()?>" alt="accuracy" class="img-fluid" style="height:400px; display: block;margin-left: auto;margin-right: auto;">
+												<span class='zoom' id='ex1'>
+													<img src="model/<?=$_GET['id']?>/accuracy.png?<?=time()?>" alt="accuracy" class="img-fluid" style="height:400px; display: block;margin-left: auto;margin-right: auto;">
+													<p class="zoom">Click and Drag to Zoom</p>
+												</span>
                                             </div>
                                         </div>
                                     </div> <!-- end card-->
@@ -200,7 +234,10 @@
                                         </div>
                                         <div id="card_loss" class="collapse bg-light">
                                             <div class="card-body text-white">
-                                                <img src="model/<?=$_GET['id']?>/loss.png?<?=time()?>" alt="loss" class="img-fluid" style="height:400px; display: block;margin-left: auto;margin-right: auto;">
+											<span class='zoom' id='ex2'>
+													<img src="model/<?=$_GET['id']?>/loss.png?<?=time()?>" alt="loss" class="img-fluid" style="height:400px; display: block;margin-left: auto;margin-right: auto;">
+													<p class="zoom">Click and Drag to Zoom</p>
+												</span>
                                             </div>
                                         </div>
                                     </div> <!-- end card-->
@@ -215,7 +252,10 @@
                                         </div>
                                         <div id="card_roc" class="collapse bg-light">
                                             <div class="card-body text-white">
-                                                <img src="model/<?=$_GET['id']?>/roc.png?<?=time()?>" alt="roc" class="img-fluid" style="height:400px; display: block;margin-left: auto;margin-right: auto;">
+												<span class='zoom' id='ex3'>
+													<img src="model/<?=$_GET['id']?>/roc.png?<?=time()?>" alt="roc" class="img-fluid" style="height:400px; display: block;margin-left: auto;margin-right: auto;">
+													<p class="zoom">Click and Drag to Zoom</p>
+												</span>
                                             </div>
                                         </div>
                                     </div> <!-- end card-->
@@ -230,7 +270,10 @@
                                         </div>
                                         <div id="card_cm" class="collapse bg-light">
                                             <div class="card-body text-white">
-                                                <img src="model/<?=$_GET['id']?>/cm.png?<?=time()?>" alt="confusion Matrix" class="img-fluid" style="height:400px; display: block;margin-left: auto;margin-right: auto;">
+												<span class='zoom' id='ex4'>
+													<img src='model/<?=$_GET['id']?>/cm.png?<?=time()?>' alt="confusion Matrix"  class="img-fluid" style="height:400px; display: block;margin-left: auto;margin-right: auto;"/>
+													<p class="zoom">Click and Drag to Zoom</p>
+												</span>
                                             </div>
                                         </div>
                                     </div> <!-- end card-->
@@ -301,7 +344,7 @@
             });
         </script>
 
-       <script>
+		<script>
            function saveRecord()
            {
                 $("#status").delay(500).fadeIn();
@@ -354,7 +397,16 @@
                             })
                     });
             }
-       </script>
-
+		</script>
+		<script src="template/Template/Admin/dist/assets/js/jquery.zoom.js"></script>
+		<script>
+			$(document).ready(function(){
+				$('#ex0').zoom({ on:'grab' });
+				$('#ex1').zoom({ on:'grab' });
+				$('#ex2').zoom({ on:'grab' });
+				$('#ex3').zoom({ on:'grab' });
+				$('#ex4').zoom({ on:'grab' });
+			});
+		</script>
     </body>
 </html>
