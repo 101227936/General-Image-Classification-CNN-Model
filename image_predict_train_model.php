@@ -89,7 +89,7 @@
                         <!-- end page title --> 
 
                         <div class="row">
-                            <div class="col-lg-2 col-xl-2">
+                            <div class="col-lg-3 col-xl-3">
                                 <div class="card">
                                     <div class="card-body">
                                         <div class="row">
@@ -114,7 +114,7 @@
                                 </div> <!-- end card-->
                             </div><!-- end col -->
 
-							<div class="col-lg-5 col-xl-5">
+							<div class="col-lg-4 col-xl-4">
                                 <div class="card">
                                     <div class="card-body">
                                         <div class="row">
@@ -125,7 +125,7 @@
 												</div>
 												<div class="card-body text-white">
 													<span class='zoom' id='ex0'>
-														<img src="model/<?=$_GET['id']?>/result.png?<?=time()?>" + new Date().getTime() alt="result.png" onError="this.src ='template/Template/Admin/dist/assets/images/wait_predict_result.png'" class="img-fluid" style="width:100%; display: block;margin-left: auto;margin-right: auto;">
+														<img src="model/<?=$_GET['id']?>/result.png?<?=time()?>" + new Date().getTime() alt="result.png" onError="this.src ='template/Template/Admin/dist/assets/images/wait_predict_result.png'" class="img-fluid" style="width:100%;display: block;margin-left: auto;margin-right: auto;padding-top: 15%;padding-bottom: 15%;">
 														<p class="zoom">Click and Drag to Zoom</p>
 													</span>
 												</div>
