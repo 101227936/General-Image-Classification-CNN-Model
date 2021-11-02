@@ -22,9 +22,11 @@
 		<link href="template/Template/Admin/dist/assets/css/app-dark.min.css" rel="stylesheet" type="text/css" id="app-dark-stylesheet"  disabled />
 		
 		 <!-- third party css -->
+		<link href="template/Template/Admin/dist//assets/libs/datatables.net-bs4/css/dataTables.bootstrap4.min.css" rel="stylesheet" type="text/css" />
         <link href="template/Template/Admin/dist/assets/libs/datatables.net-responsive-bs4/css/responsive.bootstrap4.min.css" rel="stylesheet" type="text/css" />
         <link href="template/Template/Admin/dist/assets/libs/datatables.net-buttons-bs4/css/buttons.bootstrap4.min.css" rel="stylesheet" type="text/css" />
         <link href="template/Template/Admin/dist/assets/libs/datatables.net-select-bs4/css//select.bootstrap4.min.css" rel="stylesheet" type="text/css" />
+		
         <!-- third party css end -->
 
 		<!-- icons -->
@@ -59,7 +61,7 @@
 
 
                         <div class="row">
-                            <div class="col-lg-4 col-xl-4">
+                            <div class="col-lg-5 col-xl-5">
                                 <div class="card-box text-center">
                                     <img src="" id="imageUser" class="rounded-circle avatar-xl img-thumbnail" alt="profile-image">
 
@@ -136,8 +138,8 @@
                                             </form>
                                 </div> <!-- end card-box -->
                             </div> <!-- end col-->
-                            
-                            <div class="col-lg-8 col-xl-8">
+
+                            <div class="col-lg-7 col-xl-7">
                                 <div class="card-box">
                                     <div class="row">
                                         <div class="col-12">
@@ -168,13 +170,10 @@
                                                 </div>
                                             </div> <!-- end card-box-->
                                         </div> <!-- end col -->
-                                    </div> <!-- end row -->
-                
-                                    <div class="row">
+
                                         <div class="col-12">
                                             <div class="page-title-box">
-                                                <i class="fas fa-question-circle" style="padding-right:5px;margin-bottom:7px;" title="Show the number of files in each classes, the pre-trained model + number of epoch and batch size that you used to train the model and the classification report that you have saved before" data-plugin="tippy" data-tippy-placement="right-start" data-tippy-maxWidth="300px" data-tippy-offset="0, 0"></i>
-                                                <h6 class="page-title" style="display: inline-block;">History Result</h6>
+                                                <h6 class="page-title"> <i class="mdi mdi-history"></i> HISTORY RESULT</h6>
 												<table id="datatable-buttons" class="table table-striped dt-responsive nowrap w-100">
                                                 </table>
                                             </div>
@@ -268,16 +267,17 @@
 			}).then(function() {
 				$("#datatable-buttons").DataTable({
 				data: dataSet,
+				"ordering": false,
 				"paging":   true,
 				"lengthChange": false,
 				"searching": false,
 				"pageLength": 3,
 				columns: [
-					{ title: "Class name + Number of files that uploaded in a class" },
+					{ title: "Metadata + Number of image dataset" },
 					{ title: "Pre-trained Model" },
-					{ title: "Number of Epoch" },
-					{ title: "Number of Batch Size" },
-					{ title: "Overall Accuracy" },
+					{ title: "Epoch" },
+					{ title: "Batch Size" },
+					{ title: "Accuracy" },
 					{ title: "Precision", "className": "none" },
 					{ title: "Recall", "className": "none" },
 					{ title: "F-score", "className": "none" },
@@ -285,7 +285,7 @@
 					{ title: "Error Rate", "className": "none" }
 				],
 				"columnDefs": [
-							{ responsivePriority: 1, targets: 0 },
+                            { responsivePriority: 1, targets: 0 },
 							{ responsivePriority: 2, targets: 4 }
 				],
 				language: {
@@ -302,7 +302,6 @@
 			
 			
 		}
-
         function getHighestAccuracy(){
 			var dataSet = new Array();
 			var i=1;
@@ -310,36 +309,31 @@
 			db.collection("Users").doc("<?=$_GET['id'];?>").collection("History").get().then((querySnapshot) => {
 				querySnapshot.forEach((doc) => {
 					console.log(doc.data());
-					dataSet.push([doc.data().accuracy,
-									doc.data().accuracy,
-									doc.data().accuracy,
-									doc.data().accuracy,
-									doc.data().accuracy,
-                                    doc.data().accuracy,
-                                    doc.data().accuracy]);
+					dataSet.push([	doc.data().preTrainedModel,
+									doc.data().accuracy
+									]);
                     i=i+1;
 				})
 			}).then(function() {
 				$("#datatable-getHighestAccuracy").DataTable({
 				data: dataSet,
-				"bPaginate": false,
-                "bLengthChange": false,
-                "bInfo": false,
-                "bAutoWidth": false,
-                "searching": false,
+				"ordering": true,
+				"paging":   false,
+				"lengthChange": false,
+				"searching": false,
+				"info": false,
 				columns: [
-					{ title: "MobileNetV2" },
-					{ title: "EfficientNetB3" },
-					{ title: "InceptionV3" },
-					{ title: "DenseNet201" },
-					{ title: "ResNet50V2" },
-                    { title: "VGG16"},
-                    { title: "Xception"}					
+					{ title: "Pre-trained Model" },
+					{ title: "Accuracy" }
+				],
+                "columnDefs": [
+                            { "width": "50%", "targets": 0 }
 				]
-				});
 			});
+			});
+			
+			
 		}
-
         function getAverageAccuracy(){
 			var dataSet = new Array();
 			var i=1;
@@ -347,42 +341,41 @@
 			db.collection("Users").doc("<?=$_GET['id'];?>").collection("History").get().then((querySnapshot) => {
 				querySnapshot.forEach((doc) => {
 					console.log(doc.data());
-					dataSet.push([doc.data().accuracy,
-									doc.data().accuracy,
-									doc.data().accuracy,
-									doc.data().accuracy,
-									doc.data().accuracy,
-                                    doc.data().accuracy,
-                                    doc.data().accuracy]);
+					dataSet.push([	doc.data().preTrainedModel,
+									doc.data().accuracy
+									]);
                     i=i+1;
 				})
 			}).then(function() {
 				$("#datatable-getAverageAccuracy").DataTable({
 				data: dataSet,
-				"bPaginate": false,
-                "bLengthChange": false,
-                "bInfo": false,
-                "bAutoWidth": false,
-                "searching": false,
+                "responsive": true,
+				"ordering": true,
+				"paging":   false,
+				"lengthChange": false,
+				"searching": false,
+				"info": false,
 				columns: [
-					{ title: "MobileNetV2" },
-					{ title: "EfficientNetB3" },
-					{ title: "InceptionV3" },
-					{ title: "DenseNet201" },
-					{ title: "ResNet50V2" },
-                    { title: "VGG16"},
-                    { title: "Xception"}					
+					{ title: "Pre-trained Model" },
+					{ title: "Accuracy" }
+				],
+                "columnDefs": [
+                            { "width": "50%", "targets": 0 }
 				]
-				});
 			});
+			});
+			
+			
 		}
-        
 		$(document).ready(function() {
-			getDatainTable();
+			getDatainTable();       
+            $('a[data-toggle="tab"]').on( 'shown.bs.tab', function (e) {
+                console.log(e);
+                $.fn.dataTable.tables( {visible: true, api: true} ).columns.adjust();
+            } );
             getHighestAccuracy();
             getAverageAccuracy();
 		});
-
 		</script>
 		<script>
            function validateUsername()
@@ -397,8 +390,7 @@
                             displayName: uname,
                         }).then(() => {
                             swal({
-                                title: 'Success',
-                                text:'Update username successful',
+                                title: 'Update Username Success',
                                 type: 'success',
                                 confirmButtonColor: '#6658dd',
                                 backdrop:'#eeeff3',
@@ -428,8 +420,8 @@
                     else
                     {
                         swal({
-                            title: 'Failure',
-                            text:'Column cannot be empty',
+                            title: 'Update Username Failed',
+                            text:'Username column cannot be empty.',
                             type: 'error',
                             confirmButtonColor: '#6658dd',
                             backdrop:'#eeeff3',
@@ -480,8 +472,7 @@
                                 photoURL: uphotourl,
                             }).then(() => {
                                 swal({
-                                title: 'Success',
-                                text:'Update photo URL successful',
+                                title: 'Update Photo URL Success',
                                 type: 'success',
                                 confirmButtonColor: '#6658dd',
                                 backdrop:'#eeeff3',
@@ -512,7 +503,7 @@
                         else
                         {
                             swal({
-                                title: 'Failure',
+                                title: 'Update Photo URL Failed',
                                 text:'Photo URL incorrect, cannot link to the image.',
                                 type: 'error',
                                 confirmButtonColor: '#6658dd',
@@ -529,8 +520,8 @@
                     else
                     {
                         swal({
-                            title: 'Failure',
-                            text:'Column cannot be empty.',
+                            title: 'Update Photo URL Failed',
+                            text:'Photo URL column cannot be empty.',
                             type: 'error',
                             confirmButtonColor: '#6658dd',
                             backdrop:'#eeeff3',
@@ -556,8 +547,7 @@
 
                         user.updateEmail(uemail).then(() => {
                             swal({
-                            title: 'Success',
-                            text:'Update email successful',
+                            title: 'Update Email Success',
                             type: 'success',
                             confirmButtonColor: '#6658dd',
                             backdrop:'#eeeff3',
@@ -589,8 +579,8 @@
                     else
                     {
                         swal({
-                            title: 'Failure',
-                            text:'Column cannot be empty.',
+                            title: 'Update Email Failed',
+                            text:'Email column cannot be empty.',
                             type: 'error',
                             confirmButtonColor: '#6658dd',
                             backdrop:'#eeeff3',
@@ -617,8 +607,7 @@
 
                         user.updatePassword(upassword).then(() => {
                             swal({
-                            title: 'Success',
-                            text:'Update password successful',
+                            title: 'Update Password Success',
                             type: 'success',
                             confirmButtonColor: '#6658dd',
                             backdrop:'#eeeff3',
@@ -650,8 +639,8 @@
                     else
                     {
                         swal({
-                            title: 'Failure',
-                            text:'Column cannot be empty.',
+                            title: 'Update Password Failed',
+                            text:'Password column cannot be empty.',
                             type: 'error',
                             confirmButtonColor: '#6658dd',
                             backdrop:'#eeeff3',
@@ -667,6 +656,11 @@
                 });
            }
        </script>
+
+        <script>
+			
+		</script>
+
     </body>
     
 </html>
