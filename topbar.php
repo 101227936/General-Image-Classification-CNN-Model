@@ -39,8 +39,14 @@
 				<?php
 			}
 		?>
-		console.log("<?=(isset($_GET['id']))? $_GET['id']:null?>");
-		// ...
+		$.ajax({
+			method: "POST",
+			url: "create_folder.php",
+			data: {'uid': user.uid}
+		})
+		.done(function( msg ) {
+			
+		});
 	  } else {
 		window.location.href="index.php";
 	  }

@@ -94,7 +94,7 @@
                                                     <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                                                         <span aria-hidden="true">&times;</span>
                                                     </button>
-                                                    Best Performance Pre-trained Model Based On Your Previous Training: ANS
+                                                    Best Performance Pre-trained Model Based On Your Previous Training: *-*
                                                 </div>
 
                                         
@@ -184,6 +184,52 @@
 
         <!-- App js -->
         <script src="template/Template/Admin/dist/assets/js/app.min.js"></script>
+		
+		<script>
+			function getTopModel(){
+				var dataSet = new Array();
+				var i=1;
+				var db = firebase.firestore();
+				db.collection("Users").doc("<?=$_GET['id'];?>").collection("History").get().then((querySnapshot) => {
+					querySnapshot.forEach((doc) => {
+						dataSet.push({"model":doc.data().preTrainedModel,"accuracy":parseFloat(doc.data().accuracy)});
+						i=i+1;
+					})
+				}).then(function() {
+									
+					var groupedData = dataSet.reduce(function(l, r) {
+					  var key = r.model;
+					  if (typeof l[key] === "undefined") {
+						l[key] = {
+						  accuracy: r.accuracy
+						};
+					  }
+					  if(l[key].accuracy<r.accuracy)l[key].accuracy = r.accuracy;
+					  return l;
+					}, {});
+									
+					var avgGroupedData = Object.keys(groupedData).map(function(key) {
+						return {
+						  model: key,
+						  accuracy: groupedData[key].accuracy
+						};
+					  });
+					
+					var highest = new Array();
+					
+					avgGroupedData.forEach(function(element){
+					  highest.push([element.model,element.accuracy]);
+					});
+					if(highest.length>0)
+					{
+						var text = $("[role=alert]").html();
+						text = text.replace("*-*", highest.sort(function(a, b) {return a[1] - b[1];}).reverse()[0]);	
+						text = text.replace(",", " : ");
+						$("[role=alert]").html(text).append(" % of accuracy");
+					}
+				});
+			}
+		</script>
 
         <script>
             $('#btn_submit').click(function(e){
@@ -267,6 +313,7 @@
         <!-- Init js-->
 		<script>
             $("#class_list").load("class_list.php?id=<?=$_GET['id']?>");
+			getTopModel();
 		</script>
 
     </body>

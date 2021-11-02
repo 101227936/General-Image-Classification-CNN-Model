@@ -251,7 +251,6 @@
 			var db = firebase.firestore();
 			db.collection("Users").doc("<?=$_GET['id'];?>").collection("History").get().then((querySnapshot) => {
 				querySnapshot.forEach((doc) => {
-					console.log(doc.data());
 					dataSet.push([doc.data().metadata,
 									doc.data().preTrainedModel,
 									doc.data().epoch,
@@ -302,21 +301,44 @@
 			
 			
 		}
+		
         function getHighestAccuracy(){
 			var dataSet = new Array();
 			var i=1;
 			var db = firebase.firestore();
 			db.collection("Users").doc("<?=$_GET['id'];?>").collection("History").get().then((querySnapshot) => {
 				querySnapshot.forEach((doc) => {
-					console.log(doc.data());
-					dataSet.push([	doc.data().preTrainedModel,
-									doc.data().accuracy
-									]);
+					dataSet.push({"model":doc.data().preTrainedModel,"accuracy":parseFloat(doc.data().accuracy)});
                     i=i+1;
 				})
 			}).then(function() {
+								
+				var groupedData = dataSet.reduce(function(l, r) {
+				  var key = r.model;
+				  if (typeof l[key] === "undefined") {
+					l[key] = {
+					  accuracy: r.accuracy
+					};
+				  }
+				  if(l[key].accuracy<r.accuracy)l[key].accuracy = r.accuracy;
+				  return l;
+				}, {});
+								
+				var highGroupedData = Object.keys(groupedData).map(function(key) {
+					return {
+					  model: key,
+					  accuracy: groupedData[key].accuracy
+					};
+				  });
+				
+				var highest = new Array();
+				
+				highGroupedData.forEach(function(element){
+				  highest.push([element.model,element.accuracy]);
+				});
+				
 				$("#datatable-getHighestAccuracy").DataTable({
-				data: dataSet,
+				data: highest,
 				"ordering": true,
 				"paging":   false,
 				"lengthChange": false,
@@ -340,38 +362,61 @@
 			var db = firebase.firestore();
 			db.collection("Users").doc("<?=$_GET['id'];?>").collection("History").get().then((querySnapshot) => {
 				querySnapshot.forEach((doc) => {
-					console.log(doc.data());
-					dataSet.push([	doc.data().preTrainedModel,
-									doc.data().accuracy
-									]);
+					dataSet.push({"model":doc.data().preTrainedModel,"accuracy":parseFloat(doc.data().accuracy)});
                     i=i+1;
 				})
 			}).then(function() {
+				
+				var groupedData = dataSet.reduce(function(l, r) {
+				  var key = r.model;
+				  if (typeof l[key] === "undefined") {
+					l[key] = {
+					  sum: 0,
+					  count: 0
+					};
+				  }
+				  l[key].sum += r.accuracy;
+				  l[key].count += 1;
+
+				  return l;
+				}, {});
+								
+				var avgGroupedData = Object.keys(groupedData).map(function(key) {
+					return {
+					  model: key,
+					  accuracy: (groupedData[key].sum / groupedData[key].count)
+					};
+				  });
+				
+				var avg = new Array();
+		
+				avgGroupedData.forEach(function(element){
+				  avg.push([element.model,element.accuracy]);
+				});
+				
 				$("#datatable-getAverageAccuracy").DataTable({
-				data: dataSet,
-                "responsive": true,
-				"ordering": true,
-				"paging":   false,
-				"lengthChange": false,
-				"searching": false,
-				"info": false,
-				columns: [
-					{ title: "Pre-trained Model" },
-					{ title: "Accuracy" }
-				],
-                "columnDefs": [
-                            { "width": "50%", "targets": 0 }
-				]
+					data: avg,
+					"responsive": true,
+					"ordering": true,
+					"paging":   false,
+					"lengthChange": false,
+					"searching": false,
+					"info": false,
+					columns: [
+						{ title: "Pre-trained Model" },
+						{ title: "Accuracy" }
+					],
+					"columnDefs": [
+								{ "width": "50%", "targets": 0 }
+					]
+				});
 			});
-			});
-			
-			
 		}
 		$(document).ready(function() {
 			getDatainTable();       
             $('a[data-toggle="tab"]').on( 'shown.bs.tab', function (e) {
-                console.log(e);
-                $.fn.dataTable.tables( {visible: true, api: true} ).columns.adjust();
+				var id=$(this).attr('href').substring(1)
+				$("body").find('#' + id).find( "table" ).dataTable.tables( {visible: true, api: true} ).columns.adjust();
             } );
             getHighestAccuracy();
             getAverageAccuracy();
