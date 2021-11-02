@@ -89,6 +89,16 @@
                                             <div class="input-prepend input-append form-group" style="padding:5px !important;">
                                                 <i class="fas fa-question-circle" style="padding-right:5px;margin-bottom:7px;" title="A pre-trained model is a model that was trained on a large benchmark dataset to solve a problem similar to the one that we want to solve" data-plugin="tippy" data-tippy-placement="right-start" data-tippy-maxWidth="200px" data-tippy-offset="0, 0"></i>
                                                 <h3 class="header-title" style="display: inline-block;">Pre-trained Model</h3>
+                                                
+                                                <div class="alert alert-success alert-dismissible fade show" role="alert">
+                                                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                                        <span aria-hidden="true">&times;</span>
+                                                    </button>
+                                                    Best Performance Pre-trained Model Based On Your Previous Training: ANS
+                                                </div>
+
+                                        
+
                                                 <select class="form-control" name="model_selection" id="model_selection" required="">
                                                     <optgroup label="--Available Model--">
                                                         <option value="MobileNetV2">MobileNetV2</option>
