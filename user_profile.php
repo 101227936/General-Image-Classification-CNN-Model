@@ -140,6 +140,44 @@
                             <div class="col-lg-7 col-xl-7">
                                 <div class="card-box">
                                     <div class="row">
+                                    <div class="col-xl-12">
+                                    <div class="card-box">
+                                        <h4 class="header-title mb-4">Overall Best Models Classifier Metric</h4>
+            
+                                        <ul class="nav nav-tabs nav-bordered nav-justified">
+                                            <li class="nav-item">
+                                                <a href="#home-b2" data-toggle="tab" aria-expanded="false" class="nav-link">
+                                                    Highest Accuracy
+                                                </a>
+                                            </li>
+                                            <li class="nav-item">
+                                                <a href="#profile-b2" data-toggle="tab" aria-expanded="true" class="nav-link active">
+                                                    Average Accuracy
+                                                </a>
+                                            </li>
+                                        </ul>
+                                        <div class="tab-content">
+                                            <div class="tab-pane" id="home-b2">
+                                                <p>Vakal text here dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim.</p>
+                                                <p class="mb-0">Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu. In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo. Nullam dictum felis eu pede mollis pretium. Integer tincidunt.Cras dapibus. Vivamus elementum semper nisi. Aenean vulputate eleifend tellus. Aenean leo ligula, porttitor eu, consequat vitae, eleifend ac, enim.</p>
+                                            </div>
+                                            <div class="tab-pane active" id="profile-b2">
+                                                <p>Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu. In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo. Nullam dictum felis eu pede mollis pretium. Integer tincidunt.Cras dapibus. Vivamus elementum semper nisi. Aenean vulputate eleifend tellus. Aenean leo ligula, porttitor eu, consequat vitae, eleifend ac, enim.</p>
+                                                <p class="mb-0">Vakal text here dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim.</p>
+                                            </div>
+                                            <div class="tab-pane" id="messages-b2">
+                                                <p>Vakal text here dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim.</p>
+                                                <p class="mb-0">Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu. In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo. Nullam dictum felis eu pede mollis pretium. Integer tincidunt.Cras dapibus. Vivamus elementum semper nisi. Aenean vulputate eleifend tellus. Aenean leo ligula, porttitor eu, consequat vitae, eleifend ac, enim.</p>
+                                            </div>
+                                        </div>
+                                    </div> <!-- end card-box-->
+                            </div> <!-- end col -->
+                                    </div>
+
+
+
+                
+                                    <div class="row">
                                         <div class="col-12">
                                             <div class="page-title-box">
                                                 <i class="fas fa-question-circle" style="padding-right:5px;margin-bottom:7px;" title="Show the number of files in each classes, the pre-trained model + number of epoch and batch size that you used to train the model and the classification report that you have saved before" data-plugin="tippy" data-tippy-placement="right-start" data-tippy-maxWidth="300px" data-tippy-offset="0, 0"></i>
@@ -151,6 +189,12 @@
                                     </div>
                                 </div>
                             </div>
+
+                            
+
+
+
+
                         </div>
                         <!-- end row-->
 
