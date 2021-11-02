@@ -59,7 +59,7 @@
 
 
                         <div class="row">
-                            <div class="col-lg-5 col-xl-5">
+                            <div class="col-lg-4 col-xl-4">
                                 <div class="card-box text-center">
                                     <img src="" id="imageUser" class="rounded-circle avatar-xl img-thumbnail" alt="profile-image">
 
@@ -136,47 +136,39 @@
                                             </form>
                                 </div> <!-- end card-box -->
                             </div> <!-- end col-->
-
-                            <div class="col-lg-7 col-xl-7">
+                            
+                            <div class="col-lg-8 col-xl-8">
                                 <div class="card-box">
                                     <div class="row">
                                         <div class="col-12">
                                             <div class="page-title-box">
                                                 <i class="fas fa-question-circle" style="padding-right:5px;margin-bottom:7px;" title="Deciding the best classifier (model) based on the historical used pre-trained model result." data-plugin="tippy" data-tippy-placement="right-start" data-tippy-maxWidth="300px" data-tippy-offset="0, 0"></i>
-                                                <h4 class="header-title mb-4">Overall Best Models Classifier Metric</h4>
-                    
+                                                <h6 class="page-title" style="display: inline-block;">Overall Best Models Classifier Metric</h6>
                                                 <ul class="nav nav-tabs nav-bordered nav-justified">
                                                     <li class="nav-item">
-                                                        <a href="#home-b2" data-toggle="tab" aria-expanded="false" class="nav-link">
+                                                        <a href="#highacc" data-toggle="tab" aria-expanded="true" class="nav-link active">
                                                             Highest Accuracy
                                                         </a>
                                                     </li>
                                                     <li class="nav-item">
-                                                        <a href="#profile-b2" data-toggle="tab" aria-expanded="true" class="nav-link active">
+                                                        <a href="#avgacc" data-toggle="tab" aria-expanded="false" class="nav-link">
                                                             Average Accuracy
                                                         </a>
                                                     </li>
                                                 </ul>
                                                 <div class="tab-content">
-                                                    <div class="tab-pane" id="home-b2">
-                                                        <p>Vakal text here dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim.</p>
-                                                        <p class="mb-0">Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu. In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo. Nullam dictum felis eu pede mollis pretium. Integer tincidunt.Cras dapibus. Vivamus elementum semper nisi. Aenean vulputate eleifend tellus. Aenean leo ligula, porttitor eu, consequat vitae, eleifend ac, enim.</p>
+                                                    <div class="tab-pane active" id="highacc">
+                                                        <table id="datatable-getHighestAccuracy" class="table table-striped dt-responsive nowrap w-100">
+                                                        </table>
                                                     </div>
-                                                    <div class="tab-pane active" id="profile-b2">
-                                                        <p>Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu. In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo. Nullam dictum felis eu pede mollis pretium. Integer tincidunt.Cras dapibus. Vivamus elementum semper nisi. Aenean vulputate eleifend tellus. Aenean leo ligula, porttitor eu, consequat vitae, eleifend ac, enim.</p>
-                                                        <p class="mb-0">Vakal text here dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim.</p>
-                                                    </div>
-                                                    <div class="tab-pane" id="messages-b2">
-                                                        <p>Vakal text here dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim.</p>
-                                                        <p class="mb-0">Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu. In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo. Nullam dictum felis eu pede mollis pretium. Integer tincidunt.Cras dapibus. Vivamus elementum semper nisi. Aenean vulputate eleifend tellus. Aenean leo ligula, porttitor eu, consequat vitae, eleifend ac, enim.</p>
+                                                    <div class="tab-pane" id="avgacc">
+                                                        <table id="datatable-getAverageAccuracy" class="table table-striped dt-responsive nowrap w-100">
+                                                        </table>
                                                     </div>
                                                 </div>
                                             </div> <!-- end card-box-->
                                         </div> <!-- end col -->
                                     </div> <!-- end row -->
-
-
-
                 
                                     <div class="row">
                                         <div class="col-12">
@@ -190,12 +182,6 @@
                                     </div>
                                 </div>
                             </div>
-
-                            
-
-
-
-
                         </div>
                         <!-- end row-->
 
@@ -316,9 +302,87 @@
 			
 			
 		}
+
+        function getHighestAccuracy(){
+			var dataSet = new Array();
+			var i=1;
+			var db = firebase.firestore();
+			db.collection("Users").doc("<?=$_GET['id'];?>").collection("History").get().then((querySnapshot) => {
+				querySnapshot.forEach((doc) => {
+					console.log(doc.data());
+					dataSet.push([doc.data().accuracy,
+									doc.data().accuracy,
+									doc.data().accuracy,
+									doc.data().accuracy,
+									doc.data().accuracy,
+                                    doc.data().accuracy,
+                                    doc.data().accuracy]);
+                    i=i+1;
+				})
+			}).then(function() {
+				$("#datatable-getHighestAccuracy").DataTable({
+				data: dataSet,
+				"bPaginate": false,
+                "bLengthChange": false,
+                "bInfo": false,
+                "bAutoWidth": false,
+                "searching": false,
+				columns: [
+					{ title: "MobileNetV2" },
+					{ title: "EfficientNetB3" },
+					{ title: "InceptionV3" },
+					{ title: "DenseNet201" },
+					{ title: "ResNet50V2" },
+                    { title: "VGG16"},
+                    { title: "Xception"}					
+				]
+				});
+			});
+		}
+
+        function getAverageAccuracy(){
+			var dataSet = new Array();
+			var i=1;
+			var db = firebase.firestore();
+			db.collection("Users").doc("<?=$_GET['id'];?>").collection("History").get().then((querySnapshot) => {
+				querySnapshot.forEach((doc) => {
+					console.log(doc.data());
+					dataSet.push([doc.data().accuracy,
+									doc.data().accuracy,
+									doc.data().accuracy,
+									doc.data().accuracy,
+									doc.data().accuracy,
+                                    doc.data().accuracy,
+                                    doc.data().accuracy]);
+                    i=i+1;
+				})
+			}).then(function() {
+				$("#datatable-getAverageAccuracy").DataTable({
+				data: dataSet,
+				"bPaginate": false,
+                "bLengthChange": false,
+                "bInfo": false,
+                "bAutoWidth": false,
+                "searching": false,
+				columns: [
+					{ title: "MobileNetV2" },
+					{ title: "EfficientNetB3" },
+					{ title: "InceptionV3" },
+					{ title: "DenseNet201" },
+					{ title: "ResNet50V2" },
+                    { title: "VGG16"},
+                    { title: "Xception"}					
+				]
+				});
+			});
+		}
+        
 		$(document).ready(function() {
 			getDatainTable();
+            getHighestAccuracy();
+            getAverageAccuracy();
 		});
+
 		</script>
 		<script>
            function validateUsername()
@@ -603,11 +667,6 @@
                 });
            }
        </script>
-
-        <script>
-			
-		</script>
-
     </body>
     
 </html>
