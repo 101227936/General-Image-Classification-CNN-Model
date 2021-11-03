@@ -94,10 +94,11 @@
                                                     <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                                                         <span aria-hidden="true">&times;</span>
                                                     </button>
+                                                    *Notes: More info in Overall Best Models Classifier Metric (Under User Account)*
+                                                    <br>
+                                                    <br>
                                                     Best Performance Pre-trained Model Based On Your Previous Training: *-*
                                                 </div>
-
-                                        
 
                                                 <select class="form-control" name="model_selection" id="model_selection" required="">
                                                     <optgroup label="--Available Model--">
