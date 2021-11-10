@@ -272,7 +272,7 @@
 				"searching": false,
 				"pageLength": 3,
 				columns: [
-					{ title: "Metadata + Number of image dataset" },
+					{ title: "Class name + Number of image uploaded in class" },
 					{ title: "Pre-trained Model" },
 					{ title: "Epoch" },
 					{ title: "Batch Size" },
