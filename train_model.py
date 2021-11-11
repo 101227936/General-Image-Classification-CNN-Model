@@ -68,7 +68,6 @@ def plot_confusion_matrix(cm, classes,normalize=False, title='Confusion matrix',
     plt.xticks(tick_marks, classes, rotation=0)
     plt.yticks(tick_marks, classes, rotation=0)
 
-    plt.tight_layout()
     plt.ylabel('Class')
     plt.xlabel('Prediction')
     
